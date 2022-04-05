@@ -1,0 +1,15 @@
+p {
+  font-family: Lato;
+}
+
+.custom-toolbar {
+  background-color: #f8f4f4;
+  padding: 5px 15px;
+
+}
+.title{
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 700;
+  color: #44ccd4;
+}

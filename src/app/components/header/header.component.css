@@ -3,13 +3,35 @@ p {
 }
 
 .custom-toolbar {
-  background-color: #2640c3;
+  background-color: #2e49d2;
   padding: 5px 15px;
 
 }
+
+ul{
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+li, a{
+margin-left: 2px;
+display: flex;
+
+}
+
 .title{
   font-size: 32px;
   line-height: 48px;
   font-weight: 700;
   color: #f1f1f1;
+}
+
+a{
+  text-decoration: none;
+  color: #f1f1f1
+}
+
+.spacer{
+  flex: 1 1 auto;
 }

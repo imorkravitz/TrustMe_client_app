@@ -11,9 +11,7 @@ import { AuthService } from '../auth.services'
 export class SignupComponent{
    isLoading = false;
 
-   constructor(public authService: AuthService){
-
-   }
+   constructor(public authService: AuthService){}
 
    onSignup(form: NgForm) {
      console.log(form.value);

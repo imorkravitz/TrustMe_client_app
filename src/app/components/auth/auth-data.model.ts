@@ -7,3 +7,8 @@ export interface AuthData{
   birthDate : string;
   phoneNumber : string;
 }
+
+export interface AuthLogin{
+  email: string;
+  password: string;
+}

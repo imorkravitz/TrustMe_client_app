@@ -1,29 +1,34 @@
 <mat-card>
-  <!-- <mat-spinner *ngIf="isLoading"> </mat-spinner> -->
-  <form *ngIf="!isLoading">
+  <mat-spinner *ngIf="isLoading"> </mat-spinner>
+  <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
-      <input matInput type="text" placeholder="First Name">
+      <input matInput name="firstName" ngModel type="text" placeholder="First Name" #firstNameInput="ngModel" required
+        firstName>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Last Name">
+      <input matInput name="lastName" ngModel type="text" placeholder="Last Name" #lastNameInput="ngModel" required
+        lastName>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Birth Date">
+      <input matInput name="birthday" ngModel type="text" placeholder="Birth Date" #birthdayInput="ngModel" birthday>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Phone Number">
+      <input matInput name="phoneNumber" ngModel type="text" placeholder="Phone Number" #phoneNumberInput="ngModel"
+        required phoneNumber>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="email" placeholder="E-mail">
-      <mat-error *ngIf="">Please enter a valid email.</mat-error>
+      <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+      <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="password" placeholder="Password">
-      <mat-error *ngIf="">Please enter a valid password.</mat-error>
+      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required
+        password>
+      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="password" placeholder="Confirm-Password">
-      <mat-error *ngIf="">Please enter a valid password.</mat-error>
+      <input name="password" ngModel matInput type="password" placeholder="Password" #passwordInput="ngModel" required
+        password>
+      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <button mat-raised-button color="blue" type="submit">Signup</button>
   </form>

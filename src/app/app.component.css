@@ -1,5 +1,8 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 main {
-  width: 60%;
+  width: 50%;
   margin: 1rem auto;
+  margin-left: 25px;
+  margin-top: 40px;
+
 }

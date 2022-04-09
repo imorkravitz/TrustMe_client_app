@@ -1,4 +1,16 @@
 <mat-card>
+  <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success !</strong> User as been created
+    <button mat-button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="errAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Invalid !</strong> All fields are required
+    <button mat-button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <mat-spinner *ngIf="isLoading"> </mat-spinner>
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
@@ -10,10 +22,11 @@
         lastName>
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="birthday" ngModel type="text" placeholder="Birth Date" #birthdayInput="ngModel" birthday>
+      <input matInput name="birthDay" ngModel type="date" placeholder="Birth Day" #birthdayInput="ngModel" required
+        birthDay>
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="phoneNumber" ngModel type="text" placeholder="Phone Number" #phoneNumberInput="ngModel"
+      <input matInput name="phoneNumber" ngModel type="number" placeholder="Phone Number" #phoneNumberInput="ngModel"
         required phoneNumber>
     </mat-form-field>
     <mat-form-field>
@@ -26,8 +39,8 @@
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input name="password" ngModel matInput type="password" placeholder="Password" #passwordInput="ngModel" required
-        password>
+      <input name="confirmPassword" ngModel matInput type="Password" placeholder="confirm-Password"
+        #passwordInput="ngModel" required password>
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <button mat-raised-button color="blue" type="submit">Signup</button>

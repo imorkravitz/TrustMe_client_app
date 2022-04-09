@@ -10,14 +10,19 @@ import { AuthService } from '../auth.services'
 
 export class LoginComponent{
   isLoading = false;
+  errAlert: boolean = false;
 
    constructor(public authService: AuthService){}
 
    onLogin(form: NgForm) {
      console.log(form.value);
     if (form.invalid) {
+      this.errAlert=true;
       return;
     }
     this.authService.login(form.value.email, form.value.password)
    }
+   closeAlert(){
+    this.errAlert=false;
+  }
 }

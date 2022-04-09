@@ -10,16 +10,24 @@ import { AuthService } from '../auth.services'
 
 export class SignupComponent{
    isLoading = false;
+   alert: boolean = false;
+   errAlert: boolean = false;
 
    constructor(public authService: AuthService){}
 
    onSignup(form: NgForm) {
      console.log(form.value);
     if (form.invalid) {
+      this.errAlert=true;
       return;
     }
     this.authService.createUser(form.value.email, form.value.password,
       form.value.confirmPassword, form.value.firstName,
       form.value.lastName, form.value.birthDate, form.value.phoneNumber)
+      this.alert=true;
+   }
+   closeAlert(){
+     this.alert=false;
+     this.errAlert=false;
    }
 }

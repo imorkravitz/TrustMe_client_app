@@ -1,4 +1,10 @@
 <mat-card>
+  <div *ngIf="errAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Invalid !</strong> Wrongs implemented.
+    <button mat-button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>

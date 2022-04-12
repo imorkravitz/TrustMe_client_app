@@ -13,63 +13,64 @@
     </div>
     <mat-spinner *ngIf="isLoading"> </mat-spinner>
     <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
-      <mat-form-field>
-        <input matInput name="firstName" ngModel type="text" placeholder="First Name" #firstNameInput="ngModel" required
-          firstName>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput name="lastName" ngModel type="text" placeholder="Last Name" #lastNameInput="ngModel" required
-          lastName>
-      </mat-form-field>
+      <div class="container px-4">
+        <div class=" row ">
+          <div class="col-6 col-sm-3">
+            <mat-form-field>
+              <input matInput name="firstName" ngModel type="text" placeholder="First Name" #firstNameInput="ngModel"
+                required firstName>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="lastName" ngModel type="text" placeholder="Last Name" #lastNameInput="ngModel"
+                required lastName>
+            </mat-form-field>
 
-      <!-- <mat-form-field appearance="fill" matInput name="gender" ngModel type="value" #genderInput="ngModel" gender>
-    <mat-label>Gender</mat-label>
-    <mat-select>
-      <mat-option value="one">Male</mat-option>
-      <mat-option value="two">Female</mat-option>
-    </mat-select>
-  </mat-form-field> -->
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput name="birthDay" ngModel type="date" placeholder="Birth-Day" #birthdayInput="ngModel"
+                required birthDay>
+            </mat-form-field>
+          </div>
+          <div class="col-6 col-sm-3">
+            <mat-form-field>
+              <input matInput name="phoneNumber" ngModel type="number" placeholder="Phone Number"
+                #phoneNumberInput="ngModel" required phoneNumber>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required
+                email>
+              <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+            </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Choose a date</mat-label>
-        <input matInput name="birthDay" ngModel type="date" placeholder="Birth-Day" #birthdayInput="ngModel" required
-          birthDay>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput name="phoneNumber" ngModel type="number" placeholder="Phone Number" #phoneNumberInput="ngModel"
-          required phoneNumber>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
-        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input type="password" name="password" ngModel matInput placeholder="Password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [type]="hide ? 'password': 'text'" #passwordInput="ngModel"
-          required password>
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
-    'visibility_off'}}</mat-icon>
-        <mat-error *ngIf="passFormControl.hasError('required')">
-          Please enter your newpassword at least 8 character<br>
-          Use Capital letters and numbers required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field for="validationServerUsername" class="form-label">
-        <input name="confirmPassword" ngModel matInput type="Password" placeholder="confirm-Password"
-          [type]="hide ? 'password' : 'text'" #confirmpasswordInput="ngModel" class="form-control is-invalid"
-          id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required
-          password>
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
-    'visibility_off'}}</mat-icon>
-        <mat-error *ngIf="confirmFormControl.hasError('required')">
-          Confirm your password
-        </mat-error>
-        <p *ngIf="errAlert2" class="invalid-feedback" role="alert">
-          Passwords must match
-        </p>
-      </mat-form-field>
+            <mat-form-field>
+              <input type="password" name="password" ngModel matInput placeholder="Password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [type]="hide ? 'password': 'text'"
+                #passwordInput="ngModel" required password>
+              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
+    'visibility_off'}}</mat-icon> -->
+              <mat-error *ngIf="passFormControl.hasError('required')">
+                Please enter your newpassword at least 8 character<br>
+                Use Capital letters and numbers required
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field for="validationServerUsername" class="form-label">
+              <input name="confirmPassword" ngModel matInput type="Password" placeholder="confirm-Password"
+                [type]="hide ? 'password' : 'text'" #confirmpasswordInput="ngModel" class="form-control is-invalid"
+                id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
+                required password>
+              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
+    'visibility_off'}}</mat-icon> -->
+              <mat-error *ngIf="confirmFormControl.hasError('required')">
+                Confirm your password
+              </mat-error>
+              <p *ngIf="errAlert2" class="invalid-feedback" role="alert">
+                Passwords must match
+              </p>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
       <br><br><br>
       <button mat-raised-button color="blue" type="submit">Signup</button>
     </form>

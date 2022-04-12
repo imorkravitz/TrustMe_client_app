@@ -27,6 +27,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './components/auth/auth-interceptor';
+import { NavComponent } from './components/nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,9 @@ import { AuthInterceptor } from './components/auth/auth-interceptor';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    GridListOverview
+    GridListOverview,
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,12 +62,16 @@ import { AuthInterceptor } from './components/auth/auth-interceptor';
     MatOptionModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   // a javascript object provided
   // identifier of the token - which angular wil look for both imported above,
-  // we can have multi intecptor so value is true
+  // we can have multi intecptor so value is trueimport { AbstractControl } from '@angular/forms/forms';
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

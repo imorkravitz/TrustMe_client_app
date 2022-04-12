@@ -14,11 +14,13 @@ ul{
   display: flex;
 }
 
-li, a{
+li{
 margin-left: 2px;
+margin-top: 15px;
 display: flex;
-
 }
+
+
 
 .title{
   font-size: 32px;
@@ -34,4 +36,17 @@ a{
 
 .spacer{
   flex: 1 1 auto;
+}
+
+.logoutcss{
+  background-color: #2e49d2;
+  outline: none;
+  border-radius:0 !important;
+  border-color: #2e49d2;
+  font-family: sans-serif;
+  color:#f1f1f1;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+
 }

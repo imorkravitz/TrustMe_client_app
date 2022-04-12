@@ -8,11 +8,14 @@
   </span>
   <span class="spacer">
     <ul>
-      <li>
+      <li *ngIf="!userIsAuthenticated">
         <a mat-button routerLink="/login" routerLinkActive="mat-is-dark">Login</a>
       </li>
-      <li>
+      <li *ngIf="!userIsAuthenticated">
         <a mat-button routerLink="/signup" routerLinkActive="mat-is-dark">Signup</a>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <button mat-button (click)="onLogout()" class="logoutcss btn btn-primary">Logout</button>
       </li>
     </ul>
   </span>

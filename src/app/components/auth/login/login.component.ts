@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service'
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,20 @@ import { NgForm } from '@angular/forms';
 })
 
 export class LoginComponent{
-   isLoading = false;
+  isLoading = false;
+  errAlert: boolean = false;
 
-   onLogin(form: NgForm){
-      console.log(form.value);
+   constructor(public authService: AuthService){}
 
+   onLogin(form: NgForm) {
+     console.log(form.value);
+    if (form.invalid) {
+      this.errAlert=true;
+      return;
+    }
+    this.authService.login(form.value.email, form.value.password)
    }
+   closeAlert(){
+    this.errAlert=false;
+  }
 }

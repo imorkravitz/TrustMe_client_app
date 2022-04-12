@@ -8,6 +8,9 @@ import { SignupComponent } from './components/auth/signup/signup.component'
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { GridListOverview } from './components/grid/grid.component'
 
 // for server RestAPI
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
@@ -25,13 +28,13 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './components/auth/auth-interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    GridListOverview
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,8 @@ import { AuthInterceptor } from './components/auth/auth-interceptor';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatGridListModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   // a javascript object provided

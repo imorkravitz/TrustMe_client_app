@@ -11,6 +11,8 @@ export class HomeComponent {
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
+        console.log("########")
+        debugger
         return [
           { title: 'Cardfdsfsdf 1', cols: 2, rows: 1 },
           { title: 'Card 2', cols: 2, rows: 1 },

@@ -16,24 +16,24 @@
 
       <span>
         <h1 class="title">
+          <mat-icon>whatshot</mat-icon>
           <a routerLink="/home">
             Trust Me
           </a>
         </h1>
       </span>
-      <span class="spacer">
-        <ul>
-          <li *ngIf="!userIsAuthenticated">
-            <a mat-button routerLink="/login" routerLinkActive="mat-is-dark">Login</a>
-          </li>
-          <li *ngIf="!userIsAuthenticated">
-            <a mat-button routerLink="/signup" routerLinkActive="mat-is-dark">Signup</a>
-          </li>
-          <li *ngIf="userIsAuthenticated">
-            <button mat-button (click)="onLogout()" class="logoutcss btn btn-primary">Logout</button>
-          </li>
-        </ul>
-      </span>
+      <span class="example-spacer"></span>
+      <ul>
+        <li *ngIf="!userIsAuthenticated">
+          <a mat-button routerLink="/login" routerLinkActive="mat-is-dark">Login</a>
+        </li>
+        <li *ngIf="!userIsAuthenticated">
+          <a mat-button routerLink="/signup" routerLinkActive="mat-is-dark">Signup</a>
+        </li>
+        <li *ngIf="userIsAuthenticated">
+          <button mat-button (click)="onLogout()" class="logoutcss btn btn-primary">Logout</button>
+        </li>
+      </ul>
 
     </mat-toolbar>
     <router-outlet></router-outlet>

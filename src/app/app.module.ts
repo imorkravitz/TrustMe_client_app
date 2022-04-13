@@ -31,6 +31,9 @@ import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { DialogComponent } from './components/dialog/dialog.component'
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -41,7 +44,8 @@ import { HomeComponent } from './components/home/home.component';
     SignupComponent,
     GridListOverview,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,8 @@ import { HomeComponent } from './components/home/home.component';
     MatGridListModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   // a javascript object provided

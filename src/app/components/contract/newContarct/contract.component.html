@@ -1,0 +1,58 @@
+<mat-card>
+  <form #postForm="ngForm">
+    <mat-button-toggle-group name="group" ngModel #group="ngModel" >
+      <mat-button-toggle value="Seller">Seller</mat-button-toggle>
+      <mat-button-toggle value="Buyer">Buyer</mat-button-toggle>
+    </mat-button-toggle-group>
+    <p>{{group.value}}</p>
+    <p></p>
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      name="Description"
+      ngModel
+      required
+      minlength="3"
+      placeholder="Description"
+      #Description="ngModel">
+      <mat-error *ngIf="Description.invalid" >please enter a Description</mat-error>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field>
+      <input
+      matInput
+      type="number"
+      name ="price"
+      min="0"
+      ngModel
+      required
+      placeholder="Price"
+      #price = "ngModel">
+      <mat-error *ngIf="price.invalid">please enter a current price</mat-error>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field>
+      <input
+      matInput
+      type="email"
+      name ="email"
+      ngModel
+      email
+      required
+      placeholder="Send a contract to"
+      #email = "ngModel"
+      >
+      <mat-error *ngIf="email.invalid">please enter a email address</mat-error>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field>
+      <mat-label>Termination of transaction</mat-label>
+      <input matInput [matDatepicker]="myDatePicker" [min]="minDate" name = "date" ngModel  #dateInput="ngModel" required>
+      <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #myDatePicker></mat-datepicker>
+    </mat-form-field>
+    <p></p>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</mat-card>

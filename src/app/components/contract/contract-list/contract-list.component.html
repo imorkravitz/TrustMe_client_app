@@ -1,0 +1,28 @@
+<h1>listttt</h1>
+<section class="mt-12">
+  <div class="container" >
+    <div class="row gy-5">
+      <div class="col-4" *ngFor="let contract of contracts">
+        <div class="crad shadow-lg">
+          <img  class="card-img-top"  />
+          <div class="card-body">
+            <h3 class="card-title">{{contract.title}}</h3>
+            <p class="card-text">
+             {{contract.text}}
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{contract.item1}}</li>
+            <li class="list-group-item">{{contract.item2}}</li>
+            <li class="list-group-item">{{contract.item3}}</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

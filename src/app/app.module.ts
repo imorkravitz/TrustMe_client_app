@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component'
+import { ContractComponent } from './components/contract/newContarct/contract.component';
+import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { GridListOverview } from './components/grid/grid.component'
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 // for server RestAPI
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
@@ -24,13 +28,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './components/auth/auth-interceptor';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -41,7 +46,9 @@ import { HomeComponent } from './components/home/home.component';
     SignupComponent,
     GridListOverview,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    ContractComponent,
+    ContractListComponent
   ],
   imports: [
     BrowserModule,
@@ -62,10 +69,13 @@ import { HomeComponent } from './components/home/home.component';
     MatOptionModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatGridListModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatButtonToggleModule,
+    MatExpansionModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   // a javascript object provided

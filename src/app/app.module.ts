@@ -32,9 +32,11 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { DialogComponent } from './components/dialog/dialog.component'
 import { HomeComponent } from './components/home/home.component';
+import { NotifierComponent } from './components/notifier/notifier.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { HomeComponent } from './components/home/home.component';
     GridListOverview,
     NavComponent,
     HomeComponent,
-    DialogComponent
+    DialogComponent,
+    NotifierComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +73,10 @@ import { HomeComponent } from './components/home/home.component';
     LayoutModule,
     MatSidenavModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},],
   // a javascript object provided
   // identifier of the token - which angular wil look for both imported above,
   // we can have multi intecptor so value is trueimport { AbstractControl } from '@angular/forms/forms';

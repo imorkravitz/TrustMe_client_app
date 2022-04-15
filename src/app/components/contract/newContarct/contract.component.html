@@ -1,54 +1,56 @@
 <mat-card>
-  <form #postForm="ngForm">
-    <mat-button-toggle-group name="group" ngModel #group="ngModel" >
+  <form (submit)="onAddContract(contractForm)" #contractForm="ngForm">
+    <mat-button-toggle-group name="side" ngModel #side="ngModel" required >
       <mat-button-toggle value="Seller">Seller</mat-button-toggle>
       <mat-button-toggle value="Buyer">Buyer</mat-button-toggle>
     </mat-button-toggle-group>
-    <p>{{group.value}}</p>
+    <p>
+      <mat-error *ngIf="side.invalid" > First please enter a side</mat-error>
+    </p>
     <p></p>
     <mat-form-field>
       <input
       matInput
       type="text"
-      name="Description"
+      name="description"
       ngModel
       required
       minlength="3"
       placeholder="Description"
-      #Description="ngModel">
-      <mat-error *ngIf="Description.invalid" >please enter a Description</mat-error>
+      #description="ngModel">
+      <mat-error *ngIf="description.invalid" >please enter a description</mat-error>
     </mat-form-field>
     <p></p>
     <mat-form-field>
       <input
       matInput
       type="number"
-      name ="price"
+      name ="deposit"
       min="0"
       ngModel
       required
       placeholder="Price"
-      #price = "ngModel">
-      <mat-error *ngIf="price.invalid">please enter a current price</mat-error>
+      #deposit = "ngModel">
+      <mat-error *ngIf="deposit.invalid">please enter a current price</mat-error>
     </mat-form-field>
     <p></p>
     <mat-form-field>
       <input
       matInput
       type="email"
-      name ="email"
+      name ="emailOfAnotherSide"
       ngModel
       email
       required
       placeholder="Send a contract to"
-      #email = "ngModel"
+      #emailOfAnotherSide = "ngModel"
       >
-      <mat-error *ngIf="email.invalid">please enter a email address</mat-error>
+      <mat-error *ngIf="emailOfAnotherSide.invalid">please enter a email address</mat-error>
     </mat-form-field>
     <p></p>
     <mat-form-field>
       <mat-label>Termination of transaction</mat-label>
-      <input matInput [matDatepicker]="myDatePicker" [min]="minDate" name = "date" ngModel  #dateInput="ngModel" required>
+      <input matInput [matDatepicker]="myDatePicker" [min]="minDate" name = "date" ngModel  #date="ngModel" required>
       <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
       <mat-datepicker #myDatePicker></mat-datepicker>
     </mat-form-field>

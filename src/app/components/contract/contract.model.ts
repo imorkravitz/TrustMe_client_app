@@ -1,8 +1,8 @@
 export interface Contract{
-  id : string;
-  side : string;
-  description : string;
-  price : string;
-  email: string;
+  id : String | undefined;
+  side : String;
+  description : String;
+  deposit : Number;
+  emailOfAnotherSide : String;
   date : Date;
 }

@@ -1,0 +1,27 @@
+<h1>your contracts</h1>
+<section class="mt-12" multi="true" *ngIf="contracts.length > 0">
+  <div class="container" >
+    <div class="row gy-5">
+      <div class="col-4" *ngFor="let contract of contracts">
+        <div class="crad shadow-lg">
+          <img  class="card-img-top"  />
+          <div class="card-body">
+            <h3 class="card-title">Your position: {{contract.side}}</h3>
+            <p class="card-text">Description: {{contract.description}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Deposit: {{contract.deposit}}</li>
+            <li class="list-group-item">Contract with: {{contract.emailOfAnotherSide}}</li>
+            <li class="list-group-item">Termination of transaction: {{contract.date}}</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link" >Partner profile</a>
+            <a href="#" class="card-link">Status</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<p  class=" info-text mat-body-1" *ngIf="contracts.length <= 0"> no contract created yet </p>
+

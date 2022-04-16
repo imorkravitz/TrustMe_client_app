@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service'
 import { FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators } from '@angular/forms';
+import { NotifierService } from '../../notifier/notifier.service';
 
 @Component({
 selector: 'app-signup',
@@ -11,11 +12,7 @@ styleUrls: ['./signup.component.css']
 
 export class SignupComponent implements OnInit {
 isLoading = false;
-alert: boolean = false;
-errAlert: boolean = false;
 errAlert2: boolean = false;
-
-
 
 passFormControl = new FormControl('', [
 Validators.required,
@@ -29,7 +26,8 @@ Validators.required,
 
 hide = true;
 
-constructor(public authService: AuthService){
+constructor(public authService: AuthService,
+  private notificationService: NotifierService){
 
 }
 
@@ -37,17 +35,17 @@ onSignup(form: NgForm) {
   console.log(form.value);
 
   if (form.invalid) {
-    this.errAlert=true;
+    this.notificationService.showNotification('All fields are required!', 'OK', 'error');
     return;
   }
 
   if (form.value.password==form.value.confirmPassword) {
     this.authService.createUser(form.value.email, form.value.password, form.value.confirmPassword,
       form.value.firstName, form.value.lastName, form.value.birthDate, form.value.phoneNumber)
-      this.alert=true;
-  }else{
+      this.notificationService.showNotification('User created successfully!', 'OK', 'success');
+    }else{
     console.log(form.value.confirmPassword)
-    this.errAlert2=true;
+    this.notificationService.showNotification('Password as to be matched!', 'OK', 'error');
     return;
   }
 
@@ -60,11 +58,6 @@ checkPasswords(group: FormGroup) { // here we have the 'passwords' group
   const confirmPassword = group.get('confirmFormControl');
 
   return password === confirmPassword ? null : { notSame: true }
-}
-
-closeAlert(){
-  this.alert=false;
-  this.errAlert=false;
 }
 
 ngOnInit(){}

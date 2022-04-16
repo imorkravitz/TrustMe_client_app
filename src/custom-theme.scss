@@ -42,16 +42,16 @@ contrast: (
 );
 
 $vender-blueGrey: (
-50: #eceff1,
+50: #757ce8,
 100: #cfd8dc,
 200: #b0bec5,
 300: #90a4ae,
 400: #78909c,
-500: #607d8b,
+500: #3F50B5,
 600: #546e7a,
 700: #455a64,
 800: #37474f,
-900: #263238,
+900: #002884,
 A100: #cfd8dc,
 A200: #b0bec5,
 A400: #78909c,
@@ -78,7 +78,7 @@ contrast: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $market-primary: mat-palette($vender-teal);
-$market-accent: mat-palette($mat-light-green);
+$market-accent: mat-palette($vender-blueGrey);
 $market-warn: mat-palette($mat-red);
 
 $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
@@ -86,7 +86,7 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 
 //for dark theme
 $market-primary-dark: mat-palette($vender-teal);
-$market-accent-dark: mat-palette($mat-yellow);
+$market-accent-dark: mat-palette($vender-blueGrey);
 $market-warn-dark: mat-palette($mat-red);
 
 $market-theme-dark: mat-dark-theme($market-primary-dark, $market-accent-dark, $market-warn-dark);

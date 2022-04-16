@@ -1,12 +1,5 @@
 <mat-card>
-  <div *ngIf="errAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Invalid !</strong> Wrongs implemented.
-    <button mat-button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
     <mat-form-field>
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
       <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
@@ -16,6 +9,9 @@
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <br><br>
-    <button mat-raised-button color="mat-is-dark" type="submit" *ngIf="!isLoading">Login</button>
+    <button mat-raised-button color="mat-is-dark" type="submit">Login</button>
   </form>
+  <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
+
 </mat-card>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

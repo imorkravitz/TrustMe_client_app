@@ -29,6 +29,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { InterceptorService } from './components/loader/interceptor.service';
 
 import { NavComponent } from './components/nav/nav.component';
 import { DialogComponent } from './components/dialog/dialog.component'
@@ -77,7 +78,8 @@ import { SignupComponent } from './components/auth/signup/signup.component'
     MatDialogModule,
     MatSnackBarModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   // a javascript object provided
   // identifier of the token - which angular wil look for both imported above,
   // we can have multi intecptor so value is trueimport { AbstractControl } from '@angular/forms/forms';

@@ -59,10 +59,12 @@ a {
 }
 
 .loader-container {
-  position: absolute;
+  position: absolute !important;
   height: 100%;
   width: 100%;
   background: black;
   opacity: 0.8;
   z-index: 99;
 }
+
+

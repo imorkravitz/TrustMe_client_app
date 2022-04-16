@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { SignupComponent } from './components/auth/signup/signup.component'
 import { ContractComponent } from './components/contract/newContarct/contract.component';
 import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
@@ -57,7 +53,7 @@ import { SignupComponent } from './components/auth/signup/signup.component'
     NavComponent,
     HomeComponent,
     ContractComponent,
-    ContractListComponent
+    ContractListComponent,
     DialogComponent,
     NotifierComponent
 
@@ -87,7 +83,7 @@ import { SignupComponent } from './components/auth/signup/signup.component'
     MatSidenavModule,
     MatListModule,
     MatButtonToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
     MatDialogModule,
     MatSnackBarModule
 

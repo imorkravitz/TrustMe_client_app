@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service'
 import { Subscription } from 'rxjs'
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   selector: 'app-nav',
@@ -22,7 +23,9 @@ export class NavComponent implements OnInit, OnDestroy{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+    private authService: AuthService,
+    public loaderService: LoaderService) {
     this.authListenerSubs = Subscription.EMPTY;
 
   }

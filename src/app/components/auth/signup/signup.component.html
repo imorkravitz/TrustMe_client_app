@@ -1,16 +1,4 @@
   <mat-card>
-    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Success !</strong> User as been created
-      <button mat-button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div *ngIf="errAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>Invalid !</strong> All fields are required
-      <button mat-button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
     <mat-spinner *ngIf="isLoading"> </mat-spinner>
     <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
       <div class="container px-4">
@@ -46,27 +34,21 @@
               <input type="password" name="password" ngModel matInput placeholder="Password"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [type]="hide ? 'password': 'text'"
                 #passwordInput="ngModel" required password>
-              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
-    'visibility_off'}}</mat-icon> -->
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
               <mat-error *ngIf="passFormControl.hasError('required')">
                 Please enter your newpassword at least 8 character<br>
                 Use Capital letters and numbers required
               </mat-error>
             </mat-form-field>
-            <br>
+            <br><br>
             <mat-form-field for="validationServerUsername" class="form-label">
               <input name="confirmPassword" ngModel matInput type="Password" placeholder="confirm-Password"
                 [type]="hide ? 'password' : 'text'" #confirmpasswordInput="ngModel" class="form-control is-invalid"
                 id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
                 required password>
-              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
-    'visibility_off'}}</mat-icon> -->
               <mat-error *ngIf="confirmFormControl.hasError('required')">
                 Confirm your password
               </mat-error>
-              <p *ngIf="errAlert2" class="invalid-feedback" role="alert">
-                Passwords must match
-              </p>
             </mat-form-field>
           </div>
         </div>
@@ -75,3 +57,4 @@
       <button mat-raised-button color="blue" type="submit">Signup</button>
     </form>
   </mat-card>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

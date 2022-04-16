@@ -8,6 +8,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #f1f1f1 !important;
 }
 ::ng-deep .success.mat-snack-bar-container{
-  background: #40C7D2 !important;
+  background: #4fda7d !important;
   color: #f1f1f1 !important;
 }

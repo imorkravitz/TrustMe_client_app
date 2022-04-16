@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs'
 })
 export class NavComponent implements OnInit, OnDestroy{
 
+  isDarkTheme:boolean = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
@@ -27,6 +28,8 @@ export class NavComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
+
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -42,6 +45,10 @@ export class NavComponent implements OnInit, OnDestroy{
 
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
+  }
+
+  storeThemeSelection() {
+    localStorage.setItem('theme', this.isDarkTheme ? "Dark" : "Light");
   }
 
 }

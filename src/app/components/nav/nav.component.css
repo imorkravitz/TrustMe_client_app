@@ -1,75 +1,68 @@
 .sidenav-container {
-height: 70%;
+  height: 70%;
 }
 
 .sidenav {
-width: 150px;
+  width: 150px;
 }
 
 .sidenav .mat-toolbar {
-background: inherit;
+  background: inherit;
 }
-
-.mat-toolbar{
-  background-color: #40C7D2;
-}
-
 
 .mat-toolbar.mat-primary {
-position: sticky;
-top: 0;
-z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 p {
-font-family: Lato;
+  font-family: Lato;
 }
 
-.custom-toolbar {
-background-color: #40C7D2;
-padding: 5px 15px;
-
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
 }
 
-ul{
-list-style: none;
-padding: 0;
-display: flex;
+li {
+  margin-left: 2px;
+  margin-top: 15px;
+  display: flex;
 }
 
-li{
-margin-left: 2px;
-margin-top: 15px;
-display: flex;
+.title {
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 700;
+  color: #f1f1f1;
 }
 
-.title{
-font-size: 32px;
-line-height: 48px;
-font-weight: 700;
-color: #f1f1f1;
-}
-
-a{
-text-decoration: none;
-color: #f1f1f1
+a {
+  text-decoration: none;
+  color: #f1f1f1;
 }
 
 .example-spacer {
   flex: 1 1 auto;
 }
 
-.logoutcss{
-background-color: #40C7D2;
-outline: none;
-border-radius:0 !important;
-border-color: #40C7D2;
-font-family: sans-serif;
-color:#f1f1f1;
-font-family: Roboto, "Helvetica Neue", sans-serif;
-font-size: 14px;
-font-weight: 500;
-
+.logoutcss {
+  outline: none;
+  border-radius: 0 !important;
+  font-family: sans-serif;
+  color: #f1f1f1;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-
+.loader-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.8;
+  z-index: 99;
+}

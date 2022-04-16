@@ -5,11 +5,8 @@
   "projects": {
     "trustMe-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+
+      "schematics":{"@schematics/angular:component":{"style": "scss"}},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -27,8 +24,9 @@
               "src/assets"
             ],
             "styles": [
-
-              "./src/app/app.component.css"
+              "src/custom-theme.scss",
+              "src/styles.css",
+              "src/app/app.component.css"
             ],
             "scripts": []
           },
@@ -95,8 +93,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/custom-theme.scss"
             ],
             "scripts": []
           }

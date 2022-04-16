@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container mat-app-background" [ngClass]="{'dark-theme-mode':isDarkTheme}">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
@@ -7,8 +7,11 @@
       <a mat-list-item href="#">Transactions</a>
     </mat-nav-list>
   </mat-sidenav>
+  <div>
+    <!-- <mat-progress-bar></mat-progress-bar> -->
+  </div>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -22,7 +25,13 @@
           </a>
         </h1>
       </span>
+
       <span class="example-spacer"></span>
+      <span style="flex:auto;"></span>
+      <mat-slide-toggle [(ngModel)]="isDarkTheme" labelPosition="before" (change)="storeThemeSelection()">
+        <mat-icon>bedtime</mat-icon>
+      </mat-slide-toggle>
+
       <ul>
         <li *ngIf="!userIsAuthenticated">
           <a mat-button routerLink="/login" routerLinkActive="mat-is-dark">Login</a>
@@ -31,10 +40,9 @@
           <a mat-button routerLink="/signup" routerLinkActive="mat-is-dark">Signup</a>
         </li>
         <li *ngIf="userIsAuthenticated">
-          <button mat-button (click)="onLogout()" class="logoutcss btn btn-primary">Logout</button>
+          <button mat-button (click)="onLogout()" class="logoutcss ">Logout</button>
         </li>
       </ul>
-
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep .error.mat-snack-bar-container{
+  background: #f03939 !important;
+  color: #f1f1f1 !important;
+}
+::ng-deep .success.mat-snack-bar-container{
+  background: #4fda7d !important;
+  color: #f1f1f1 !important;
+}

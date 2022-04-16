@@ -15,7 +15,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { GridListOverview } from './components/grid/grid.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 
-
 // for server RestAPI
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 // materials
@@ -26,17 +25,27 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './components/auth/auth-interceptor';
-import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+import { InterceptorService } from './components/loader/interceptor.service';
+import { NavComponent } from './components/nav/nav.component';
+import { DialogComponent } from './components/dialog/dialog.component'
 import { HomeComponent } from './components/home/home.component';
+import { NotifierComponent } from './components/notifier/notifier.component';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component'
 
 @NgModule({
   declarations: [
@@ -49,6 +58,9 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent,
     ContractComponent,
     ContractListComponent
+    DialogComponent,
+    NotifierComponent
+
   ],
   imports: [
     BrowserModule,
@@ -76,8 +88,12 @@ import { HomeComponent } from './components/home/home.component';
     MatListModule,
     MatButtonToggleModule,
     MatExpansionModule
+    MatDialogModule,
+    MatSnackBarModule
+
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   // a javascript object provided
   // identifier of the token - which angular wil look for both imported above,
   // we can have multi intecptor so value is trueimport { AbstractControl } from '@angular/forms/forms';

@@ -1,9 +1,14 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 main {
   width: 50%;
   margin: 1rem auto;
   margin-left: 25px;
   margin-top: 40px;
 
+}
+
+app-nav{
+  width: 100%;
+  display: inline-block;
 }
 

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service'
 import { Subscription } from 'rxjs'
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs'
 })
 export class NavComponent implements OnInit, OnDestroy{
 
+  isDarkTheme:boolean = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
@@ -21,12 +23,16 @@ export class NavComponent implements OnInit, OnDestroy{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+    private authService: AuthService,
+    public loaderService: LoaderService) {
     this.authListenerSubs = Subscription.EMPTY;
 
   }
 
   ngOnInit() {
+    this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
+
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -42,6 +48,10 @@ export class NavComponent implements OnInit, OnDestroy{
 
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
+  }
+
+  storeThemeSelection() {
+    localStorage.setItem('theme', this.isDarkTheme ? "Dark" : "Light");
   }
 
 }

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ContractComponent } from './components/contract/newContarct/contract.component';
+import { ContractComponent } from './components/contract/my-contract/contract.component';
+import {NewContractComponent} from './components/contract/new-contract/new-contract.component'
 import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,8 +56,8 @@ import { SignupComponent } from './components/auth/signup/signup.component'
     ContractComponent,
     ContractListComponent,
     DialogComponent,
-    NotifierComponent
-
+    NotifierComponent,
+    NewContractComponent
   ],
   imports: [
     BrowserModule,

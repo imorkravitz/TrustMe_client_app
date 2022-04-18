@@ -33,6 +33,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 import { InterceptorService } from './components/loader/interceptor.service';
 import { NavComponent } from './components/nav/nav.component';
@@ -90,7 +92,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component'
     MatButtonToggleModule,
     MatExpansionModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FlexLayoutModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

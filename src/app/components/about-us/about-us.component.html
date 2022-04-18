@@ -1,5 +1,7 @@
 <section class="home">
-    <img [src]="myImage" class="rounded-pill img" alt="...">
+  <div fxLayout="row">
+    <img [src]="myImage" class="rounded-pill img" alt="..." *ngIf="deviveXs">
+  </div>
   <div class="homecontent">
     <h2>
       TrustMe is a digital transaction platform
@@ -7,17 +9,16 @@
       scammed when you're transacting with someone
       you don't know.
     </h2>
-    </div>
-  </section>
-  <p></p>
-  <section class="home2">
-    <img [src]="myImage2" class="rounded-pill img" alt="...">
+  </div>
+</section>
+<p></p>
+<section class="home2">
+  <img [src]="myImage2" class="rounded-pill img" alt="..." *ngIf="deviveXs">
   <div class="homecontent2">
     <h2>
       <h1>Our solution</h1> was designed to give you peace
       of mind each time you’re engaging in an
       online or face-to-face transaction.
     </h2>
-    </div>
-  </section>
-
+  </div>
+</section>

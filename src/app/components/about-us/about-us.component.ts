@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-about-us',
@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
+  @Input() deviveXs: boolean
   myImage : String = "assets/aboutUs.jpg";
   myImage2 : String = "assets/aboutUs2.jpg";
-  constructor() { }
+  constructor() {
+    this.deviveXs = true;
+   }
 
   ngOnInit(): void {
+
   }
 
   getImage():any {

@@ -42,7 +42,9 @@ import { NotifierComponent } from './components/notifier/notifier.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { SignupComponent } from './components/auth/signup/signup.component'
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutUsComponent } from './components/about-us/about-us.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { SignupComponent } from './components/auth/signup/signup.component'
     ContractListComponent,
     DialogComponent,
     NotifierComponent,
-    NewContractComponent
+    NewContractComponent,
+    FooterComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

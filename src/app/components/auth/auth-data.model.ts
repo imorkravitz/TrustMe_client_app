@@ -4,8 +4,9 @@ export interface AuthData{
   confirmPassword : string;
   firstName : string;
   lastName : string;
-  birthDate : Date;
+  birthday : Date;
   phoneNumber : string;
+  created : Date;
 }
 
 export interface AuthLogin{

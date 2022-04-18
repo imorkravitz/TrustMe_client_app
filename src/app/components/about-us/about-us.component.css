@@ -1,5 +1,42 @@
-.card-image{
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
+/* .img{
+  margin-left: auto;
+  width: 50%;
+}
+
+div.relative{
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
+div.absolute{
+  position: absolute;
+  top: 150px;
+  padding-left: 320px;
+  width: 300px;
+  height: 100px;
+} */
+
+.home img{
+  margin-left: auto;
+  width: 50%;
+}
+
+.home2 img{
+  margin-left: 50%;
+  width: 50%;
+}
+
+.homecontent{
+  position: absolute;
+  top: 25%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.homecontent2{
+  position: absolute;
+  top: 75%;
+  right: 70%;
+  transform: translate(10%, -50%);
 }

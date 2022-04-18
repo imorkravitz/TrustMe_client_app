@@ -33,7 +33,7 @@ constructor(public authService: AuthService,
 
 onSignup(form: NgForm) {
   console.log(form.value);
-
+  console.log(form.value.birthday);
   if (form.invalid) {
     this.notificationService.showNotification('All fields are required!', 'OK', 'error');
     return;
@@ -41,7 +41,7 @@ onSignup(form: NgForm) {
 
   if (form.value.password==form.value.confirmPassword) {
     this.authService.createUser(form.value.email, form.value.password, form.value.confirmPassword,
-      form.value.firstName, form.value.lastName, form.value.birthDate, form.value.phoneNumber)
+      form.value.firstName, form.value.lastName, form.value.birthday, form.value.phoneNumber)
       this.notificationService.showNotification('User created successfully!', 'OK', 'success');
     }else{
     console.log(form.value.confirmPassword)

@@ -15,8 +15,10 @@
 
             <mat-form-field>
               <mat-label>Choose a date</mat-label>
-              <input matInput name="birthDay" ngModel type="date" placeholder="Birth-Day" #birthdayInput="ngModel"
-                required birthDay>
+              <input matInput [matDatepicker]="myDatePicker" name="birthday" ngModel placeholder="Birth-Day" #birthday="ngModel"
+                required>
+                <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #myDatePicker></mat-datepicker>
             </mat-form-field>
           </div>
           <div class="col-6 col-sm-3">

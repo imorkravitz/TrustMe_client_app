@@ -27,7 +27,7 @@ getAuthStatusListener() {
 }
 
 createUser(email: string, password: string, confirmPassword: string, firstName: string,
-   lastName: string,birthDate: Date, phoneNumber: string){
+   lastName: string,birthday: Date, phoneNumber: string){
 
     const authData : AuthData = {
       email: email,
@@ -35,8 +35,9 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
       confirmPassword: confirmPassword,
       firstName: firstName,
       lastName: lastName,
-      birthDate: birthDate,
+      birthday: birthday,
       phoneNumber: phoneNumber,
+      created: new Date()
     }
     this.http.
     post("http://localhost:3000/api/users/signup",authData).

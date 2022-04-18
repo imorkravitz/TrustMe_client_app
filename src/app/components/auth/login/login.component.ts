@@ -23,6 +23,7 @@ export class LoginComponent{
       return;
     }
     this.authService.login(form.value.email, form.value.password)
+    
     this.notificationService.showNotification('User logged in successfully', 'OK', 'success');
 
    }

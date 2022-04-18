@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ContractComponent } from './components/contract/newContarct/contract.component';
+import { ContractComponent } from './components/contract/my-contract/contract.component';
+import {NewContractComponent} from './components/contract/new-contract/new-contract.component'
 import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +42,9 @@ import { NotifierComponent } from './components/notifier/notifier.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { SignupComponent } from './components/auth/signup/signup.component'
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutUsComponent } from './components/about-us/about-us.component'
 
 @NgModule({
   declarations: [
@@ -55,8 +58,10 @@ import { SignupComponent } from './components/auth/signup/signup.component'
     ContractComponent,
     ContractListComponent,
     DialogComponent,
-    NotifierComponent
-
+    NotifierComponent,
+    NewContractComponent,
+    FooterComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

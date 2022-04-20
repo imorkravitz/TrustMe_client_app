@@ -44,7 +44,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AboutUsComponent } from './components/about-us/about-us.component'
+import { AboutUsComponent } from './components/about-us/about-us.component';
+
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component'
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+
   // a javascript object provided
   // identifier of the token - which angular wil look for both imported above,
   // we can have multi intecptor so value is trueimport { AbstractControl } from '@angular/forms/forms';

@@ -43,8 +43,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FooterComponent } from './components/Home-Page-Content/footer/footer.component';
+import { AboutUsComponent } from './components/Home-Page-Content/about-us/about-us.component';
 
 
 @NgModule({

@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "contract", component: ContractComponent },
   { path: "mycontract", component: ContractListComponent },
   { path: "newcontract", component: NewContractComponent },
-  { path: "aboutUs", component: AboutUsComponent }
+  { path: "aboutus", component: AboutUsComponent }
 ];
 
 @NgModule({

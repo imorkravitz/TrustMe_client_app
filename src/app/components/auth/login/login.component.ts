@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service'
 import { NotifierService } from '../../notifier/notifier.service';
-
+import { LoaderService } from '../../loader/loader.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,8 @@ export class LoginComponent{
   errAlert: boolean = false;
 
    constructor(public authService: AuthService,
-    private notificationService: NotifierService){}
+    private notificationService: NotifierService,
+    public loaderService: LoaderService){}
 
    onLogin(form: NgForm) {
      console.log(form.value);
@@ -23,7 +24,7 @@ export class LoginComponent{
       return;
     }
     this.authService.login(form.value.email, form.value.password)
-    
+
     this.notificationService.showNotification('User logged in successfully', 'OK', 'success');
 
    }

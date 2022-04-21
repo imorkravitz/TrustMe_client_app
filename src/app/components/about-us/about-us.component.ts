@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about-us',
@@ -7,15 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  @Input() deviveXs: boolean
   myImage : String = "assets/aboutUs.jpg";
   myImage2 : String = "assets/aboutUs2.jpg";
-  constructor() {
-    this.deviveXs = true;
-   }
+  mobile : any;
+  constructor() { }
+
+  @HostListener("window:resize", ['$event'])
+  private onResize(event: { target: { innerWidth: any; }; }): any {
+    this.mobile = event.target.innerWidth;
+  }
 
   ngOnInit(): void {
-
+    this.mobile = window.innerWidth;
   }
 
   getImage():any {

@@ -1,0 +1,7 @@
+.backgroundImg{
+  background-image: url('../../..../../../../assets/Transcations_img.png');
+  display: block;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}

@@ -78,7 +78,7 @@ contrast: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $market-primary: mat-palette($vender-teal);
-$market-accent: mat-palette($vender-blueGrey);
+$market-accent: mat-palette($vender-teal);
 $market-warn: mat-palette($mat-red);
 
 $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);

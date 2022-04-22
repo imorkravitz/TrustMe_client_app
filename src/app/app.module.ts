@@ -46,7 +46,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AboutUsComponent } from './components/about-us/about-us.component'
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { HomepageComponent } from './components/homepage/homepage.component'
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component'
     NotifierComponent,
     NewContractComponent,
     FooterComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

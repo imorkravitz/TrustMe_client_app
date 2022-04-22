@@ -1,0 +1,22 @@
+.backgroundImg{
+  background-image: url('../../../assets/home.png');
+  display: block;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.sizing-small{
+  width: 50%;
+  height: auto;
+  display: relative;
+}
+
+h2 {
+  color: #00acc1;
+   font-family: 'Raleway',sans-serif;
+   font-size: 32px; font-weight: 600;
+   line-height: 72px;
+   margin: 0 0 24px;
+   text-align: center;
+   text-transform: uppercase; }

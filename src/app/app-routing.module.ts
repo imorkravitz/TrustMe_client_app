@@ -8,6 +8,8 @@ import { ContractListComponent } from './components/contract/contract-list/contr
 import { ContractComponent } from './components/contract/my-contract/contract.component';
 import { NewContractComponent } from './components/contract/new-contract/new-contract.component';
 import { HomeComponent } from "./components/home/home.component"
+import { ProfileComponent } from './components/profile/profile.component';
+import { RecomendationComponent } from './components/profile/recomendation/recomendation.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: "contract", component: ContractComponent },
   { path: "mycontract", component: ContractListComponent },
   { path: "newcontract", component: NewContractComponent },
-  { path: "aboutus", component: AboutUsComponent }
+  { path: "aboutus", component: AboutUsComponent },
+  { path: "profile", component: ProfileComponent },
+  { path: "recomendation", component: RecomendationComponent }
 ];
 
 @NgModule({

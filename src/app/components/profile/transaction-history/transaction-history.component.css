@@ -10,3 +10,14 @@ table {
 td, th {
   width: 25%;
 }
+
+.filter{
+  width: 30%;
+  margin-top: -40px;
+  margin-left: 70%;
+}
+
+.titleNewContract{
+  margin-bottom: -3%;
+  margin-top: 5%;
+}

@@ -49,7 +49,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RecomendationComponent } from './components/profile/recomendation/recomendation.component';
-import { TransactionHistoryComponent } from './components/profile/transaction-history/transaction-history.component'
+import { TransactionHistoryComponent } from './components/profile/transaction-history/transaction-history.component';
+import { PersonalDetailsComponent } from './components/profile/personal-details/personal-details.component'
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { TransactionHistoryComponent } from './components/profile/transaction-hi
     AboutUsComponent,
     ProfileComponent,
     RecomendationComponent,
-    TransactionHistoryComponent
+    TransactionHistoryComponent,
+    PersonalDetailsComponent
   ],
   imports: [
     BrowserModule,

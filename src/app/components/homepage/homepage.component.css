@@ -1,0 +1,89 @@
+.backgroundImg{
+background-image: url('../../../assets/home.png');
+display: flex;
+width: 100%;
+height: auto;
+background-size: cover;
+}
+
+h2 {
+color: #111;
+font-family: 'Raleway',sans-serif;
+font-size: 24px; font-weight: 600;
+text-align: center;
+}
+
+.design-card {
+  width: 100%;
+  height: 100vh;
+  display:flex;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  transform-style: preserve-3d;
+  margin: 40px;
+  text-align: center;
+  justify-content: center;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  /* background-color: var(--vender-cyan); */
+}
+
+.card .face{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  transition: 1s ease-in-out;
+  transform: perspective(500px) rotateY(0deg);
+}
+
+.card .face.front {
+  background-color:#fff;
+}
+
+.card:hover .face.front {
+transform: perspective(500px) rotateY(180deg);
+
+}
+
+.card .face.back {
+  background-color:#fff;
+transform: perspective(500px) rotateY(180deg);
+}
+
+.card:hover .face.back {
+transform: perspective(500px) rotateY(360deg);
+}
+
+.card .face h2 {
+  transform: perspective(500px) translateZ(50px);
+}
+
+.card .face p {
+  font-size: 10px;
+  transform: perspective(500px) translateZ(50px);
+}
+
+.secured {
+  width:50px;
+  height:auto;
+  margin-top:-100px;
+}
+.trust {
+  width:50px;
+  height:auto;
+  margin-top:-100px;
+}

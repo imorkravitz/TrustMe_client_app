@@ -23,11 +23,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
+
             "styles": [
-              "src/custom-theme.scss",
               "src/styles.css",
-              "src/app/app.component.css",
-              "../node_modules/font-awesome/css/font-awesome.css"
+              "src/custom-theme.scss",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },

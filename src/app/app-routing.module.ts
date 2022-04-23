@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "signup", component: SignupComponent },
   { path: "benefits", component: HomeComponent },
   { path: "contract", component: ContractComponent },
-  { path: "mycontract", component: ContractListComponent },
+  { path: "mycontracts", component: ContractListComponent },
   { path: "newcontract", component: NewContractComponent },
   { path: "aboutus", component: AboutUsComponent },
   { path: "homepage", component: HomepageComponent },

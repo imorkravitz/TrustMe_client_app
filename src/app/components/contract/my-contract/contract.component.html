@@ -1,5 +1,5 @@
 <mat-card class="backgroundImg">
-  <form (submit)="onAddContract(contractForm)" #contractForm="ngForm">
+  <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign">
     <mat-button-toggle-group name="side" ngModel #side="ngModel" required>
       <mat-button-toggle value="Seller">Seller</mat-button-toggle>
       <mat-button-toggle value="Buyer">Buyer</mat-button-toggle>
@@ -34,5 +34,5 @@
     <p></p>
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
+  <br><br><br><br><br><br><br><br><br>
 </mat-card>
-<br><br><br><br><br><br><br><br><br><br><br><br>

@@ -13,3 +13,13 @@
 .row{
   width: 100%;
 }
+
+.recomendation{
+  margin-top: 50px;
+}
+
+.tableHistory{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}

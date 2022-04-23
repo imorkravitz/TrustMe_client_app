@@ -34,7 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { InterceptorService } from './components/loader/interceptor.service';
 import { NavComponent } from './components/nav/nav.component';
@@ -48,7 +48,8 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { RecomendationComponent } from './components/profile/recomendation/recomendation.component'
+import { RecomendationComponent } from './components/profile/recomendation/recomendation.component';
+import { TransactionHistoryComponent } from './components/profile/transaction-history/transaction-history.component'
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { RecomendationComponent } from './components/profile/recomendation/recom
     FooterComponent,
     AboutUsComponent,
     ProfileComponent,
-    RecomendationComponent
+    RecomendationComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -97,8 +99,8 @@ import { RecomendationComponent } from './components/profile/recomendation/recom
     MatExpansionModule,
     MatDialogModule,
     MatSnackBarModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MatPaginatorModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

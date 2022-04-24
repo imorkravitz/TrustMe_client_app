@@ -35,6 +35,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 import { InterceptorService } from './components/loader/interceptor.service';
@@ -77,7 +78,7 @@ import { HomepageComponent } from './components/homepage/homepage.component'
     RecomendationComponent,
     TransactionHistoryComponent,
     PersonalDetailsComponent,
-    NewDealsComponent
+    NewDealsComponent,
     HomepageComponent
 
   ],
@@ -110,7 +111,8 @@ import { HomepageComponent } from './components/homepage/homepage.component'
     MatDialogModule,
     MatSnackBarModule,
     FlexLayoutModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

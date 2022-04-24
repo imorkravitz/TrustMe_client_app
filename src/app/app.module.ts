@@ -2,15 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ContractComponent } from './components/contract/my-contract/contract.component';
-import {NewContractComponent} from './components/contract/new-contract/new-contract.component'
+import { NewContractComponent } from './components/contract/new-contract/new-contract.component'
 import { ContractListComponent } from './components/contract/contract-list/contract-list.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module'
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { GridListOverview } from './components/grid/grid.component'
-import { MatExpansionModule } from '@angular/material/expansion';
 
 // for server RestAPI
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
@@ -34,6 +31,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 import { InterceptorService } from './components/loader/interceptor.service';
@@ -47,7 +48,14 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+
+import { ProfileComponent } from './components/profile/profile.component';
+import { RecomendationComponent } from './components/profile/recomendation/recomendation.component';
+import { TransactionHistoryComponent } from './components/profile/transaction-history/transaction-history.component';
+import { PersonalDetailsComponent } from './components/profile/personal-details/personal-details.component';
+import { NewDealsComponent } from './components/profile/new-deals/new-deals.component'
 import { HomepageComponent } from './components/homepage/homepage.component'
+
 
 @NgModule({
   declarations: [
@@ -65,7 +73,13 @@ import { HomepageComponent } from './components/homepage/homepage.component'
     NewContractComponent,
     FooterComponent,
     AboutUsComponent,
+    ProfileComponent,
+    RecomendationComponent,
+    TransactionHistoryComponent,
+    PersonalDetailsComponent,
+    NewDealsComponent
     HomepageComponent
+
   ],
   imports: [
     BrowserModule,
@@ -95,8 +109,8 @@ import { HomepageComponent } from './components/homepage/homepage.component'
     MatExpansionModule,
     MatDialogModule,
     MatSnackBarModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MatPaginatorModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

@@ -39,41 +39,4 @@ export class ContractListComponent implements OnInit, OnDestroy {
     // }
   }
 
-  // contracts = [
-  //   {
-  //     title: 'seller1',
-  //     text: 'Some quick example text to build on the card title and make up thebulk of the cards content.',
-  //     item1: 'item1',
-  //     item2: 'item2',
-  //     item3: 'item3',
-  //   },
-  //   {
-  //     title: 'seller2',
-  //     text: 'Some quick example text to build on the card title and make up thebulk of the cards content.',
-  //     item1: 'item1',
-  //     item2: 'item2',
-  //     item3: 'item3',
-  //   },
-  //   {
-  //     title: 'seller3',
-  //     text: 'Some quick example text to build on the card title and make up thebulk of the cards content.',
-  //     item1: 'item1',
-  //     item2: 'item2',
-  //     item3: 'item3',
-  //   },
-  //   {
-  //     title: 'seller4',
-  //     text: 'Some quick example text to build on the card title and make up thebulk of the cards content.',
-  //     item1: 'item1',
-  //     item2: 'item2',
-  //     item3: 'item3',
-  //   },
-  //   {
-  //     title: 'seller5',
-  //     text: 'Some quick example text to build on the card title and make up thebulk of the cards content.',
-  //     item1: 'item1',
-  //     item2: 'item2',
-  //     item3: 'item3',
-  //   },
-  // ];
 }

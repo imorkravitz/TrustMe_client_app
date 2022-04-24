@@ -17,6 +17,7 @@ export class NavComponent implements OnInit, OnDestroy{
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

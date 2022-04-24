@@ -8,21 +8,21 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-$vender-teal: (
-50: #e0f2f1,
-100: #b2dfdb,
-200: #80cbc4,
-300: #4db6ac,
-400: #26a69a,
-500: #009688,
-600: #00897b,
-700: #00796b,
-800: #00695c,
-900: #004d40,
-A100: #b2dfdb,
-A200: #80cbc4,
-A400: #26a69a,
-A700: #00796b,
+$vender-cyan: (
+50: #e0f7fa,
+100: #b2ebf2,
+200: #80deea,
+300: #4dd0e1,
+400: #26c6da,
+500: #00C2CB,
+600: #00acc1,
+700: #0097a7,
+800: #00838f,
+900: #006064,
+A100: #84ffff,
+A200: #18ffff,
+A400: #00e5ff,
+A700: #00b8d4,
 contrast: (
   50: $dark-primary-text,
   100: $dark-primary-text,
@@ -77,15 +77,15 @@ contrast: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$market-primary: mat-palette($vender-teal);
-$market-accent: mat-palette($vender-teal);
+$market-primary: mat-palette($vender-cyan);
+$market-accent: mat-palette($vender-cyan);
 $market-warn: mat-palette($mat-red);
 
 $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 @include angular-material-theme($market-theme);
 
 //for dark theme
-$market-primary-dark: mat-palette($vender-teal);
+$market-primary-dark: mat-palette($vender-cyan);
 $market-accent-dark: mat-palette($vender-blueGrey);
 $market-warn-dark: mat-palette($mat-red);
 

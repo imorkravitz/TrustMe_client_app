@@ -1,16 +1,31 @@
-.table{
-  width: 70%;
+mat-drawer{
+  width: 100%;
+}
+.example-container{
+  width: 100%;
+  /* margin-left: ; */
+}
+.example-drawer{
+  width: 20%;
+  margin-left: 80%;
+}
+
+.example-content{
+  width: 60%;
+  margin-right: -10%;
+}
+/* .table{
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-}
+} */
 
-.titleNewContract{
+/* .titleNewContract{
   margin-top: 50px;
   margin-left: 0px;
-}
+} */
 
-.details{
+/* .details{
   margin-top: 3%;
 }
 
@@ -22,4 +37,5 @@
   width: 70%;
   margin-left: auto;
   margin-right: auto;
-}
+} */
+

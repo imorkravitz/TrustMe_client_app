@@ -8,46 +8,6 @@ import { Subscription } from 'rxjs';
 import { Contract } from '../profile.model';
 import { ProfileService } from '../profile.service';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -70,27 +30,31 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   constructor(public ProfileService: ProfileService ) {}
   ngOnInit(): void {
     this.ProfileService.getAllContract();
+    this.liveDataOfContract()
+  }
+
+  ngAfterViewInit() {
+    this.liveDataOfContract()
+  }
+
+  // this functions help us to arrange the data in the table
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  liveDataOfContract(){
     this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
       console.log(this.contracts)
       this.dataSource = new MatTableDataSource(this.contracts);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
-  }
-
-  // this functions help us to arrange the data in the table
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // console.log(this.dataSource.paginator)
-    // this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
-    // const filterValue = (event.target as HTMLInputElement).value;
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
   }
 
 }

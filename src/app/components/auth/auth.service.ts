@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthData, AuthLogin } from '../auth/auth-data.model'
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { NotifierService } from '../notifier/notifier.service';
 
 @Injectable({providedIn: 'root'})
 
@@ -10,9 +11,16 @@ export class AuthService {
 private isAuthenticated = false;
 // private token? :string;
 private accessToken:any;
+private email:any;
 private authStatusListener = new Subject<boolean>();
 
-constructor(private http: HttpClient, private router: Router) {}
+constructor(private http: HttpClient, private router: Router,
+  private notificationService: NotifierService,
+  ) {}
+
+getEmail(){
+  return this.email;
+}
 
 getToken() {
   return this.accessToken;
@@ -58,9 +66,12 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
       const accessToken = response.accessToken;
       this.accessToken = accessToken;
         if (accessToken!=null) {
+          this.notificationService.showNotification('User logged in successfully', 'OK', 'success');
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
       }
+    }, err =>{
+        this.notificationService.showNotification('User do not exist! please try again.', 'OK', 'error');
     })
   }
 

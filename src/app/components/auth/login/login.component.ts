@@ -3,6 +3,10 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service'
 import { NotifierService } from '../../notifier/notifier.service';
 import { LoaderService } from '../../loader/loader.service'
+import { AuthLogin } from '../auth-data.model';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +19,8 @@ export class LoginComponent{
 
    constructor(public authService: AuthService,
     private notificationService: NotifierService,
-    public loaderService: LoaderService){}
+    public loaderService: LoaderService,
+    private router: Router){}
 
    onLogin(form: NgForm) {
      console.log(form.value);
@@ -24,9 +29,9 @@ export class LoginComponent{
       return;
     }
     this.authService.login(form.value.email, form.value.password)
-
-    this.notificationService.showNotification('User logged in successfully', 'OK', 'success');
-
+    setTimeout(() =>{
+      this.router.navigate(['homepage']);
+    },2000);
    }
    closeAlert(){
     this.errAlert=false;

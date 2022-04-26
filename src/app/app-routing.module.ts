@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: "newcontract", component: NewContractComponent },
   { path: "aboutus", component: AboutUsComponent },
   { path: "profile", component: ProfileComponent },
-  { path: "recomendation", component: RecomendationComponent }
+  { path: "recomendation", component: RecomendationComponent },
   { path: "homepage", component: HomepageComponent },
 
 ];

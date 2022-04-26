@@ -1,4 +1,7 @@
 <mat-card>
+  <h1 class="mat-h1">Log in to Trust Me and start trade
+    <br><i class="fab fa-ethereum fa-2x"></i>
+  </h1>
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
     <mat-form-field>
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
@@ -8,11 +11,18 @@
       <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
-    <br><br>
-    <button mat-raised-button color="mat-is-dark" type="submit">Login</button>
+    <br><br><br><br>
+    <button class="btn-grad" mat-raised-button color="mat-is-dark" type="submit">Login</button>
   </form>
   <div *ngIf="loaderService.isLoading | async" class="loader-container">
     <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+
+  </div><br><br>
+  <div class="register">
+    <h4>New User?
+      <!-- <button routerLink="/signup"> Register</button> -->
+      <!-- <li class="list-group-item" routerLink="/signup">Register Here</li> -->
+      <a href="" routerLink="/signup">Register Here</a>
+    </h4>
   </div>
 </mat-card>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

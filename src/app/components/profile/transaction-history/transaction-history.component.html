@@ -1,7 +1,11 @@
 <h2 class="titleNewContract"> Transactions History </h2>
 <mat-form-field class="filter" appearance="standard">
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  <mat-label>
+    Filter
+    <mat-icon>search</mat-icon>
+  </mat-label>
+
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -16,7 +20,7 @@
     <!-- Progress Column -->
     <ng-container matColumnDef="deposit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Deposit </th>
-      <td mat-cell *matCellDef="let row"> {{row.deposit}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.deposit | currency}} </td>
     </ng-container>
 
     <!-- Name Column -->

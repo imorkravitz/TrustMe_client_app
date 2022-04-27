@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {AfterViewInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 
 import { Contract } from '../profile.model';
@@ -22,19 +21,27 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   private constractsSub: Subscription | undefined;
   flag: boolean = true;
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public ProfileService: ProfileService ) {}
+  constructor(public profileService: ProfileService ) {}
   ngOnInit(): void {
-    this.ProfileService.getAllContract();
+
+    this.profileService.getAllContract();
     this.liveDataOfContract()
+
+    this.profileService.getAllContract();
+    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+
+      this.contracts = contracts;
+      this.dataSource = new MatTableDataSource(this.contracts);
+    })
   }
 
   ngAfterViewInit() {
     this.liveDataOfContract()
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   // this functions help us to arrange the data in the table
@@ -55,8 +62,11 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-  }
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }
 
 

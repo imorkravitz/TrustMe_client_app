@@ -28,3 +28,11 @@ div{
 table{
   width: 100%;
 }
+
+mat-icon{
+  transform: scale(1.25);
+
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+}

@@ -1,8 +1,8 @@
   <mat-card>
     <!-- <mat-spinner *ngIf="isLoading"> </mat-spinner> -->
-    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+    <form class="center" (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
       <div class="container px-4">
-        <div class=" row ">
+        <div class="row">
           <div class="col-6 col-sm-3">
             <mat-form-field>
               <input matInput name="firstName" ngModel type="text" placeholder="First Name" #firstNameInput="ngModel"
@@ -43,11 +43,11 @@
               </mat-error>
             </mat-form-field>
             <br><br>
-            <mat-form-field for="validationServerUsername" class="form-label">
+            <mat-form-field class="form-label">
               <input name="confirmPassword" ngModel matInput type="Password" placeholder="confirm-Password"
-                [type]="hide ? 'password' : 'text'" #confirmpasswordInput="ngModel" class="form-control is-invalid"
-                id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
-                required password>
+                [type]="hide ? 'password' : 'text'" #confirmpasswordInput="ngModel" id="validationServerUsername"
+                aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required password>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
               <mat-error *ngIf="confirmFormControl.hasError('required')">
                 Confirm your password
               </mat-error>
@@ -56,7 +56,6 @@
         </div>
       </div>
       <br><br><br>
-      <button mat-raised-button color="blue" type="submit">Signup</button>
+      <button class="btn-grad" mat-raised-button type="submit">Signup</button>
     </form>
   </mat-card>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

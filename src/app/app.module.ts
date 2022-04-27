@@ -35,8 +35,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatBadgeModule} from '@angular/material/badge';
-
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSortModule } from '@angular/material/sort';
 
 import { InterceptorService } from './components/loader/interceptor.service';
 import { NavComponent } from './components/nav/nav.component';
@@ -112,7 +112,7 @@ import { HomepageComponent } from './components/homepage/homepage.component'
     MatSnackBarModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    MatBadgeModule
+    MatBadgeModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

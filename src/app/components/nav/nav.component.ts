@@ -1,7 +1,7 @@
 import { Component , OnInit, OnDestroy} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service'
 import { Subscription } from 'rxjs'
 import { LoaderService } from '../loader/loader.service';

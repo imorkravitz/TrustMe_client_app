@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
       this.cardsForHandset = response.handsetCards;
         this.cardsForWeb = response.webCards;
         this.loadCards();
-        this.notificationService.showNotification('Data loaded successfully!', 'OK', 'success');
+        // this.notificationService.showNotification('Data loaded successfully!', 'OK', 'success');
 
     },
     error=>{

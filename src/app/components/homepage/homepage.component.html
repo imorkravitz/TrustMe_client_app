@@ -1,7 +1,7 @@
 <mat-card class="design-card backgroundImg">
 
-  <div class="row">
-    <div class="card col-md-3">
+  <div class="row gx-5">
+    <div class="card col-6">
       <div class="face front">
         <img src="../../../assets/securedPayment.png" class="secured">
         <h2>Secure Payment Solution</h2>
@@ -12,7 +12,7 @@
           whilst ensuring each transaction runs fairly.</p>
       </div>
     </div>
-    <div class="card col-md-3">
+    <div class="card col-6">
       <div class="face front">
         <img src="../../../assets/trust.png" class="trust">
         <h2>Reliable</h2>
@@ -23,10 +23,9 @@
       </div>
     </div>
   </div>
-  <!-- <div class="backgroundImg">
-    <div class="sizing-small">
-      <h2>Register to Start Transction</h2>
-      <app-signup></app-signup>
-    </div>
-  </div> -->
+  <div class="">
+    <button class="btn-grad" mat-raised-button type="submit" routerLink="/contract" (click)="canActive()">
+      Start Transction
+    </button>
+  </div>
 </mat-card>

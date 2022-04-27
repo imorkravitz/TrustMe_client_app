@@ -20,7 +20,6 @@ getContractUpdatedListener() {
 
 getAllContract() {
   //get data from a server to client(angular side)
-  console.log("get contract4")
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
   .pipe(map((contractData)=>{
     return contractData.contracts.map((contract: any) => {
@@ -32,13 +31,12 @@ getAllContract() {
         emailOfAnotherSide: contract.emailOfAnotherSide,
         date: contract.date
       };
-    });
+    })
   }))
   .subscribe((transformedContract)=>{
     this.contracts = transformedContract;
     this.contractUpdated.next([...this.contracts]);
   })
-  console.log("get contract5")
 }
 
 }

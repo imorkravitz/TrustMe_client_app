@@ -5,6 +5,11 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/homepage">Home</a>
+      <a mat-list-item href="/profile">
+        <span class="icon" [matBadge]="notification()">
+          Profile
+        </span>
+      </a>
       <a mat-list-item routerLink="/benefits">Why Trust Me</a>
       <a mat-list-item routerLink="/aboutus">About As</a>
     </mat-nav-list>

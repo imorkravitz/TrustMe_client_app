@@ -55,4 +55,8 @@ export class NavComponent implements OnInit, OnDestroy{
     localStorage.setItem('theme', this.isDarkTheme ? "Dark" : "Light");
   }
 
+  notification(){
+    return 3;
+  }
+
 }

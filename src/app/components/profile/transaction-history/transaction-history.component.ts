@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
 import { Contract } from '../profile.model';
 import { ProfileService } from '../profile.service';
 
-
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -27,6 +26,10 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
   constructor(public profileService: ProfileService ) {}
   ngOnInit(): void {
+
+    this.profileService.getAllContract();
+    this.liveDataOfContract()
+
     this.profileService.getAllContract();
     this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
 
@@ -35,12 +38,13 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     })
   }
 
-  // this functions help us to arrange the data in the table
   ngAfterViewInit() {
+    this.liveDataOfContract()
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
+  // this functions help us to arrange the data in the table
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -50,6 +54,19 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     }
   }
 
+  liveDataOfContract(){
+    this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+      this.contracts = contracts;
+      console.log(this.contracts)
+      this.dataSource = new MatTableDataSource(this.contracts);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }
 
 

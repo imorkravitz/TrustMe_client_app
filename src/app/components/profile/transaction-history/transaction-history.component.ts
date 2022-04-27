@@ -30,18 +30,18 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     this.profileService.getAllContract();
     this.liveDataOfContract()
 
-    this.profileService.getAllContract();
-    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    // this.profileService.getAllContract();
+    // this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
 
-      this.contracts = contracts;
-      this.dataSource = new MatTableDataSource(this.contracts);
-    })
+    //   this.contracts = contracts;
+    //   this.dataSource = new MatTableDataSource(this.contracts);
+    // })
   }
 
   ngAfterViewInit() {
     this.liveDataOfContract()
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   // this functions help us to arrange the data in the table
@@ -55,17 +55,13 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   }
 
   liveDataOfContract(){
-    this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
       console.log(this.contracts)
       this.dataSource = new MatTableDataSource(this.contracts);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 }
 

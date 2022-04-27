@@ -1,4 +1,4 @@
-mat-drawer{
+.mat-drawer{
   width: 100%;
 }
 .example-container{
@@ -7,35 +7,13 @@ mat-drawer{
 }
 .example-drawer{
   width: 20%;
-  margin-left: 80%;
+  /* margin-left: 50%; */
 }
 
 .example-content{
-  width: 60%;
-  margin-right: -10%;
-}
-/* .table{
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-} */
-
-/* .titleNewContract{
-  margin-top: 50px;
-  margin-left: 0px;
-} */
-
-/* .details{
-  margin-top: 3%;
+  width: 80%;
+  margin-left: 7%;
+  /* margin-right: 10%; */
 }
 
-.recomendation{
-  margin-top: 50px;
-}
-
-.tableHistory{
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-} */
 

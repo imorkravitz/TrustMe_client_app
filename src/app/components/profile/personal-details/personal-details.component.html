@@ -1,47 +1,19 @@
-
+<form [formGroup]="form">
 <div>
   <div>
-    <p>
-      <img src="" class="img-thumbnail" alt="..." />
+    <p *ngIf="imagePreview !== '' && imagePreview " >
+      <img [src]="imagePreview" class="img-thumbnail" alt="..." />
     </p>
-    <a>Update Details</a>
+    <button mat-stroked-button type="button" (click)="filePicker.click()"> image button </button>
+    <input type="file" #filePicker (change)="onImagePicked($event)" >
+    <mat-error *ngIf="form.get('image')">error</mat-error>
+    <a class="update">Update Details</a>
   </div>
-  <div >
-    <p>
-      <li>Name</li>
-    </p>
-      <li>Phone</li>
-<div class="row">
-  <div class="col-6">
-    <!-- <p>
-    <img src="..." class="img-thumbnail" alt="...">
-  </p> -->
-    <a color="primary">Update Details</a>
-  </div>
-  <div >
-    <p>
-      <li>Email</li>
-    </p>
+  <mat-nav-list>
+      <li>{{user.name}}</li>
+      <li>{{user.phone}}</li>
+      <li>{{user.email}}</li>
       <li>Rating</li>
-
-      <mat-form-field>
-        <input matInput name="Name" ngModel type="text" placeholder="Name">
-      </mat-form-field>
-    </p>
-    <mat-form-field>
-      <input matInput name="Phone" ngModel type="Phone" placeholder="Phone">
-    </mat-form-field>
-  </div>
-  <div class="col-3">
-    <p>
-      <mat-form-field>
-        <input matInput name="Email" ngModel type="Email" placeholder="Email">
-      </mat-form-field>
-    </p>
-    <mat-form-field>
-      <div>
-        <input matInput name="Rating" ngModel type="rating" placeholder="Rating">
-      </div>
-    </mat-form-field>
-  </div>
+  </mat-nav-list>
 </div>
+</form>

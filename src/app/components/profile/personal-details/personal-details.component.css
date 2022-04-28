@@ -1,3 +1,14 @@
-.text-decoration{
-text-decoration: underline;
+
+li{
+  font-size: 18px;
+  margin-top: 16px;
+}
+
+.update{
+  text-decoration: underline;
+  color: #29dae0;
+}
+
+input[type="file"]{
+  visibility: hidden;
 }

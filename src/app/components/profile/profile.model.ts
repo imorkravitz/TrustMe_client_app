@@ -6,3 +6,10 @@ export interface Contract{
   emailOfAnotherSide : String;
   date : Date;
 }
+
+export interface UserDetails{
+name : String;
+phone : String;
+email : String;
+image : File | undefined;
+}

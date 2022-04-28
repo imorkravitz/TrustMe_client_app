@@ -19,8 +19,8 @@ export class ContractComponent{
        return;
      }
 
-     this.contractService.addContract(form.value.side, form.value.description,
-      form.value.deposit ,form.value.emailOfAnotherSide ,form.value.date);
+     this.contractService.addContract(form.value.description,
+      form.value.deposit ,form.value.email ,form.value.date, form.value.sellerId);
 
   }
 }

@@ -49,10 +49,10 @@ deleteContract(postId: string | undefined) {
   // });
 }
 
-addContract(side: String, description: String, deposit: Number,
-  emailOfAnotherSide: String, date: Date){
-  const contract : Contract ={ id: undefined, side: side, description: description,
-    deposit: deposit, emailOfAnotherSide: emailOfAnotherSide, date: date};
+addContract(description: String, deposit: Number,
+  email: String, date: Date, sellerId: String){
+  const contract : Contract ={ id: undefined, description: description,
+    deposit: deposit, email: email, date: date ,sellerId: sellerId};
   // // post data from client(angular side) to server
   this.http.post<{message: String, contractId : String}>('http://localhost:3000/api/contracts/add', contract)
   .subscribe((responseData)=>{

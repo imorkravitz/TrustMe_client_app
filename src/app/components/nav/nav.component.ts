@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service'
 import { Subscription } from 'rxjs'
 import { LoaderService } from '../loader/loader.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -26,25 +27,26 @@ export class NavComponent implements OnInit, OnDestroy{
 
   constructor(private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
-    public loaderService: LoaderService) {
+    public loaderService: LoaderService,
+    private router: Router) {
     this.authListenerSubs = Subscription.EMPTY;
 
   }
 
   ngOnInit() {
     this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
-
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = true;
+      .subscribe((isAuthenticated:boolean) => {
+       // this.userIsAuthenticated = true;
         this.userIsAuthenticated = isAuthenticated;
       });
   }
 
   onLogout() {
     this.authService.logout();
+    this.router.navigate(['homepage']);
   }
 
   ngOnDestroy() {

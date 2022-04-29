@@ -36,3 +36,23 @@ mat-icon{
   display: inline-block;
   fill: currentColor;
 }
+
+@media only screen and (max-width: 820px) {
+  /* For mobile phones: */
+  .phone{
+     width: 100%;
+  }
+  div{
+    margin-left:2.5%;
+    width: 95%;
+  }
+  .titleNewContract{
+    margin-left: 3%;
+  }
+  .filter{
+    width: 30%;
+    margin-top: -40px;
+    margin-left: 65%;
+  }
+
+}

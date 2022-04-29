@@ -1,10 +1,27 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="example-container"  *ngIf="mobile >= 820">
   <mat-drawer class="example-drawer" mode="side" opened position="end">
-    <app-personal-details></app-personal-details>
+    <app-personal-details class="details"></app-personal-details>
   </mat-drawer>
   <mat-drawer-content class="example-content">
-    <app-new-deals></app-new-deals>
-    <app-transaction-history></app-transaction-history>
-    <app-recomendation></app-recomendation>
+    <app-new-deals class="new-deals"></app-new-deals>
+    <app-transaction-history class="transaction"></app-transaction-history>
+    <app-recomendation class="recomendation"></app-recomendation>
   </mat-drawer-content>
 </mat-drawer-container>
+
+<section *ngIf="mobile < 820">
+  <div>
+    <div class="details">
+      <app-personal-details></app-personal-details>
+    </div>
+    <div class="new-deals">
+      <app-new-deals></app-new-deals>
+    </div>
+    <div class="transaction">
+      <app-transaction-history></app-transaction-history>
+    </div>
+    <div class="col-12 recomendation">
+      <app-recomendation></app-recomendation>
+    </div>
+  </div>
+</section>

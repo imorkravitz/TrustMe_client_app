@@ -6,12 +6,12 @@
         <div class="crad shadow-lg">
           <img class="card-img-top" />
           <div class="card-body">
-            <h3 class="card-title">Your position: {{contract.side}}</h3>
+            <!-- <h3 class="card-title">Your position: {{contract.side}}</h3> -->
             <p class="card-text">Description: {{contract.description}}</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Deposit: {{contract.deposit}}</li>
-            <li class="list-group-item">Contract with: {{contract.emailOfAnotherSide}}</li>
+            <li class="list-group-item">Contract with: {{contract.email}}</li>
             <li class="list-group-item">Termination of transaction: {{contract.date | date:'fullDate'}}</li>
           </ul>
           <div class="card-body">

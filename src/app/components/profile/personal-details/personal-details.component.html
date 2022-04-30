@@ -1,9 +1,14 @@
+
 <form [formGroup]="form" class="details" *ngIf="mobile >= 820">
 <div>
   <div>
     <!-- //check the valition of the image -->
     <p *ngIf="imagePreview !== '' && imagePreview" >
       <img [src]="imagePreview" class="img-thumbnail" [alt]="form.value.title"/>
+<div>
+  <div>
+    <p>
+      <!-- <img src="" class="img-thumbnail" alt="..." /> -->
     </p>
     <button mat-stroked-button type="button" (click)="filePicker.click()">image button</button>
     <input type="file"  #filePicker (change)="onImagePicked($event)">
@@ -24,6 +29,16 @@
       <a>Rating</a>
     </p>
   </mat-nav-list>
+  <div>
+    <p>
+      <li>Name</li>
+    </p>
+    <li>Phone</li>
+    <p>
+      <li>Email</li>
+    </p>
+    <li>Rating</li>
+  </div>
 </div>
 </form>
 

@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 
 export class LoginComponent{
   isLoading = false;
-  errAlert: boolean = false;
 
    constructor(public authService: AuthService,
     private notificationService: NotifierService,
@@ -29,11 +28,9 @@ export class LoginComponent{
       return;
     }
     this.authService.login(form.value.email, form.value.password)
-    setTimeout(() =>{
+    // setTimeout(() =>{
       this.router.navigate(['homepage']);
-    },2000);
+    // },2000);
    }
-   closeAlert(){
-    this.errAlert=false;
-  }
+
 }

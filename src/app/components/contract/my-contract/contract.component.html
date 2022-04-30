@@ -1,38 +1,37 @@
 <mat-card class="backgroundImg">
   <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign">
-    <mat-button-toggle-group name="side" ngModel #side="ngModel" required>
+    <!-- <mat-button-toggle-group name="side" ngModel #side="ngModel" required>
       <mat-button-toggle value="Seller">Seller</mat-button-toggle>
       <mat-button-toggle value="Buyer">Buyer</mat-button-toggle>
-    </mat-button-toggle-group>
-    <p>
+    </mat-button-toggle-group> -->
+    <!-- <p>
       <mat-error *ngIf="side.invalid"> First please enter your position</mat-error>
-    </p>
-    <p></p>
+    </p> -->
+    <br>
     <mat-form-field>
       <input matInput type="text" name="description" ngModel required minlength="3" placeholder="Description"
         #description="ngModel">
       <mat-error *ngIf="description.invalid">please enter a description</mat-error>
     </mat-form-field>
-    <p></p>
+    <br>
     <mat-form-field>
       <input matInput type="number" name="deposit" min="0" ngModel required placeholder="Price" #deposit="ngModel">
       <mat-error *ngIf="deposit.invalid">please enter a current price</mat-error>
     </mat-form-field>
-    <p></p>
+    <br>
     <mat-form-field>
-      <input matInput type="email" name="emailOfAnotherSide" ngModel email required placeholder="Send a contract to"
-        #emailOfAnotherSide="ngModel">
-      <mat-error *ngIf="emailOfAnotherSide.invalid">please enter a email address</mat-error>
+      <input matInput type="email" name="email" ngModel email required placeholder="Send a contract to"
+        #email="ngModel">
+      <mat-error *ngIf="email.invalid">please enter a email address</mat-error>
     </mat-form-field>
-    <p></p>
+    <br>
     <mat-form-field>
       <mat-label>Termination of transaction</mat-label>
       <input matInput [matDatepicker]="myDatePicker" [min]="minDate" name="date" ngModel #date="ngModel" required>
       <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
       <mat-datepicker #myDatePicker></mat-datepicker>
     </mat-form-field>
-    <p></p>
+    <br>
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
-  <br><br><br><br><br><br><br><br><br>
 </mat-card>

@@ -38,7 +38,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
+      .subscribe((isAuthenticated:boolean) => {
         this.userIsAuthenticated = true;
         this.userIsAuthenticated = isAuthenticated;
       });

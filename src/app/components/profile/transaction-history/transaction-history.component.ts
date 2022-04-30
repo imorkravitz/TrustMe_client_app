@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-
 import { Contract } from '../profile.model';
 import { ProfileService } from '../profile.service';
 
@@ -24,15 +23,27 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public profileService: ProfileService ) {}
+  constructor(public ProfileService: ProfileService ) {}
   ngOnInit(): void {
+
 
     this.profileService.getAllContract();
     this.liveDataOfContract();
+
+    this.ProfileService.getAllContract();
+    this.liveDataOfContract()
+    // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    //   this.contracts = contracts;
+    //   this.dataSource = new MatTableDataSource(this.contracts);
+    // })
+
   }
 
   ngAfterViewInit() {
     this.liveDataOfContract()
+
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   // this functions help us to arrange the data in the table

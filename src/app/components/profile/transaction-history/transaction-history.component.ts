@@ -3,8 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+
 import { Contract } from '../profile.model';
 import { ProfileService } from '../profile.service';
+
 
 @Component({
   selector: 'app-transaction-history',
@@ -14,7 +16,7 @@ import { ProfileService } from '../profile.service';
 
 export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['side', 'deposit', 'date', 'emailOfAnotherSide'];
+  displayedColumns: string[] = ['side', 'deposit', 'date', 'email'];
   dataSource!: MatTableDataSource<Contract>;
   contracts : Contract[] = [];
   private constractsSub: Subscription | undefined;
@@ -25,28 +27,20 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
   constructor(public ProfileService: ProfileService ) {}
   ngOnInit(): void {
-
-
-    this.profileService.getAllContract();
-    this.liveDataOfContract();
-
     this.ProfileService.getAllContract();
-    this.liveDataOfContract()
-    // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
-    //   this.contracts = contracts;
-    //   this.dataSource = new MatTableDataSource(this.contracts);
-    // })
+    this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
 
-  }
-
-  ngAfterViewInit() {
-    this.liveDataOfContract()
-
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
+      this.contracts = contracts;
+      this.dataSource = new MatTableDataSource(this.contracts);
+    })
   }
 
   // this functions help us to arrange the data in the table
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -56,14 +50,6 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     }
   }
 
-  liveDataOfContract(){
-    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
-      this.contracts = contracts;
-      this.dataSource = new MatTableDataSource(this.contracts);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    })
-  }
 }
 
 

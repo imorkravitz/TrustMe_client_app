@@ -28,9 +28,7 @@ export class LoginComponent{
       return;
     }
     this.authService.login(form.value.email, form.value.password)
-    // setTimeout(() =>{
-      this.router.navigate(['homepage']);
-    // },2000);
+
    }
 
 }

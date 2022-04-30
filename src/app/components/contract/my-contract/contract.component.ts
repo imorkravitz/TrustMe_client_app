@@ -20,7 +20,7 @@ export class ContractComponent{
      }
 
      this.contractService.addContract(form.value.description,
-      form.value.deposit ,form.value.email ,form.value.date, form.value.sellerId);
+      form.value.deposit ,form.value.email ,form.value.date);
 
   }
 }

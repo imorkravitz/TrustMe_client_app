@@ -10,16 +10,17 @@ import { HomeComponent } from "./components/home/home.component"
 import { ProfileComponent } from './components/profile/profile.component';
 import { RecomendationComponent } from './components/profile/recomendation/recomendation.component';
 import { HomepageComponent } from './components/homepage/homepage.component'
+import { AuthGuard } from "./components/auth/auth.guard"
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "benefits", component: HomeComponent },
-  { path: "contract", component: ContractComponent },
-  { path: "mycontracts", component: ContractListComponent },
-  { path: "newcontract", component: NewContractComponent },
+  { path: "contract", component: ContractComponent, canActivate:[AuthGuard] },
+  { path: "mycontracts", component: ContractListComponent, canActivate:[AuthGuard] },
+  { path: "newcontract", component: NewContractComponent, canActivate:[AuthGuard] },
   { path: "aboutus", component: AboutUsComponent },
-  { path: "profile", component: ProfileComponent },
+  { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
   { path: "recomendation", component: RecomendationComponent },
   { path: "homepage", component: HomepageComponent },
 
@@ -28,6 +29,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard] // protcted routes
 })
 
 export class AppRoutingModule {}

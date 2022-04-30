@@ -43,9 +43,7 @@ onSignup(form: NgForm) {
     this.authService.createUser(form.value.email, form.value.password, form.value.confirmPassword,
     form.value.firstName, form.value.lastName, form.value.birthday, form.value.phoneNumber)
     this.notificationService.showNotification('User created successfully!', 'OK', 'success');
-    setTimeout(() =>{
-      this.router.navigate(['homepage']);
-    },1000);
+
   }else{
     console.log(form.value.confirmPassword)
     this.notificationService.showNotification('Password as to be matched!', 'OK', 'error');

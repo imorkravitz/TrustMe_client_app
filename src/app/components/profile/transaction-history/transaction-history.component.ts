@@ -26,16 +26,22 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   constructor(public ProfileService: ProfileService ) {}
   ngOnInit(): void {
 
+
+    this.profileService.getAllContract();
+    this.liveDataOfContract();
+
     this.ProfileService.getAllContract();
     this.liveDataOfContract()
     // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
     //   this.contracts = contracts;
     //   this.dataSource = new MatTableDataSource(this.contracts);
     // })
+
   }
 
   ngAfterViewInit() {
     this.liveDataOfContract()
+
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
   }
@@ -51,17 +57,12 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   }
 
   liveDataOfContract(){
-    this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
-      console.log(this.contracts)
       this.dataSource = new MatTableDataSource(this.contracts);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 }
 

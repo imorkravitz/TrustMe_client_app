@@ -3,10 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-
 import { Contract } from '../profile.model';
 import { ProfileService } from '../profile.service';
-
 
 @Component({
   selector: 'app-transaction-history',
@@ -25,22 +23,30 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public ProfileService: ProfileService ) {}
+  constructor(public profileService: ProfileService ) {}
   ngOnInit(): void {
-    this.ProfileService.getAllContract();
-    this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
 
-      this.contracts = contracts;
-      this.dataSource = new MatTableDataSource(this.contracts);
-    })
+
+    this.profileService.getAllContract();
+    this.liveDataOfContract();
+
+    // this.ProfileService.getAllContract();
+    // this.liveDataOfContract()
+    // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    //   this.contracts = contracts;
+    //   this.dataSource = new MatTableDataSource(this.contracts);
+    // })
+
+  }
+
+  ngAfterViewInit() {
+    this.liveDataOfContract()
+
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   // this functions help us to arrange the data in the table
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -50,6 +56,12 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     }
   }
 
+  liveDataOfContract(){
+    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+      this.contracts = contracts;
+      this.dataSource = new MatTableDataSource(this.contracts);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+  }
 }
-
-

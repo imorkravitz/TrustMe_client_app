@@ -43,6 +43,7 @@ onSignup(form: NgForm) {
     this.authService.createUser(form.value.email, form.value.password, form.value.confirmPassword,
     form.value.firstName, form.value.lastName, form.value.birthday, form.value.phoneNumber)
     this.notificationService.showNotification('User created successfully!', 'OK', 'success');
+    this.router.navigate(['/homepage']);
 
   }else{
     console.log(form.value.confirmPassword)

@@ -14,7 +14,7 @@ import { ProfileService } from '../profile.service';
 
 export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['side', 'deposit', 'date', 'emailOfAnotherSide'];
+  displayedColumns: string[] = ['side', 'deposit', 'date', 'email'];
   dataSource!: MatTableDataSource<Contract>;
   contracts : Contract[] = [];
   private constractsSub: Subscription | undefined;
@@ -23,27 +23,14 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public ProfileService: ProfileService ) {}
+  constructor(public profileService: ProfileService ) {}
   ngOnInit(): void {
-
-
     this.profileService.getAllContract();
     this.liveDataOfContract();
-
-    this.ProfileService.getAllContract();
-    this.liveDataOfContract()
-    // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
-    //   this.contracts = contracts;
-    //   this.dataSource = new MatTableDataSource(this.contracts);
-    // })
-
   }
 
   ngAfterViewInit() {
     this.liveDataOfContract()
-
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
   }
 
   // this functions help us to arrange the data in the table
@@ -65,5 +52,3 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     })
   }
 }
-
-

@@ -1,15 +1,15 @@
 export interface Contract{
   id : String | undefined;
-  side : String;
+  // side : String;
   description : String;
   deposit : Number;
-  emailOfAnotherSide : String;
+  email : String;
   date : Date;
 }
 
 export interface UserDetails{
-name : String;
-phone : String;
-email : String;
-image : File | undefined;
-}
+  name : String;
+  phone : String;
+  email : String;
+  image : File | undefined;
+  }

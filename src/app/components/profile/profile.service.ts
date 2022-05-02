@@ -28,10 +28,10 @@ getAllContract() {
         side: contract.side,
         description: contract.description,
         deposit: contract.deposit,
-        emailOfAnotherSide: contract.emailOfAnotherSide,
+        email: contract.email,
         date: contract.date
       };
-    })
+    });
   }))
   .subscribe((transformedContract)=>{
     this.contracts = transformedContract;

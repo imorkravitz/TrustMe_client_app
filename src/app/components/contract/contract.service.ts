@@ -50,9 +50,9 @@ deleteContract(postId: string | undefined) {
 }
 
 addContract(description: String, deposit: Number,
-  email: String, date: Date, sellerId: String){
+  email: String, date: Date){
   const contract : Contract ={ id: undefined, description: description,
-    deposit: deposit, email: email, date: date ,sellerId: sellerId};
+    deposit: deposit, email: email, date: date};
   // // post data from client(angular side) to server
   this.http.post<{message: String, contractId : String}>('http://localhost:3000/api/contracts/add', contract)
   .subscribe((responseData)=>{
@@ -65,26 +65,24 @@ addContract(description: String, deposit: Number,
 
 getAllContract() {
   //get data from a server to client(angular side)
-  console.log("get contract2")
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
   .pipe(map((contractData)=>{
     return contractData.contracts.map((contract: any) => {
       return {
         id: contract._id,
-        side: contract.side,
+        // side: contract.side,
         description: contract.description,
         deposit: contract.deposit,
-        emailOfAnotherSide: contract.emailOfAnotherSide,
-        date: contract.date
+        email: contract.email,
+        date: contract.date,
+        creator: contract.creator
       };
     });
   }))
   .subscribe((transformedContract)=>{
+    console.log(transformedContract)
     this.contracts = transformedContract;
     this.contractUpdated.next([...this.contracts]);
   })
-  console.log("get contract3")
 }
-
-
 }

@@ -4,5 +4,6 @@ export interface Contract{
   deposit : Number;
   email : String;
   date : Date;
-  sellerId: String,
+  // sellerId: String,
+  // buyerId: String
 }

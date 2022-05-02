@@ -4,6 +4,8 @@
 }
 .example-drawer{
   width: 20%;
+  height: 100vh;
+  padding: 10px;
   /* margin-left: 50%; */
 }
 .example-content{
@@ -43,6 +45,5 @@
     margin-top: 10%;
     margin-left: 10%; */
   }
-
 }
 

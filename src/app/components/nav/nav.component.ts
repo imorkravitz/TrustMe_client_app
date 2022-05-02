@@ -30,10 +30,10 @@ export class NavComponent implements OnInit, OnDestroy{
     public loaderService: LoaderService,
     private router: Router) {
     this.authListenerSubs = Subscription.EMPTY;
-
   }
 
   ngOnInit() {
+    this.userIsAuthenticated = this.authService.getIsAuth();
     this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
@@ -60,5 +60,4 @@ export class NavComponent implements OnInit, OnDestroy{
   notification(){
     return 3;
   }
-
 }

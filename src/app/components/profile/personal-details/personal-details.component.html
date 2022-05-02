@@ -1,32 +1,30 @@
 <form [formGroup]="form" class="details" *ngIf="mobile >= 820">
   <div>
-    <div>
-      <!-- //check the valition of the image -->
-      <p *ngIf="imagePreview !== '' && imagePreview">
-        <img [src]="imagePreview" class="img-thumbnail" [alt]="form.value.title" />
-      <p>
-        <!-- <img src="" class="img-thumbnail" alt="..." /> -->
-      </p>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">image button</button>
-      <input type="file" #filePicker (change)="onImagePicked($event)">
-      <!-- <mat-error *ngIf="form.get('image')?.invalid">error</mat-error> -->
-      <a class="update">Update Details</a>
-    </div>
-    <mat-nav-list>
-      <p class="list">
-        <a>{{user.name}}</a>
-      </p>
-      <p class="list">
-        <a>{{user.phone}}</a>
-      </p>
-      <p class="list">
-        <a>{{user.email}}</a>
-      </p>
-      <p class="list">
-        <a>Rating</a>
-      </p>
-    </mat-nav-list>
+    <!-- //check the valition of the image -->
+    <p *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" class="img-thumbnail" [alt]="form.value.title" />
+    <p>
+      <!-- <img src="" class="img-thumbnail" alt="..." /> -->
+    </p>
+    <button mat-stroked-button type="button" (click)="filePicker.click()">image button</button>
+    <input type="file" #filePicker (change)="onImagePicked($event)">
+    <!-- <mat-error *ngIf="form.get('image')?.invalid">error</mat-error> -->
+    <a class="update">Update Details</a>
   </div>
+  <mat-nav-list>
+    <p class="list">
+      <a>{{user.name}}</a>
+    </p>
+    <p class="list">
+      <a>{{user.phone}}</a>
+    </p>
+    <p class="list">
+      <a>{{user.email}}</a>
+    </p>
+    <p class="list">
+      <a>Rating</a>
+    </p>
+  </mat-nav-list>
 </form>
 
 <!-- for mobile devices -->

@@ -25,25 +25,12 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
   constructor(public profileService: ProfileService ) {}
   ngOnInit(): void {
-
-
     this.profileService.getAllContract();
     this.liveDataOfContract();
-
-    // this.ProfileService.getAllContract();
-    // this.liveDataOfContract()
-    // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
-    //   this.contracts = contracts;
-    //   this.dataSource = new MatTableDataSource(this.contracts);
-    // })
-
   }
 
   ngAfterViewInit() {
     this.liveDataOfContract()
-
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
   }
 
   // this functions help us to arrange the data in the table

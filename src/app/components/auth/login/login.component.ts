@@ -22,13 +22,11 @@ export class LoginComponent{
     private router: Router){}
 
    onLogin(form: NgForm) {
-     console.log(form.value);
     if (form.invalid) {
       this.notificationService.showNotification('Wrong input', 'OK', 'error');
       return;
     }
     this.authService.login(form.value.email, form.value.password)
-
+    this.router.navigate(['/homepage']);
    }
-
 }

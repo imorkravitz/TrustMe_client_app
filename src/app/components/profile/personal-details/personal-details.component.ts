@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import {mimeType} from "./mime-type.validator";
+// import {mimeType} from "./mime-type.validator";
 
 import { UserDetails } from '../profile.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -26,9 +26,9 @@ export class PersonalDetailsComponent implements OnInit {
   ngOnInit() {
    this.form = new FormGroup({
     title: new FormControl(null,{validators:[Validators.required]}),
-    image: new FormControl(null,{
-      asyncValidators: [mimeType]
-   })
+  //   image: new FormControl(null,{
+  //     // asyncValidators: [mimeType]
+  //  })
    });
    this.form.patchValue({title: this.user.name});
    this.form.get('title')?.updateValueAndValidity();

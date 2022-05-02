@@ -14,7 +14,7 @@ import { ProfileService } from '../profile.service';
 
 export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['side', 'deposit', 'date', 'email'];
+  displayedColumns: string[] = ['deposit', 'date', 'email'];
   dataSource!: MatTableDataSource<Contract>;
   contracts : Contract[] = [];
   private constractsSub: Subscription | undefined;

@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { AuthService } from './components/auth/auth.service'
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +14,8 @@ export class AppComponent implements OnInit, OnDestroy {
   mediaSub:Subscription;
   deviveXs:boolean = false;
   constructor(public mediaObserver:MediaObserver,
-    private authService:AuthService ){
+    private authService:AuthService,
+    private router: Router ){
 
     this.mediaSub = Subscription.EMPTY;
   }
@@ -28,5 +31,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.mediaSub.unsubscribe();
+  }
+
+  isHomeRoute(){
+    return this.router.url === '/';
   }
 }

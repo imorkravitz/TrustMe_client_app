@@ -9,7 +9,10 @@
             <p class="card-text">Description: {{contract.description}}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Deposit: {{contract.deposit}}</li>
+            <li class="list-group-item">depositSeller: {{contract.depositSeller}}</li>
+            <li class="list-group-item">depositBuyer: {{contract.depositBuyer}}</li>
+            <li class="list-group-item">walletAddressSeller: {{contract.walletAddressSeller}}</li>
+            <li class="list-group-item">walletAddressBuyer: {{contract.walletAddressBuyer}}</li>
             <li class="list-group-item">Contract with: {{contract.email}}</li>
             <li class="list-group-item">Termination of transaction: {{contract.date | date:'fullDate'}}</li>
           </ul>

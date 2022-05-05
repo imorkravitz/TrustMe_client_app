@@ -131,7 +131,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     console.log("Setting timer: " + duration);
     this.tokenTimer = setTimeout(() => {
       this.logout();
-    }, duration * 1000); // == 60m
+    }, duration * 1000); // == 15m
   }
   // save the token in localStorage
   private saveAuthData(accessToken: string, expirationDate: Date) {

@@ -1,9 +1,10 @@
 export interface Contract{
   id : String | undefined;
   description : String;
-  deposit : Number;
+  depositSeller : Number;
+  depositBuyer : Number;
+  walletAddressSeller: String;
+  walletAddressBuyer: String;
   email : String;
   date : Date;
-  // sellerId: String,
-  // buyerId: String
 }

@@ -1,30 +1,38 @@
 <mat-card class="design-card backgroundImg">
-  <div class="row gx-5">
+  <div class="">
+    <h2 class="side-title">Online Marketplaces Conference</h2>
+    <button class="btn-grad" mat-raised-button type="submit" routerLink="/contract" (click)="canActive()">
+      Start Transction
+    </button>
+  </div>
+  <div class="row row-contanier gx-5">
     <div class="card col-6">
       <div class="face front">
         <img src="../../../assets/securedPayment.png" class="secured">
-        <h2>Secure Payment Solution</h2>
+        <h2 class="secure-title">Secure<br> Payment Solution</h2>
       </div>
       <div class="face back">
-        <p>Trust Me is on of the best transaction platform that caters for all the different
-          aspects in transactions that happen online and face to face
-          whilst ensuring each transaction runs fairly.</p>
+        <p>Trust Me is<br> on of the best transaction platform<br> that caters for all the different<br>
+          aspects in transactions <br>that happen online<br> and face to face<br>
+          whilst ensuring each<br> transaction runs fairly.</p>
       </div>
     </div>
     <div class="card col-6">
       <div class="face front">
         <img src="../../../assets/trust.png" class="trust">
-        <h2>Reliable</h2>
+        <h2 class="reliable-title">Reliable <br>Trusted<br> Platfrom</h2>
       </div>
       <div class="face back">
-        <p>Customers no longer have to place
-          trust in someone that they don’t know.</p>
+        <p>Customers no longer<br> have to place
+          trust in someone<br> that they don’t know.</p>
       </div>
     </div>
+    <!-- <div class="video card col-6 video">
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Q7xlZcsIar0" width="560" height="315"
+          frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div> -->
   </div>
-  <div class="">
-    <button class="btn-grad" mat-raised-button type="submit" routerLink="/contract" (click)="canActive()">
-      Start Transction
-    </button>
-  </div>
+
 </mat-card>

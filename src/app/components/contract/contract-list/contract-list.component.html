@@ -6,12 +6,20 @@
         <div class="crad shadow-lg">
           <img class="card-img-top" />
           <div class="card-body">
-            <p class="card-text">Description: {{contract.description}}</p>
+            <p class="card-text"><strong>Description:</strong> {{contract.description}}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Deposit: {{contract.deposit}}</li>
-            <li class="list-group-item">Contract with: {{contract.email}}</li>
-            <li class="list-group-item">Termination of transaction: {{contract.date | date:'fullDate'}}</li>
+            <li class="list-group-item"><strong>deposit Seller:</strong> {{contract.depositSeller}}
+              <mat-icon> attach_money</mat-icon>
+            </li>
+            <li class="list-group-item"><strong>deposit Buyer:</strong> {{contract.depositBuyer}}
+              <mat-icon> attach_money</mat-icon>
+            </li>
+            <li class="list-group-item"><strong>wallet Address Seller:</strong> {{contract.walletAddressSeller}}</li>
+            <li class="list-group-item"><strong>wallet Address Buyer:</strong> {{contract.walletAddressBuyer}}</li>
+            <li class="list-group-item"><strong>Contract with:</strong> {{contract.email}}</li>
+            <li class="list-group-item"><strong>Termination of transaction:</strong> {{contract.date | date:'fullDate'}}
+            </li>
           </ul>
           <div class="card-body">
             <a href="#" class="card-link">Partner profile</a>

@@ -22,8 +22,11 @@ export class ContractComponent{
      if(form.invalid){
        return;
      }
+
      this.contractService.addContract(form.value.description,
-      form.value.deposit ,form.value.email ,form.value.date);
+      form.value.depositSeller, form.value.depositBuyer, form.value.walletAddressSeller,
+      form.value.walletAddressBuyer ,form.value.email ,form.value.date);
+
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.router.navigate(['/homepage']);
   }

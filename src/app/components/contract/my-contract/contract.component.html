@@ -15,8 +15,27 @@
     </mat-form-field>
     <br>
     <mat-form-field>
-      <input matInput type="number" name="deposit" min="0" ngModel required placeholder="Price" #deposit="ngModel">
-      <mat-error *ngIf="deposit.invalid">please enter a current price</mat-error>
+      <input matInput type="number" name="depositSeller" min="0" ngModel required placeholder="Seller Price"
+        #depositSeller="ngModel">
+      <mat-error *ngIf="depositSeller.invalid">please enter a current price</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="number" name="depositBuyer" min="0" ngModel required placeholder="Buyer Price"
+        #depositBuyer="ngModel">
+      <mat-error *ngIf="depositBuyer.invalid">please enter a current price</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="text" name="walletAddressSeller" ngModel walletAddressSeller required
+        placeholder="Seller address" #walletAddressSeller="ngModel">
+      <mat-error *ngIf="walletAddressSeller.invalid">Seller Address</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="text" name="walletAddressBuyer" ngModel walletAddressBuyer required
+        placeholder="Send a contract to" #walletAddressBuyer="ngModel">
+      <mat-error *ngIf="walletAddressBuyer.invalid">Buyer Address</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>

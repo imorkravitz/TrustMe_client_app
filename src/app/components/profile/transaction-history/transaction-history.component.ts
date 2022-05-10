@@ -23,15 +23,15 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public ProfileService: ProfileService ) {}
+  constructor(public profileService: ProfileService ) {}
   ngOnInit(): void {
 
 
     this.profileService.getAllContract();
     this.liveDataOfContract();
 
-    this.ProfileService.getAllContract();
-    this.liveDataOfContract()
+    // this.ProfileService.getAllContract();
+    // this.liveDataOfContract()
     // this.constractsSub = this.ProfileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
     //   this.contracts = contracts;
     //   this.dataSource = new MatTableDataSource(this.contracts);

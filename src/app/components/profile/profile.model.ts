@@ -1,8 +1,8 @@
 export interface Contract{
   id : String | undefined;
-  // side : String;
   description : String;
-  deposit : Number;
+  depositSeller : Number;
+  depositBuyer : Number;
   email : String;
   date : Date;
 }
@@ -13,3 +13,8 @@ export interface UserDetails{
   email : String;
   image : File | undefined;
   }
+
+
+export interface findContracts{
+  id: String
+}

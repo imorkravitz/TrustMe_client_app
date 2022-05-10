@@ -7,10 +7,11 @@ background-size: cover;
 }
 
 h2 {
-color: #111;
+/* color: #111; */
 font-family: 'Raleway',sans-serif;
 font-size: 24px; font-weight: 600;
 text-align: center;
+background-color: var(--vender-cyan);
 }
 
 .design-card {
@@ -151,8 +152,8 @@ transform: perspective(500px) rotateY(360deg);
    }
 
    p{
-     color: #111;
-   }
+    background-color: var(--vender-cyan);
+  }
 
    .row-contanier{
       margin-top: 250px;

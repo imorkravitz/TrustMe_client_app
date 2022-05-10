@@ -16,18 +16,18 @@ export class ContractComponent{
 
   constructor(public contractService: ContractService,
     private notificationService: NotifierService,
-    private router: Router) {}
+    private router: Router) {
+    }
 
   onAddContract(form : NgForm){
      if(form.invalid){
        return;
      }
 
-     this.contractService.addContract(form.value.description,
-      form.value.depositSeller, form.value.depositBuyer, form.value.walletAddressSeller,
-      form.value.walletAddressBuyer ,form.value.email ,form.value.date);
+    this.contractService.addContract(form.value.description,
+    form.value.depositSeller, form.value.depositBuyer, form.value.walletAddressSeller,
+    form.value.walletAddressBuyer ,form.value.email ,form.value.date);
 
-      this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
-      this.router.navigate(['/homepage']);
+    this.router.navigate(['/homepage']);
   }
 }

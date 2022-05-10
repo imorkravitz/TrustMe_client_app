@@ -8,3 +8,7 @@ export interface Contract{
   email : String;
   date : Date;
 }
+
+export interface findUser{
+  email: String
+}

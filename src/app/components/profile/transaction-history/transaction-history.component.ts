@@ -23,7 +23,8 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   flag: boolean = true;
   contractPerPage = 3;
   pageSizeOptions = [1,3,5,10];
-  userId: String;
+  userId: any;
+  creator: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -33,10 +34,12 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
       this.userId = ""
     }
   ngOnInit(): void {
-    this.profileService.getAllContract();
+    this.profileService.getContractById();
     this.liveDataOfContract();
     this.authService.getToken();
     this.userId = this.authService.getUserId();
+    console.log(this.userId);
+
   }
 
   ngAfterViewInit() {
@@ -44,11 +47,9 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   }
 
   // this functions help us to arrange the data in the table
-  applyFilter(event: Event)
-  {
+  applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -63,3 +64,6 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     })
   }
 }
+
+
+

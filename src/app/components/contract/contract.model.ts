@@ -7,8 +7,13 @@ export interface Contract{
   walletAddressBuyer: String;
   email : String;
   date : Date;
+  creator: any;
 }
 
 export interface findUser{
   email: String
+}
+
+export interface ContractById{
+  creator: any
 }

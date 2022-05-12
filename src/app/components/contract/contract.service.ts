@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Contract, findUser } from './contract.model';
+import { Contract, findUser , ContractById } from './contract.model';
 import { NotifierService } from '../notifier/notifier.service'
 
 @Injectable({providedIn: 'root'})
@@ -12,6 +12,7 @@ export class ContractService {
   private contracts : Contract[] = [];
   private contractUpdated = new Subject<Contract[]>();
   private email: String
+  private creator: any
 
 constructor(private http: HttpClient,
   private router: Router,
@@ -54,7 +55,8 @@ addContract(description: String,
   walletAddressSeller: String,
   walletAddressBuyer: String,
   email: String,
-  date: Date)
+  date: Date,
+  creator: any)
   {
     const contract : Contract ={
       id: undefined,
@@ -65,7 +67,7 @@ addContract(description: String,
       walletAddressBuyer: walletAddressBuyer,
       email: email,
       date: date,
-      // creator: null
+      creator: creator,
     };
 
     this.http.post<{message: String, contractId : String}>('http://localhost:3000/api/contracts/add', contract)
@@ -75,16 +77,42 @@ addContract(description: String,
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.contracts.push(contract);
       this.contractUpdated.next([...this.contracts]);
+      this.router.navigate(['/homepage']);
     },error=>{
       this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
     })
     console.log(contract);
-
 }
 
-getAllContract() {
-  //get data from a server to client(angular side)
-  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
+// getAllContract() {
+//   //get data from a server to client(angular side)
+//   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
+//   .pipe(map((contractData)=>{
+//     console.log(contractData);
+
+//     return contractData.contracts.map((contract: any) => {
+//       return {
+//         id: contract._id,
+//         description: contract.description,
+//         depositSeller: contract.depositSeller,
+//         depositBuyer: contract.depositBuyer,
+//         walletAddressSeller: contract.walletAddressSeller,
+//         walletAddressBuyer: contract.walletAddressBuyer,
+//         email: contract.email,
+//         date: contract.date
+//       };
+//     });
+//   }))
+//   .subscribe((transformedContract)=>{
+//     console.log(transformedContract)
+//     this.contracts = transformedContract;
+//     this.contractUpdated.next([...this.contracts]);
+//   })
+// }
+
+
+getContractById(){
+  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContractByUserId')
   .pipe(map((contractData)=>{
     console.log(contractData);
 
@@ -97,8 +125,7 @@ getAllContract() {
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
-        date: contract.date,
-        creator: contract.creator
+        date: contract.date
       };
     });
   }))
@@ -108,4 +135,10 @@ getAllContract() {
     this.contractUpdated.next([...this.contracts]);
   })
 }
+
 }
+
+
+
+
+//

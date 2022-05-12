@@ -37,17 +37,27 @@ getAllContract() {
   })
 }
 
-findContractsById(id: String){
-  const findContact : findContracts = {
-    id : id
-  }
-  this.http.post<{id: String}>("http://localhost:3000/api/contracts/getContractByUserId", findContact).
-  subscribe(response =>{
-    console.log(response);
-    return response
-  },error=>{
-    console.log("error");
+getContractById(){
+  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContractByUserId')
+  .pipe(map((contractData)=>{
 
+    return contractData.contracts.map((contract: any) => {
+      return {
+        id: contract._id,
+        description: contract.description,
+        depositSeller: contract.depositSeller,
+        depositBuyer: contract.depositBuyer,
+        walletAddressSeller: contract.walletAddressSeller,
+        walletAddressBuyer: contract.walletAddressBuyer,
+        email: contract.email,
+        date: contract.date
+      };
+    });
+  }))
+  .subscribe((transformedContract)=>{
+    console.log(transformedContract)
+    this.contracts = transformedContract;
+    this.contractUpdated.next([...this.contracts]);
   })
 }
 }

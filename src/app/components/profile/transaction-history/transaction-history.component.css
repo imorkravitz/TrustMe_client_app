@@ -7,6 +7,10 @@ td, th {
   width: 25%;
 }
 
+mat-paginator {
+  margin-top: 1rem
+}
+
 .filter{
   width: 20%;
   margin-top: -40px;

@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Contract } from '../profile.model';
 import { ProfileService } from '../profile.service';
+import { AuthService } from '../../auth/auth.service'
+import { findContracts } from '../../profile/profile.model'
 
 @Component({
   selector: 'app-transaction-history',
@@ -14,19 +16,30 @@ import { ProfileService } from '../profile.service';
 
 export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['deposit', 'date', 'email'];
+  displayedColumns: string[] = ['depositSeller', 'depositBuyer', 'date', 'email'];
   dataSource!: MatTableDataSource<Contract>;
   contracts : Contract[] = [];
   private constractsSub: Subscription | undefined;
   flag: boolean = true;
+  contractPerPage = 3;
+  pageSizeOptions = [1,3,5,10];
+  userId: any;
+  creator: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public profileService: ProfileService ) {}
+  constructor(public profileService: ProfileService,
+    public authService: AuthService ) {
+      this.userId = ""
+    }
   ngOnInit(): void {
-    this.profileService.getAllContract();
+    this.profileService.getContractById();
     this.liveDataOfContract();
+    this.authService.getToken();
+    this.userId = this.authService.getUserId();
+    console.log(this.userId);
+
   }
 
   ngAfterViewInit() {
@@ -34,10 +47,9 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   }
 
   // this functions help us to arrange the data in the table
-  applyFilter(event: Event) {
+  applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -52,3 +64,6 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     })
   }
 }
+
+
+

@@ -15,12 +15,15 @@ private isAuthenticated:any = false;
 private accessToken:any;
 private email:any;
 private tokenTimer: any;
+private userId: any;
 private authStatusListener = new BehaviorSubject<boolean>(false);
 
 constructor(private http: HttpClient,
   private router: Router,
   private notificationService: NotifierService,
-  ) {}
+  ) {
+    this.userId = ""
+  }
 
 getEmail(){
   return this.email;
@@ -38,6 +41,10 @@ getIsAuth():boolean {
 getAuthStatusListener() {
   this.authStatusListener.next(this.getIsAuth());
   return this.authStatusListener.asObservable();
+}
+
+getUserId(){
+  return this.userId;
 }
 
 createUser(email: string, password: string, confirmPassword: string, firstName: string,
@@ -78,7 +85,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
       email: email,
       password: password
     }
-    this.http.post<{accessToken: string, expiresIn: number}>("http://localhost:3000/api/users/login", authLogin).
+    this.http.post<{accessToken: string, expiresIn: number, userId: String}>("http://localhost:3000/api/users/login", authLogin).
     subscribe(response =>{
       console.log(response);
       const accessToken = response.accessToken;
@@ -89,11 +96,12 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration)
           this.isAuthenticated = true;
+          this.userId = response.userId;
           this.authStatusListener.next(true);
           const now = new Date(); // from the current moment + durationTime of expiresInDuration = 60m
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
-          this.saveAuthData(accessToken, expirationDate)
+          this.saveAuthData(accessToken, expirationDate, this.userId)
           this.router.navigate(['/homepage']);
       }
     }, err =>{
@@ -104,6 +112,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
   logout(){
     this.accessToken = null;
     this.isAuthenticated = false;
+    this.userId = null;
     this.removeTokenInSessionStorage();
     this.authStatusListener.next(false); // push this info to the other component
     clearTimeout(this.tokenTimer);
@@ -121,6 +130,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     if (expiresIn > 0) { // if the date is in the future == the durationTime not ended!
       this.accessToken = authInformation.accessToken;
       this.isAuthenticated = true
+      this.userId = authInformation.userId;
       this.setAuthTimer(expiresIn / 1000)
       this.authStatusListener.next(true)
     }
@@ -134,26 +144,30 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     }, duration * 1000); // == 15m
   }
   // save the token in localStorage
-  private saveAuthData(accessToken: string, expirationDate: Date) {
+  private saveAuthData(accessToken: string, expirationDate: Date, userId: string) {
     localStorage.setItem("accessToken", accessToken); // store the value of the token
     localStorage.setItem("expiration", expirationDate.toISOString()); // with the expiration date
+    localStorage.setItem("userId", userId)
   }
 
   // remove the token from localStorage
   private clearAuthData() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("expiration");
+    localStorage.removeItem("userId");
   }
 
   private getAuthData() {
     const accessToken = localStorage.getItem("accessToken");
     const expirationDate = localStorage.getItem("expiration");
+    const userId = localStorage.getItem("userId");
     if (!accessToken || !expirationDate) {
       return;
     }
     return {
       accessToken: accessToken,
-      expirationDate: new Date(expirationDate)
+      expirationDate: new Date(expirationDate),
+      userId: userId,
     }
   }
 

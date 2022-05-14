@@ -1,4 +1,7 @@
 <h1>Your Contracts</h1>
+<button class="btn-grad" mat-raised-button type="submit" *ngIf="contracts.length > 0" routerLink="/contract">
+  Add New Transction
+</button><br>
 <section class="mt-12" multi="true" *ngIf="contracts.length > 0">
   <div class="container">
     <div class="row gy-5">
@@ -30,4 +33,9 @@
     </div>
   </div><br>
 </section>
-<p class=" info-text mat-body-1" *ngIf="contracts.length <= 0"> no contract created yet </p>
+<h5 *ngIf="contracts.length <= 0"> No contract created yet </h5><br>
+<h6 *ngIf="contracts.length <= 0"> For your first transaction click the button below </h6>
+
+<button class="btn-grad" mat-raised-button type="submit" *ngIf="contracts.length <= 0" routerLink="/contract">
+  New Transction
+</button>

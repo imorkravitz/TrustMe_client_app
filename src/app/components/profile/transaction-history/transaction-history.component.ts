@@ -34,7 +34,7 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
       this.userId = ""
     }
   ngOnInit(): void {
-    this.profileService.getContractById();
+    this.profileService.getHistoryByUserId();
     this.liveDataOfContract();
     this.authService.getToken();
     this.userId = this.authService.getUserId();

@@ -112,7 +112,7 @@ addContract(description: String,
 
 
 getContractById(){
-  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContractByUserId')
+  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
   .pipe(map((contractData)=>{
     console.log(contractData);
 
@@ -135,10 +135,4 @@ getContractById(){
     this.contractUpdated.next([...this.contracts]);
   })
 }
-
 }
-
-
-
-
-//

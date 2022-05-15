@@ -4,8 +4,6 @@
 }
 .example-drawer{
   width: 20%;
-  height: 100vh;
-  padding: 10px;
   /* margin-left: 50%; */
 }
 .example-content{
@@ -21,29 +19,12 @@
     width: 100%;
     margin-top: 5%;
   }
-  .image-button{
+  /* .image-button{
 
   }
   .update-button{
 
+  } */
 
-  }
-  .new-deals{
-    /* width:100%;
-    margin-top: 10%;
-    margin-left: 0%; */
 
-  }
-  .transactions{
-    /* width:80%;
-    margin-top: 10%;
-    margin-right: 10%;
-    margin-left: 90%; */
-  }
-  .text2{
-    /* width:80%;
-    margin-top: 10%;
-    margin-left: 10%; */
-  }
 }
-

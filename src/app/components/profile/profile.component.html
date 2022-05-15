@@ -1,5 +1,4 @@
-<mat-drawer-container class="example-container">
-  <!-- *ngIf="mobile >= 820" -->
+<mat-drawer-container class="example-container"  *ngIf="mobile >= 820">
   <mat-drawer class="example-drawer" mode="side" opened position="end">
     <app-personal-details class="details"></app-personal-details>
   </mat-drawer>
@@ -9,7 +8,7 @@
     <app-recomendation class="recomendation"></app-recomendation>
   </mat-drawer-content>
 </mat-drawer-container>
-<!--
+
 <section *ngIf="mobile < 820">
   <div>
     <div class="details">
@@ -25,4 +24,4 @@
       <app-recomendation></app-recomendation>
     </div>
   </div>
-</section> -->
+</section>

@@ -70,6 +70,8 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     })
   }
 
+  
+
   removeTokenInSessionStorage(){
       sessionStorage.removeItem("token");
   }

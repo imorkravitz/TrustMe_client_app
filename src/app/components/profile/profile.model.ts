@@ -9,7 +9,7 @@ export interface Contract{
 
 export interface UserDetails{
   name : String;
-  phone : String;
+  phone : String | undefined;
   email : String;
   image : File | undefined;
   }

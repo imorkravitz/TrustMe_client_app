@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Contract, findContracts } from './profile.model';
+import { Contract, findContracts, UserDetails } from './profile.model';
 
 @Injectable({providedIn: 'root'})
 
 export class ProfileService {
   private contracts : Contract[] = [];
+  private userDetails : UserDetails[] = [];
   private contractUpdated = new Subject<Contract[]>();
   private status: boolean = false;
 
@@ -65,4 +66,29 @@ getHistoryByUserId(){
     this.contractUpdated.next([...this.contracts]);
   })
 }
+
+// getDetailsByUserId(){
+//   this.http.get<{message: string, userDetails: any}>('http://localhost:3000/api/users/getDetailsByUserId')
+//   .pipe(map((contractData)=>{
+
+//     return contractData.contracts.map((contract: any) => {
+//       return {
+//         id: contract._id,
+//         description: contract.description,
+//         depositSeller: contract.depositSeller,
+//         depositBuyer: contract.depositBuyer,
+//         walletAddressSeller: contract.walletAddressSeller,
+//         walletAddressBuyer: contract.walletAddressBuyer,
+//         email: contract.email,
+//         date: contract.date
+//       };
+//     });
+//   }))
+//   .subscribe((transformedContract)=>{
+//     console.log(transformedContract)
+//     this.contracts = transformedContract;
+//     this.contractUpdated.next([...this.contracts]);
+//   })
+// }
+
 }

@@ -3,19 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Contract, findContracts, UserDetails } from './profile.model';
+import { NotifierService } from '../notifier/notifier.service';
 
 @Injectable({providedIn: 'root'})
 
 export class ProfileService {
   private contracts : Contract[] = [];
-  private userDetails : UserDetails[] = [];
+  private userDetails : UserDetails = {name: '', phone: undefined, email: '',image: undefined};
   private contractUpdated = new Subject<Contract[]>();
+  private details = new Subject<UserDetails>();
   private status: boolean = false;
 
-constructor(private http: HttpClient, private router: Router) {}
+constructor(private http: HttpClient, private router: Router,
+  private notificationService: NotifierService) {}
 
 getContractUpdatedListener() {
   return this.contractUpdated.asObservable();
+}
+
+getDetailsListener() {
+  return this.details.asObservable();
 }
 
 
@@ -67,28 +74,28 @@ getHistoryByUserId(){
   })
 }
 
-// getDetailsByUserId(){
-//   this.http.get<{message: string, userDetails: any}>('http://localhost:3000/api/users/getDetailsByUserId')
-//   .pipe(map((contractData)=>{
+  getUserDetailsByUserId(userId : string)
+  {
+    console.log("get user details functions");
 
-//     return contractData.contracts.map((contract: any) => {
-//       return {
-//         id: contract._id,
-//         description: contract.description,
-//         depositSeller: contract.depositSeller,
-//         depositBuyer: contract.depositBuyer,
-//         walletAddressSeller: contract.walletAddressSeller,
-//         walletAddressBuyer: contract.walletAddressBuyer,
-//         email: contract.email,
-//         date: contract.date
-//       };
-//     });
-//   }))
-//   .subscribe((transformedContract)=>{
-//     console.log(transformedContract)
-//     this.contracts = transformedContract;
-//     this.contractUpdated.next([...this.contracts]);
-//   })
-// }
+    const temp : any = {
+      userId: userId
+    }
+
+    this.http.post<{message: String, userDetails : any}>('http://localhost:3000/api/users/getUserDetailsByUserId',temp)
+    .subscribe((responseData)=>{
+      // console.log(responseData.message)
+      // console.log(responseData.userDetails)
+      this.userDetails.name = responseData.userDetails.firstName;
+      this.userDetails.phone = responseData.userDetails.phoneNumber;
+      this.userDetails.email = responseData.userDetails.email;
+      // this.userDetails.image = responseData.userDetails.image;
+      this.details.next(this.userDetails)
+      this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
+    },error=>{
+      this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
+    })
+
+}
 
 }

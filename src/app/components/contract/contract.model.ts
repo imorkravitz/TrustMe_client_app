@@ -5,9 +5,10 @@ export interface Contract{
   depositBuyer : Number;
   walletAddressSeller: String;
   walletAddressBuyer: String;
-  email : String;
+  email : any;
   date : Date;
   creator: any;
+  buyerId: any
 }
 
 export interface findUser{

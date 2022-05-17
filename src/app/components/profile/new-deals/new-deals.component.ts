@@ -30,7 +30,6 @@ export class NewDealsComponent implements OnInit, OnDestroy {
     })
     this.authService.getToken();
     this.userId = this.authService.getUserId();
-    console.log(this.userId + "  new deals");
   }
 
 }

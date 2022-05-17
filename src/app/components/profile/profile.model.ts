@@ -5,6 +5,7 @@ export interface Contract{
   depositBuyer : Number;
   email : String;
   date : Date;
+  buyerId : any;
 }
 
 export interface UserDetails{

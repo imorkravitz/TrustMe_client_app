@@ -56,7 +56,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
     this.form?.patchValue({image: file});
     this.form.get('image')?.updateValueAndValidity();
     this.user.image = file;
-    console.log(file);
+    // console.log(file);
     const reader = new FileReader();
     reader.onload = () =>{
       this.imagePreview = reader.result;

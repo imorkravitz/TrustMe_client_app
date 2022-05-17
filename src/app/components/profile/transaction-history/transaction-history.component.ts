@@ -24,7 +24,6 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   contractPerPage = 3;
   pageSizeOptions = [1,3,5,10];
   userId: any;
-  creator: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -38,8 +37,6 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
     this.liveDataOfContract();
     this.authService.getToken();
     this.userId = this.authService.getUserId();
-    console.log(this.userId);
-
   }
 
   ngAfterViewInit() {

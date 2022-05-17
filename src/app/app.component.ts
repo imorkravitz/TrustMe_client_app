@@ -34,6 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   isHomeRoute(){
-    return this.router.url === '/';
+    return this.router.url == '/';
   }
 }

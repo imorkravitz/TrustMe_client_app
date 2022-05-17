@@ -13,11 +13,14 @@ export class ContractService {
   private contractUpdated = new Subject<Contract[]>();
   private email: String
   private creator: any
+  private buyerId: any;
+
 
 constructor(private http: HttpClient,
   private router: Router,
   private notificationService: NotifierService) {
     this.email = ""
+    this.buyerId = ""
   }
 
 getContractUpdatedListener() {
@@ -31,12 +34,15 @@ deleteContract(postId: string | undefined) {
 
 }
 
+getBuyerId(){
+  return this.buyerId;
+}
+
 // check if email user exist in database, case not will notifier error messeage to the client
 findUserEmail(email: String){
   const user : findUser = {
     email : email
   }
-
   this.http.post<{email: String}>("http://localhost:3000/api/users/findUser", user).
   subscribe(
     response =>{
@@ -56,7 +62,8 @@ addContract(description: String,
   walletAddressBuyer: String,
   email: String,
   date: Date,
-  creator: any)
+  creator: any,
+  buyerId: any)
   {
     const contract : Contract ={
       id: undefined,
@@ -68,9 +75,10 @@ addContract(description: String,
       email: email,
       date: date,
       creator: creator,
+      buyerId: buyerId,
     };
 
-    this.http.post<{message: String, contractId : String}>('http://localhost:3000/api/contracts/add', contract)
+    this.http.post<{message: String, contractId : String, buyerId : any, userId : any}>('http://localhost:3000/api/contracts/add', contract)
     .subscribe((responseData)=>{
       console.log(responseData.message)
       contract.id = responseData.contractId;

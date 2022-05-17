@@ -39,13 +39,14 @@ getNewContractById(){
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
-        date: contract.date
+        date: contract.date,
+        buyerId: contract.buyerId
       };
     });
   }))
   .subscribe((transformedContract)=>{
-    console.log(transformedContract)
     this.contracts = transformedContract;
+    console.log(this.contracts);
     this.contractUpdated.next([...this.contracts]);
   })
 }
@@ -63,12 +64,12 @@ getHistoryByUserId(){
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
-        date: contract.date
+        date: contract.date,
+        buyerId: contract.buyerId
       };
     });
   }))
   .subscribe((transformedContract)=>{
-    console.log(transformedContract)
     this.contracts = transformedContract;
     this.contractUpdated.next([...this.contracts]);
   })
@@ -76,8 +77,6 @@ getHistoryByUserId(){
 
   getUserDetailsByUserId(userId : string)
   {
-    console.log("get user details functions");
-
     const temp : any = {
       userId: userId
     }
@@ -91,11 +90,9 @@ getHistoryByUserId(){
       this.userDetails.email = responseData.userDetails.email;
       // this.userDetails.image = responseData.userDetails.image;
       this.details.next(this.userDetails)
-      this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
     },error=>{
-      this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
+      console.log("no transaction yet");
+
     })
-
-}
-
+  }
 }

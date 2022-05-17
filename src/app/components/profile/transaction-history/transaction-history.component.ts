@@ -18,7 +18,7 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['depositSeller', 'depositBuyer', 'date', 'email'];
   dataSource!: MatTableDataSource<Contract>;
-  contracts : Contract[] = [];
+  historyContracts : Contract[] = [];
   private constractsSub: Subscription | undefined;
   flag: boolean = true;
   contractPerPage = 3;
@@ -54,8 +54,8 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
   liveDataOfContract(){
     this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
-      this.contracts = contracts;
-      this.dataSource = new MatTableDataSource(this.contracts);
+      this.historyContracts = contracts;
+      this.dataSource = new MatTableDataSource(this.historyContracts);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })

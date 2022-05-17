@@ -40,13 +40,17 @@ getNewContractById(){
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
         date: contract.date,
-        buyerId: contract.buyerId
+        buyerId: contract.buyerId,
+        status: contract.status
       };
     });
   }))
   .subscribe((transformedContract)=>{
     this.contracts = transformedContract;
+    console.log("New")
     console.log(this.contracts);
+    console.log("New")
+
     this.contractUpdated.next([...this.contracts]);
   })
 }
@@ -65,12 +69,16 @@ getHistoryByUserId(){
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
         date: contract.date,
-        buyerId: contract.buyerId
+        buyerId: contract.buyerId,
+        status: contract.status
       };
     });
   }))
   .subscribe((transformedContract)=>{
     this.contracts = transformedContract;
+    console.log("History")
+    console.log(this.contracts);
+    console.log("History")
     this.contractUpdated.next([...this.contracts]);
   })
 }

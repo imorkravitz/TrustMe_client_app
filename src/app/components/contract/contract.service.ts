@@ -63,7 +63,8 @@ addContract(description: String,
   email: String,
   date: Date,
   creator: any,
-  buyerId: any)
+  buyerId: any,
+  status: any)
   {
     const contract : Contract ={
       id: undefined,
@@ -76,11 +77,11 @@ addContract(description: String,
       date: date,
       creator: creator,
       buyerId: buyerId,
+      status: status,
     };
 
     this.http.post<{message: String, contractId : String, buyerId : any, userId : any}>('http://localhost:3000/api/contracts/add', contract)
     .subscribe((responseData)=>{
-      console.log(responseData.message)
       contract.id = responseData.contractId;
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.contracts.push(contract);
@@ -120,7 +121,7 @@ addContract(description: String,
 
 
 getContractById(){
-  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
+  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
   .pipe(map((contractData)=>{
     console.log(contractData);
 
@@ -133,7 +134,8 @@ getContractById(){
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
-        date: contract.date
+        date: contract.date,
+        status: contract.status
       };
     });
   }))

@@ -10,7 +10,7 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./new-deals.component.css']
 })
 export class NewDealsComponent implements OnInit, OnDestroy {
-  contracts : Contract[] = [];
+  newContract : Contract[] = [];
   private constractsSub: Subscription | undefined;
   userId: any;
 
@@ -26,7 +26,7 @@ export class NewDealsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.profileService.getNewContractById();
     this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
-      this.contracts = contracts;
+      this.newContract = contracts;
     })
     this.authService.getToken();
     this.userId = this.authService.getUserId();

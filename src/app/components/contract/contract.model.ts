@@ -8,7 +8,8 @@ export interface Contract{
   email : any;
   date : Date;
   creator: any;
-  buyerId: any
+  buyerId: any;
+  status: any;
 }
 
 export interface findUser{

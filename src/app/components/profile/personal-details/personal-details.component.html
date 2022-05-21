@@ -11,9 +11,9 @@
       <input type="file" #filePicker (change)="onImagePicked($event)"> -->
       <!-- <mat-error *ngIf="form.get('image')?.invalid">error</mat-error> -->
     </div>
-    <!-- <mat-nav-list>
+    <mat-nav-list  *ngIf="this.user">
       <p class="list">
-        {{user.name}}
+        <a>{{user.fullName}}</a>
       </p>
       <p class="list">
         <a>{{user.phone}}</a>
@@ -24,7 +24,7 @@
       <p class="list">
         <a class="update">Update Details</a>
       </p>
-    </mat-nav-list> -->
+    </mat-nav-list>
   </div>
 </form>
 
@@ -43,10 +43,10 @@
         </td>
         <!-- <mat-error *ngIf="form.get('image')?.invalid">error</mat-error> -->
       </tr>
-    </div>
-    <!-- <mat-nav-list class="mat-nav-list">
+    </div >
+    <mat-nav-list class="mat-nav-list"  *ngIf="this.user">
       <p class="list">
-        <a>{{user.name}}</a>
+        <a>{{user.fullName}}</a>
       </p>
       <p class="list">
         <a>{{user.phone}}</a>
@@ -57,6 +57,6 @@
       <p class="list">
         <a class="update">Update Details</a>
       </p>
-    </mat-nav-list> -->
+    </mat-nav-list>
   </div>
 </form>

@@ -9,7 +9,8 @@ export interface Contract{
 }
 
 export interface UserDetails{
-  name : String;
+  fullName : String ;
+  nameToPatch : String;
   phone : String | undefined;
   email : String;
   image : File | undefined;

@@ -9,7 +9,7 @@ import { NotifierService } from '../notifier/notifier.service';
 
 export class ProfileService {
   private contracts : Contract[] = [];
-  private userDetails : UserDetails = {name: '', phone: undefined, email: '',image: undefined};
+  private userDetails : UserDetails = {fullName: "", nameToPatch: '',phone: undefined, email: '',image: undefined};
   private contractUpdated = new Subject<Contract[]>();
   private details = new Subject<UserDetails>();
   private status: boolean = false;
@@ -93,7 +93,8 @@ getHistoryByUserId(){
     .subscribe((responseData)=>{
       // console.log(responseData.message)
       // console.log(responseData.userDetails)
-      this.userDetails.name = responseData.userDetails.firstName;
+      this.userDetails.fullName = responseData.userDetails.firstName + ' ' + responseData.userDetails.lastName;
+      this.userDetails.nameToPatch = responseData.userDetails.firstName
       this.userDetails.phone = responseData.userDetails.phoneNumber;
       this.userDetails.email = responseData.userDetails.email;
       // this.userDetails.image = responseData.userDetails.image;

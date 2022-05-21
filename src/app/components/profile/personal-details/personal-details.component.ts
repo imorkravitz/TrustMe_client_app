@@ -37,7 +37,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
   this.profileService.getUserDetailsByUserId(this.userId);
   this.constractsSub = this.profileService.getDetailsListener().subscribe(( user : UserDetails): void =>{
     this.user = user;
-    this.form.patchValue({title: this.user.name});
+    this.form.patchValue({title: this.user.nameToPatch});
     this.form.get('title')?.updateValueAndValidity();
   })
    this.form = new FormGroup({

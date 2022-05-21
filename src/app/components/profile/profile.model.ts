@@ -6,6 +6,7 @@ export interface NewContract {
   email : String;
   date : Date;
   buyerId : any;
+  status: String;
 }
 
 export interface HistoryContract {
@@ -16,6 +17,7 @@ export interface HistoryContract {
   email: String;
   date: Date;
   buyerId: any;
+  status: String;
 }
 
 export interface UserDetails {

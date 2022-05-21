@@ -16,7 +16,7 @@ import { findContracts } from '../../profile/profile.model'
 
 export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['depositSeller', 'depositBuyer', 'date', 'email'];
+  displayedColumns: string[] = ['email', 'depositSeller', 'depositBuyer', 'date', 'status'];
   dataSource!: MatTableDataSource<HistoryContract>;
   historyContracts : HistoryContract[] = [];
   private constractsSub: Subscription | undefined;

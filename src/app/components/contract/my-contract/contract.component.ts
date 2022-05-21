@@ -26,7 +26,7 @@ export class ContractComponent{
 
     this.contractService.addContract(form.value.description,
     form.value.depositSeller, form.value.depositBuyer, form.value.walletAddressSeller,
-    form.value.walletAddressBuyer ,form.value.email ,form.value.date, form.value.creator, form.value.buyerId
-    ,form.value.status);
+    form.value.walletAddressBuyer ,form.value.email ,form.value.date,
+    form.value.creator, form.value.buyerId);
   }
 }

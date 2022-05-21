@@ -10,6 +10,9 @@ export interface Contract{
   creator: any;
   buyerId: any;
   status: any;
+  tradeAddress: any | undefined;
+  buyerPay: Boolean ;
+  sellerPay: Boolean ;
 }
 
 export interface findUser{

@@ -9,10 +9,10 @@ import { NotifierService } from '../notifier/notifier.service';
 
 export class ProfileService {
   private HistoryContract : HistoryContract[] = [];
-  private NewContract : HistoryContract[] = [];
+  private NewContract : NewContract[] = [];
   private userDetails : UserDetails = {fullName: "", nameToPatch: '',phone: undefined, email: '',image: undefined};
   private NewContractUpdated = new Subject<NewContract[]>();
-  private HistoryContractUpdated = new Subject<NewContract[]>();
+  private HistoryContractUpdated = new Subject<HistoryContract[]>();
   private details = new Subject<UserDetails>();
   private status: boolean = false;
 
@@ -80,7 +80,7 @@ getHistoryByUserId(){
         email: contract.email,
         date: contract.date,
         buyerId: contract.buyerId,
-        status: contract.status
+        status: contract.status,
       };
     });
   }))
@@ -115,3 +115,5 @@ getHistoryByUserId(){
     })
   }
 }
+
+

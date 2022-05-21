@@ -31,7 +31,6 @@ getContract(postId: string | null) {
 }
 
 deleteContract(postId: string | undefined) {
-
 }
 
 getBuyerId(){
@@ -63,8 +62,7 @@ addContract(description: String,
   email: String,
   date: Date,
   creator: any,
-  buyerId: any,
-  status: any)
+  buyerId: any)
   {
     const contract : Contract ={
       id: undefined,
@@ -77,7 +75,10 @@ addContract(description: String,
       date: date,
       creator: creator,
       buyerId: buyerId,
-      status: status,
+      status: "created",
+      tradeAddress: undefined,
+      buyerPay: false,
+      sellerPay: false
     };
 
     this.http.post<{message: String, contractId : String, buyerId : any, userId : any}>('http://localhost:3000/api/contracts/add', contract)
@@ -135,7 +136,10 @@ getContractById(){
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
         date: contract.date,
-        status: contract.status
+        status: contract.status,
+        tradeAddress: contract.tradeAddress,
+        buyerPay: contract.buyerPay,
+        sellerPay: contract.sellerPay
       };
     });
   }))

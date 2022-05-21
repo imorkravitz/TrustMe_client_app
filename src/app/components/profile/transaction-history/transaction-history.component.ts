@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { Contract } from '../profile.model';
+import { HistoryContract } from '../profile.model';
 import { ProfileService } from '../profile.service';
 import { AuthService } from '../../auth/auth.service'
 import { findContracts } from '../../profile/profile.model'
@@ -17,8 +17,8 @@ import { findContracts } from '../../profile/profile.model'
 export class TransactionHistoryComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['depositSeller', 'depositBuyer', 'date', 'email'];
-  dataSource!: MatTableDataSource<Contract>;
-  historyContracts : Contract[] = [];
+  dataSource!: MatTableDataSource<HistoryContract>;
+  historyContracts : HistoryContract[] = [];
   private constractsSub: Subscription | undefined;
   flag: boolean = true;
   contractPerPage = 3;
@@ -53,7 +53,7 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   }
 
   liveDataOfContract(){
-    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    this.constractsSub = this.profileService.getHistoryContractUpdatedListener().subscribe(( contracts : HistoryContract[]): void =>{
       this.historyContracts = contracts;
       this.dataSource = new MatTableDataSource(this.historyContracts);
       this.dataSource.paginator = this.paginator;

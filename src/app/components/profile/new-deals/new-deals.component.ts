@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
-import { Contract } from '../profile.model';
+import { NewContract } from '../profile.model';
 import { ProfileService } from '../profile.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./new-deals.component.css']
 })
 export class NewDealsComponent implements OnInit, OnDestroy {
-  newContract : Contract[] = [];
+  newContract : NewContract[] = [];
   private constractsSub: Subscription | undefined;
   userId: any;
 
@@ -25,7 +25,7 @@ export class NewDealsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.profileService.getNewContractById();
-    this.constractsSub = this.profileService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+    this.constractsSub = this.profileService.getNewContractUpdatedListener().subscribe(( contracts : NewContract[]): void =>{
       this.newContract = contracts;
     })
     this.authService.getToken();

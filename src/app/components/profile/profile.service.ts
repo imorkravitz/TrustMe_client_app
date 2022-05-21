@@ -2,23 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Contract, findContracts, UserDetails } from './profile.model';
+import { HistoryContract, findContracts, UserDetails, NewContract } from './profile.model';
 import { NotifierService } from '../notifier/notifier.service';
 
 @Injectable({providedIn: 'root'})
 
 export class ProfileService {
-  private contracts : Contract[] = [];
+  private HistoryContract : HistoryContract[] = [];
+  private NewContract : HistoryContract[] = [];
   private userDetails : UserDetails = {fullName: "", nameToPatch: '',phone: undefined, email: '',image: undefined};
-  private contractUpdated = new Subject<Contract[]>();
+  private NewContractUpdated = new Subject<NewContract[]>();
+  private HistoryContractUpdated = new Subject<NewContract[]>();
   private details = new Subject<UserDetails>();
   private status: boolean = false;
 
 constructor(private http: HttpClient, private router: Router,
   private notificationService: NotifierService) {}
 
-getContractUpdatedListener() {
-  return this.contractUpdated.asObservable();
+getNewContractUpdatedListener() {
+  return this.NewContractUpdated.asObservable();
+}
+
+getHistoryContractUpdatedListener() {
+  return this.HistoryContractUpdated.asObservable();
 }
 
 getDetailsListener() {
@@ -30,6 +36,9 @@ getNewContractById(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
   .pipe(map((contractData)=>{
 
+    if(contractData === null)
+       return null;
+
     return contractData.contracts.map((contract: any) => {
       return {
         id: contract._id,
@@ -46,12 +55,12 @@ getNewContractById(){
     });
   }))
   .subscribe((transformedContract)=>{
-    this.contracts = transformedContract;
+    this.NewContract = transformedContract;
     console.log("New")
-    console.log(this.contracts);
+    console.log(this.NewContract);
     console.log("New")
 
-    this.contractUpdated.next([...this.contracts]);
+    this.NewContractUpdated.next([...this.NewContract]);
   })
 }
 
@@ -60,6 +69,7 @@ getHistoryByUserId(){
   .pipe(map((contractData)=>{
 
     return contractData.contracts.map((contract: any) => {
+
       return {
         id: contract._id,
         description: contract.description,
@@ -75,11 +85,11 @@ getHistoryByUserId(){
     });
   }))
   .subscribe((transformedContract)=>{
-    this.contracts = transformedContract;
+    this.HistoryContract = transformedContract;
     console.log("History")
-    console.log(this.contracts);
+    console.log(this.HistoryContract);
     console.log("History")
-    this.contractUpdated.next([...this.contracts]);
+    this.HistoryContractUpdated.next([...this.HistoryContract]);
   })
 }
 

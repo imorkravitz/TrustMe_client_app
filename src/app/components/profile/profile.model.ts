@@ -1,4 +1,4 @@
-export interface Contract{
+export interface NewContract{
   id : String | undefined;
   description : String;
   depositSeller : Number;
@@ -7,6 +7,17 @@ export interface Contract{
   date : Date;
   buyerId : any;
 }
+
+export interface HistoryContract{
+  id : String | undefined;
+  description : String;
+  depositSeller : Number;
+  depositBuyer : Number;
+  email : String;
+  date : Date;
+  buyerId : any;
+}
+
 
 export interface UserDetails{
   fullName : String ;

@@ -55,7 +55,12 @@ import { RecomendationComponent } from './components/profile/recomendation/recom
 import { TransactionHistoryComponent } from './components/profile/transaction-history/transaction-history.component';
 import { PersonalDetailsComponent } from './components/profile/personal-details/personal-details.component';
 import { NewDealsComponent } from './components/profile/new-deals/new-deals.component'
-import { HomepageComponent } from './components/homepage/homepage.component'
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { PartnerComponent } from './components/partner/partner.component';
+import { PartnerDealsComponent } from './components/partner/partner-deals/partner-deals.component';
+import { PartnerDetailsComponent } from './components/partner/partner-details/partner-details.component';
+import { PartnerRecomendationComponent } from './components/partner/partner-recomendation/partner-recomendation.component';
+import { PartnerTransactionHistoryComponent } from './components/partner/partner-transaction-history/partner-transaction-history.component'
 
 
 @NgModule({
@@ -79,7 +84,12 @@ import { HomepageComponent } from './components/homepage/homepage.component'
     TransactionHistoryComponent,
     PersonalDetailsComponent,
     NewDealsComponent,
-    HomepageComponent
+    HomepageComponent,
+    PartnerComponent,
+    PartnerDealsComponent,
+    PartnerDetailsComponent,
+    PartnerRecomendationComponent,
+    PartnerTransactionHistoryComponent
 
   ],
   imports: [

@@ -11,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RecomendationComponent } from './components/profile/recomendation/recomendation.component';
 import { HomepageComponent } from './components/homepage/homepage.component'
 import { AuthGuard } from "./components/auth/auth.guard"
+import { PartnerComponent } from './components/partner/partner.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
   { path: "recomendation", component: RecomendationComponent },
   { path: "homepage", component: HomepageComponent },
+  { path: "partner", component: PartnerComponent, canActivate:[AuthGuard] }
 
 ];
 

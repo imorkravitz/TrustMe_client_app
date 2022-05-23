@@ -1,0 +1,65 @@
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+mat-paginator {
+  margin-top: 1rem
+}
+
+.filter{
+  width: 20%;
+  margin-top: -40px;
+  margin-left: 60%;
+}
+
+.titleNewContract{
+  margin-bottom: -3%;
+  margin-top: 5%;
+  /* margin-left: 10%; */
+}
+
+div{
+  width: 80%;
+  /* margin-left: 10%; */
+  margin-right: 70%;
+}
+
+table{
+  width: 100%;
+}
+
+mat-icon{
+  transform: scale(1.25);
+
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+}
+
+@media only screen and (max-width: 820px) {
+  /* For mobile phones: */
+  .phone{
+     width: 100%;
+  }
+  div{
+    margin-left:2.5%;
+    width: 95%;
+  }
+  .titleNewContract{
+    margin-left: 3%;
+  }
+  .filter{
+    width: 30%;
+    margin-top: -40px;
+    margin-left: 65%;
+  }
+}
+
+td{
+  font-size:12px;
+}

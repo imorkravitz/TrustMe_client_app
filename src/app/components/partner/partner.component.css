@@ -1,0 +1,49 @@
+.example-container{
+  width: 100%;
+
+}
+.example-drawer{
+  width: 20%;
+
+}
+.example-content{
+  width: 80%;
+  margin-left: 7%;
+
+}
+
+@media only screen and (max-width: 820px) {
+  /* For mobile phones: */
+
+  .details{
+    width: 100%;
+    margin-top: 5%;
+  }
+  /* .image-button{
+  }
+  .update-button{
+  } */
+}
+
+
+.btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
+  .btn-grad {
+    margin: 10px;
+    padding: 5px 20px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+
+   .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }

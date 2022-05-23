@@ -1,0 +1,27 @@
+<mat-drawer-container class="example-container" *ngIf="mobile >= 820">
+  <mat-drawer class="example-drawer" mode="side" opened position="end">
+    <app-partner-details class="details"></app-partner-details>
+  </mat-drawer>
+  <mat-drawer-content class="example-content">
+    <app-partner-deals class="new-deals"></app-partner-deals>
+    <app-partner-transaction-history class="transaction"></app-partner-transaction-history>
+    <app-partner-recomendation class="recomendation"></app-partner-recomendation>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<section *ngIf="mobile < 820">
+  <div>
+    <div class="details">
+      <app-partner-details></app-partner-details>
+    </div>
+    <div class="new-deals">
+      <app-partner-deals></app-partner-deals>
+    </div>
+    <div class="transaction">
+      <app-partner-transaction-history></app-partner-transaction-history>
+    </div>
+    <div class="col-12 recomendation">
+      <app-partner-recomendation></app-partner-recomendation>
+    </div>
+  </div>
+</section>

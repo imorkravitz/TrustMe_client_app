@@ -84,6 +84,8 @@ addContract(description: String,
     this.http.post<{message: String, contractId : String, buyerId : any, userId : any}>('http://localhost:3000/api/contracts/add', contract)
     .subscribe((responseData)=>{
       contract.id = responseData.contractId;
+      contract.buyerId = responseData.buyerId;
+      console.log( responseData.buyerId)
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.contracts.push(contract);
       this.contractUpdated.next([...this.contracts]);
@@ -127,6 +129,7 @@ getContractById(){
     console.log(contractData);
 
     return contractData.contracts.map((contract: any) => {
+      console.log(contract.buyerId + "getContractById")
       return {
         id: contract._id,
         description: contract.description,
@@ -135,6 +138,7 @@ getContractById(){
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
         email: contract.email,
+        buyerId: contract.buyerID,
         date: contract.date,
         status: contract.status,
         tradeAddress: contract.tradeAddress,
@@ -144,7 +148,7 @@ getContractById(){
     });
   }))
   .subscribe((transformedContract)=>{
-    console.log(transformedContract)
+    console.log(transformedContract);
     this.contracts = transformedContract;
     this.contractUpdated.next([...this.contracts]);
   })

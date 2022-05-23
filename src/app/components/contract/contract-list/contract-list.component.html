@@ -29,8 +29,8 @@
             <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> YES</li>
           </ul>
           <div class="card-body">
-            <a href="#" class="card-link">Partner profile</a>
-            <a href="#" class="card-link">Status: {{contract.status}}</a> 
+            <a [routerLink]="['/partner', contract.email]" class="card-link" >Partner profile</a>
+            <a href="#" class="card-link">Status: {{contract.status}}</a>
           </div>
         </div>
       </div>

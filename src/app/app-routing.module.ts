@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
   { path: "recomendation", component: RecomendationComponent },
   { path: "homepage", component: HomepageComponent },
-  { path: "partner", component: PartnerComponent, canActivate:[AuthGuard] }
+  { path: "partner/:id", component: PartnerComponent, canActivate:[AuthGuard] }
 
 ];
 

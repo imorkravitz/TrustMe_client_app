@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PartnerService } from '../partner.service';
 import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-partner-details',
@@ -15,12 +16,14 @@ export class PartnerDetailsComponent implements OnInit, OnDestroy{
 
 
   constructor(public partnerService: PartnerService,
-    public authService: AuthService) { }
+    public authService: AuthService,
+    private _Activatedroute:ActivatedRoute) { }
 
   userId: any;
   mobile: any;
   user !: UserDetails;
   private constractsSub: Subscription | undefined;
+  emailOfPartner: any;
 
   imagePreview : string | null | ArrayBuffer = "";
   form !: FormGroup ;
@@ -31,8 +34,8 @@ export class PartnerDetailsComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
-  this.userId = this.authService.getUserId();
-  this.partnerService.getUserDetailsByUserId(this.userId);
+  this.emailOfPartner = this._Activatedroute.snapshot.paramMap.get("id");
+  this.partnerService.getUserDetailsByEmail(this.emailOfPartner);
   this.constractsSub = this.partnerService.getDetailsListener().subscribe(( user : UserDetails): void =>{
     this.user = user;
     this.form.patchValue({title: this.user.nameToPatch});

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { HistoryContract } from '../partner.model';
 import { PartnerService } from '../partner.service';
 import { AuthService } from '../../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-partner-transaction-history',
@@ -22,16 +23,19 @@ export class PartnerTransactionHistoryComponent implements OnInit, AfterViewInit
   contractPerPage = 3;
   pageSizeOptions = [1,3,5,10];
   userId: any;
+  emailOfPartner: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(public partnerService: PartnerService,
-    public authService: AuthService ) {
+    public authService: AuthService,
+    private _Activatedroute:ActivatedRoute ) {
       this.userId = ""
     }
   ngOnInit(): void {
-    this.partnerService.getHistoryByUserId();
+    this.emailOfPartner = this._Activatedroute.snapshot.paramMap.get("id");
+    this.partnerService.getHistoryByEmail(this.emailOfPartner)
     this.liveDataOfContract();
     this.authService.getToken();
     this.userId = this.authService.getUserId();

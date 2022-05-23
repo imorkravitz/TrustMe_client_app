@@ -33,8 +33,11 @@ getDetailsListener() {
 }
 
 
-getNewContractById(){
-  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
+getNewContractByEmail(partner: any){
+  const temp : any = {
+    partner: partner,
+  }
+  this.http.post<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByEmail',temp)
   .pipe(map((contractData)=>{
 
     if(contractData === null)
@@ -65,8 +68,11 @@ getNewContractById(){
   })
 }
 
-getHistoryByUserId(){
-  this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getHistoryByUserId')
+getHistoryByEmail(partner: any){
+  const temp : any = {
+    partner: partner,
+  }
+  this.http.post<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getHistoryByEmail',temp)
   .pipe(map((contractData)=>{
 
     return contractData.contracts.map((contract: any) => {
@@ -94,18 +100,18 @@ getHistoryByUserId(){
   })
 }
 
-  getUserDetailsByUserId(userId : string)
+  getUserDetailsByEmail(partner : string)
   {
     const temp : any = {
-      userId: userId
+      partner: partner,
     }
 
-    this.http.post<{message: String, userDetails : any}>('http://localhost:3000/api/users/getUserDetailsByUserId',temp)
+    this.http.post<{message: String, userDetails : any}>('http://localhost:3000/api/users/getUserDetailsByEmail',temp)
     .subscribe((responseData)=>{
       // console.log(responseData.message)
       // console.log(responseData.userDetails)
       this.userDetails.fullName = responseData.userDetails.firstName + ' ' + responseData.userDetails.lastName;
-      this.userDetails.nameToPatch = responseData.userDetails.firstName
+      this.userDetails.nameToPatch = responseData.userDetails.firstName;
       this.userDetails.phone = responseData.userDetails.phoneNumber;
       this.userDetails.email = responseData.userDetails.email;
       // this.userDetails.image = responseData.userDetails.image;

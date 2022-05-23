@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-partner',
@@ -9,11 +10,12 @@ export class PartnerComponent implements OnInit {
   panelOpenState = false;
   hidden = false;
   mobile: any;
+  emailOfPartner : any;
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
-  constructor() { }
+  constructor(private _Activatedroute:ActivatedRoute) { }
 
   @HostListener("window:resize", ['$event'])
   private onResize(event: { target: { innerWidth: any; }; }): any {
@@ -22,5 +24,9 @@ export class PartnerComponent implements OnInit {
 
   ngOnInit(): void {
     this.mobile = window.innerWidth;
+    // this.emailOfPartner = this._Activatedroute.snapshot.paramMap.get("id");
+    // console.log(this.emailOfPartner);
+    // import { ActivatedRoute } from '@angular/router';
+    // private _Activatedroute:ActivatedRoute
   }
 }

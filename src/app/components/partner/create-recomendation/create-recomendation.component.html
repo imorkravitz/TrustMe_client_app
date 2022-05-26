@@ -1,0 +1,15 @@
+<h2 class="title">Add Recomendation</h2>
+<mat-card class="card">
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm" >
+  <mat-card-header>
+  <div mat-card-avatar class="example-header-image"></div>
+  <mat-card-title>
+   my name
+  </mat-card-title>
+  <mat-card-subtitle>
+    <textarea type ="text" matInput #message maxlength="50" rows="2"></textarea>
+    <mat-hint >{{message.value.length}} / 50</mat-hint>
+  </mat-card-subtitle>
+  </mat-card-header>
+</form>
+</mat-card>

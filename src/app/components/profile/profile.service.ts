@@ -10,10 +10,10 @@ import { NotifierService } from '../notifier/notifier.service';
 export class ProfileService {
   private HistoryContract : HistoryContract[] = [];
   private NewContract : NewContract[] = [];
-  private userDetails : UserDetails = {fullName: "", nameToPatch: '',phone: undefined, email: '',image: undefined};
   private NewContractUpdated = new Subject<NewContract[]>();
   private HistoryContractUpdated = new Subject<HistoryContract[]>();
   private details = new Subject<UserDetails>();
+  private userDetails : UserDetails = {fullName: "", nameToPatch: '',phone: undefined, email: '',image: undefined};
   private status: boolean = false;
 
 constructor(private http: HttpClient, private router: Router,

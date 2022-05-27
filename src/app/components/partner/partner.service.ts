@@ -121,4 +121,26 @@ getHistoryByEmail(partner: any){
 
     })
   }
+
+  getUserDetailsByUserId(userId : string)
+  {
+    const temp : any = {
+      userId: userId
+    }
+
+    this.http.post<{message: String, userDetails : any}>('http://localhost:3000/api/users/getUserDetailsByUserId',temp)
+    .subscribe((responseData)=>{
+      // console.log(responseData.message)
+      // console.log(responseData.userDetails)
+      this.userDetails.fullName = responseData.userDetails.firstName + ' ' + responseData.userDetails.lastName;
+      this.userDetails.nameToPatch = responseData.userDetails.firstName
+      this.userDetails.phone = responseData.userDetails.phoneNumber;
+      this.userDetails.email = responseData.userDetails.email;
+      // this.userDetails.image = responseData.userDetails.image;
+      this.details.next(this.userDetails)
+    },error=>{
+      console.log("no transaction yet");
+
+    })
+  }
 }

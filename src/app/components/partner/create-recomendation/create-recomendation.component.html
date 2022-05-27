@@ -4,12 +4,15 @@
   <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title>
-   my name
+   <div>{{user.fullName}}</div>
   </mat-card-title>
   <mat-card-subtitle>
-    <textarea type ="text" matInput #message maxlength="50" rows="2"></textarea>
-    <mat-hint >{{message.value.length}} / 50</mat-hint>
+    <textarea type ="text" matInput name ="message" ngModel #message="ngModel" maxlength="50" rows="2"  required></textarea>
+    <!-- <mat-hint >{{message.value.length}} / 50</mat-hint> -->
   </mat-card-subtitle>
   </mat-card-header>
+  <mat-card-actions align="end" >
+    <button mat-button type="submit">Add</button>
+  </mat-card-actions>
 </form>
 </mat-card>

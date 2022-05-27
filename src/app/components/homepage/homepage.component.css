@@ -1,6 +1,6 @@
 .backgroundImg{
 background-image: url('../../../assets/home1.png');
-display: flex;
+/* display: flex; */
 width: 100%;
 height: 100vh;
 background-size: cover;
@@ -92,7 +92,6 @@ transform: perspective(500px) rotateY(360deg);
   transform: perspective(500px) translateZ(50px);
 }
 
-
 .secured {
   width:75px;
   height:auto;
@@ -156,7 +155,7 @@ transform: perspective(500px) rotateY(360deg);
   }
 
    .row-contanier{
-      margin-top: 250px;
+      margin-top: 150px;
       margin-left: -300px;
       padding: 20px;
    }

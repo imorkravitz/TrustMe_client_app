@@ -12,7 +12,7 @@
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <br><br><br><br>
-    <button class="btn-grad" mat-raised-button color="mat-is-dark" type="submit">Login</button>
+    <button class="btn-grad" mat-raised-button color="primary" type="submit">Login</button>
   </form>
   <div *ngIf="loaderService.isLoading | async" class="loader-container">
     <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>

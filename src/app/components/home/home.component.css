@@ -35,9 +35,25 @@
 }
 
 .card-title{
-  padding-top: 10px;
-  border-radius: 6px;
+  border-radius: 12px;
+  margin-left:-15px;
+  margin-top: -12px;
+  font-family:sans-serif;
+  width: 55%;
+  justify-content:center;
+  margin-left:auto;
+  margin-right: auto;
 }
+
+.title {
+  font-size:12px;
+  height: 8px;
+  margin-left:auto;
+  margin-right: auto;
+  justify-content:center;
+
+}
+
 
 
 h1, h2 {

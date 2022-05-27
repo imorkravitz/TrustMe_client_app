@@ -96,33 +96,6 @@ addContract(description: String,
     console.log(contract);
 }
 
-// getAllContract() {
-//   //get data from a server to client(angular side)
-//   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
-//   .pipe(map((contractData)=>{
-//     console.log(contractData);
-
-//     return contractData.contracts.map((contract: any) => {
-//       return {
-//         id: contract._id,
-//         description: contract.description,
-//         depositSeller: contract.depositSeller,
-//         depositBuyer: contract.depositBuyer,
-//         walletAddressSeller: contract.walletAddressSeller,
-//         walletAddressBuyer: contract.walletAddressBuyer,
-//         email: contract.email,
-//         date: contract.date
-//       };
-//     });
-//   }))
-//   .subscribe((transformedContract)=>{
-//     console.log(transformedContract)
-//     this.contracts = transformedContract;
-//     this.contractUpdated.next([...this.contracts]);
-//   })
-// }
-
-
 getContractById(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
   .pipe(map((contractData)=>{

@@ -47,7 +47,40 @@ $vender-blueGrey: (
 200: #b0bec5,
 300: #90a4ae,
 400: #78909c,
-500: #3F50B5,
+500: #F24AA8,
+600: #546e7a,
+700: #455a64,
+800: #37474f,
+900: #002884,
+A100: #cfd8dc,
+A200: #b0bec5,
+A400: #78909c,
+A700: #455a64,
+contrast: (
+  50: $dark-primary-text,
+  100: $dark-primary-text,
+  200: $dark-primary-text,
+  300: $dark-primary-text,
+  400: $dark-primary-text,
+  500: $dark-primary-text,
+  600: $dark-primary-text,
+  700: $dark-primary-text,
+  800: $dark-primary-text,
+  900: $light-primary-text,
+  A100: $dark-primary-text,
+  A200: $dark-primary-text,
+  A400: $dark-primary-text,
+  A700: $dark-primary-text,
+  )
+);
+
+$vender-black: (
+50: #757ce8,
+100: #cfd8dc,
+200: #b0bec5,
+300: #90a4ae,
+400: #78909c,
+500: #10100f,
 600: #546e7a,
 700: #455a64,
 800: #37474f,
@@ -85,9 +118,9 @@ $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);
 @include angular-material-theme($market-theme);
 
 //for dark theme
-$market-primary-dark: mat-palette($vender-cyan);
-$market-accent-dark: mat-palette($vender-blueGrey);
-$market-warn-dark: mat-palette($mat-red);
+$market-primary-dark: mat-palette($vender-blueGrey);
+$market-accent-dark: mat-palette($vender-black);
+$market-warn-dark: mat-palette($vender-blueGrey);
 
 $market-theme-dark: mat-dark-theme($market-primary-dark, $market-accent-dark, $market-warn-dark);
 .dark-theme-mode {

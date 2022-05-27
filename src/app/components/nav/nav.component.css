@@ -71,3 +71,7 @@ a {
   width: 50%;
 }
 
+a{
+  margin-left:-1px;
+  position: relative;
+}

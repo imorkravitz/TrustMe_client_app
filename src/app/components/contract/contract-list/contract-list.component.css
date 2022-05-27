@@ -58,3 +58,15 @@ h6{
     text-decoration: none;
   }
 
+.btn-primary{
+  margin: 30px;
+  position: relative;
+  text-align: center;
+  font-size: 12px;
+
+}
+
+  .card-link-1{
+    text-decoration: underline;
+    color:#2c9dff;
+  }

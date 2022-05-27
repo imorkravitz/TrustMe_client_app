@@ -28,7 +28,7 @@
 
       <span>
         <h1 class="title">
-          <mat-icon>whatshot</mat-icon>
+          <i class="fab fa-ethereum fa-1x"></i>
           <a routerLink="/homepage">
             Trust Me
           </a>
@@ -38,7 +38,9 @@
       <span class="example-spacer"></span>
       <span style="flex:auto;"></span>
       <mat-slide-toggle [(ngModel)]="isDarkTheme" labelPosition="before" (change)="storeThemeSelection()">
-        <mat-icon>bedtime</mat-icon>
+        <div color="primary">
+          <mat-icon>bedtime</mat-icon>
+        </div>
       </mat-slide-toggle>
       <ul>
         <li *ngIf="!userIsAuthenticated">

@@ -19,6 +19,10 @@ export interface findUser{
   email: String
 }
 
+export interface findTrade{
+  id: any
+}
+
 export interface ContractById{
   creator: any
 }

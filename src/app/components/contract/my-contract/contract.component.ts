@@ -29,8 +29,4 @@ export class ContractComponent{
     form.value.walletAddressBuyer ,form.value.email ,form.value.date,
     form.value.creator, form.value.buyerId);
   }
-
-  confirmContract(){
-
-  }
 }

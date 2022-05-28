@@ -4,7 +4,11 @@
 }
 .example-drawer{
   width: 20%;
-
+  height: 40%;
+  background-color: var(--vender-cyan);
+  border: none;
+  outline: none;
+  display: block;
 }
 .example-content{
   width: 80%;

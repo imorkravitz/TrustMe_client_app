@@ -36,9 +36,21 @@ h6{
   text-align: center;
 }
 
+.title{
+  background-color: var(--vender-cyan);
+  font-size: 30px; font-weight: 400;
+   line-height: 55px;
+   margin: 40 0 24px;
+   text-align: center;
+   text-transform: uppercase;
+}
+
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
   .btn-grad {
-    margin: 10px;
+    padding: 5px 10px;
+    font: 14px "Helvetica Neue";
+    font-weight: bold;
+    margin: 30px;
     padding: 5px 20px;
     text-align: center;
     transition: 0.5s;
@@ -62,11 +74,24 @@ h6{
   margin: 30px;
   position: relative;
   text-align: center;
-  font-size: 12px;
+  font-size: 10px;
 
 }
+.container{
+  font-size: 12px;
+}
 
-  .card-link-1{
-    text-decoration: underline;
-    color:#2c9dff;
-  }
+.greenStatus{
+  color: #00cd60;
+  font-weight: bold;
+}
+.orangeStatus{
+  color: #eb9b32;
+  font-weight: bold;
+}
+
+
+.card-link-1{
+  text-decoration: underline;
+  color:#2c9dff;
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Contract, findUser , ContractById } from './contract.model';
+import { Contract, findUser , ContractById, findTrade } from './contract.model';
 import { NotifierService } from '../notifier/notifier.service'
 
 @Injectable({providedIn: 'root'})
@@ -11,9 +11,11 @@ export class ContractService {
 
   private contracts : Contract[] = [];
   private contractUpdated = new Subject<Contract[]>();
+  private statusUpdated = new Subject<any>();
   private email: String
   private creator: any
   private buyerId: any;
+  private status:String;
 
 
 constructor(private http: HttpClient,
@@ -21,7 +23,16 @@ constructor(private http: HttpClient,
   private notificationService: NotifierService) {
     this.email = ""
     this.buyerId = ""
+    this.status="";
   }
+
+getContactStatus() {
+  return this.contracts;
+}
+
+getStatusUpdate() {
+  return this.statusUpdated.asObservable();
+}
 
 getContractUpdatedListener() {
   return this.contractUpdated.asObservable();
@@ -53,6 +64,21 @@ findUserEmail(email: String){
   })
 }
 
+updateContract(id: any){
+  const trade : findTrade = {
+    id : id
+  }
+  this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateContract", trade).
+  subscribe(
+    response =>{
+      console.log(response);
+      const tradeId = response.id;
+      return tradeId;
+  },error=>{
+    console.log("Error");
+  })
+}
+
 
 addContract(description: String,
   depositSeller: Number,
@@ -75,7 +101,7 @@ addContract(description: String,
       date: date,
       creator: creator,
       buyerId: buyerId,
-      status: "created",
+      status: "Waiting",
       tradeAddress: undefined,
       buyerPay: false,
       sellerPay: false
@@ -102,7 +128,6 @@ getContractById(){
     console.log(contractData);
 
     return contractData.contracts.map((contract: any) => {
-      console.log(contract.buyerId + "getContractById")
       return {
         id: contract._id,
         description: contract.description,

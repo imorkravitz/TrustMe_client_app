@@ -1,10 +1,10 @@
 <h2 class="title">Add Recomendation</h2>
-<mat-card class="card">
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm" >
+<mat-card class="card"  *ngIf="this.user">
+  <form (submit)="onAddRecomendation(postForm)" #postForm="ngForm" >
   <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title>
-   <div>{{user.fullName}}</div>
+   <a>{{user.fullName}}</a>
   </mat-card-title>
   <mat-card-subtitle>
     <textarea type ="text" matInput name ="message" ngModel #message="ngModel" maxlength="50" rows="2"  required></textarea>

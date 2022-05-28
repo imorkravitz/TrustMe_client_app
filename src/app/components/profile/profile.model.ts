@@ -32,10 +32,9 @@ export interface findContracts {
   id: String;
 }
 
-export interface Massage {
-  id: string | undefined;
-  to: String;
-  by: String;
-  title: string;
-  content: string;
+export interface Recommendation {
+  messageFrom: String;
+  messageTo: String;
+  content: String;
+  senderName: String;
 }

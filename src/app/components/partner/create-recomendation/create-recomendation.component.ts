@@ -13,37 +13,46 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./create-recomendation.component.css'],
 })
 export class CreateRecomendationComponent implements OnInit, OnDestroy{
+  [x: string]: any;
   constructor(
-    partnerService: PartnerService,
+    public partnerService: PartnerService,
     public authService: AuthService,
-    public profileService: ProfileService
+    public profileService: ProfileService,
+    private _Activatedroute:ActivatedRoute
   ) {}
 
   userId: any;
   user!: UserDetails;
-  private constractsSub: Subscription | undefined;
+  private userSub: Subscription | undefined;
+  private partnerDetailsSub: Subscription | undefined;
+  emailOfPartner: any;
+  partnerDetails: any;
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     this.profileService.getUserDetailsByUserId(this.userId);
-    this.constractsSub = this.profileService
+    this.userSub = this.profileService
       .getDetailsListener()
       .subscribe((user: UserDetails): void => {
         this.user = user;
       });
+    this.emailOfPartner = this._Activatedroute.snapshot.paramMap.get("id");
+    this.partnerService.getUserDetailsByEmail(this.emailOfPartner);
+    this.partnerDetailsSub = this.partnerService.getDetailsListener().subscribe(( user : UserDetails): void =>{
+      this.partnerDetails = user;
+    })
   }
 
-  onAddPost(form: NgForm) {
+  onAddRecomendation(form: NgForm) {
     if (form.invalid) {
       return;
     }
-
     console.log(form.value.message);
-
-    // this.partnerService.addPost(form.value.title,form.value.content);
+    this.partnerService.addRecommendation(this.user.email, this.partnerDetails.email, form.value.message, this.user.fullName);
   }
 
   ngOnDestroy(): void {
-    this.constractsSub?.unsubscribe();
+    this.userSub?.unsubscribe();
+    this.partnerDetailsSub?.unsubscribe();
   }
 }

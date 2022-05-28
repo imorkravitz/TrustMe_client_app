@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { HistoryContract, findContracts, UserDetails, NewContract } from './partner.model';
+import { HistoryContract, findContracts, UserDetails, NewContract, Recommendation } from './partner.model';
 import { NotifierService } from '../notifier/notifier.service';
 
 @Injectable({providedIn: 'root'})
@@ -16,6 +16,8 @@ export class PartnerService {
   private HistoryContractUpdated = new Subject<HistoryContract[]>();
   private details = new Subject<UserDetails>();
   private status: boolean = false;
+  private recommendations : Recommendation[] =[];
+  private recommendationUpdate = new Subject<Recommendation[]>();
 
 constructor(private http: HttpClient, private router: Router,
   private notificationService: NotifierService) {}
@@ -30,6 +32,10 @@ getHistoryContractUpdatedListener() {
 
 getDetailsListener() {
   return this.details.asObservable();
+}
+
+getRecommendationListener(){
+  return this.recommendationUpdate.asObservable();
 }
 
 
@@ -118,29 +124,44 @@ getHistoryByEmail(partner: any){
       this.details.next(this.userDetails)
     },error=>{
       console.log("no transaction yet");
-
     })
   }
 
-  getUserDetailsByUserId(userId : string)
-  {
-    const temp : any = {
-      userId: userId
-    }
-
-    this.http.post<{message: String, userDetails : any}>('http://localhost:3000/api/users/getUserDetailsByUserId',temp)
+  addRecommendation(messageFrom: String, messageTo: String ,content: String, senderName: String) {
+    const recommendation : Recommendation ={
+      messageFrom: messageFrom,
+      messageTo: messageTo,
+      content: content,
+      senderName: senderName
+      };
+    this.http.post<{message: string}>('http://localhost:3000/api/recommendation/add', recommendation)
     .subscribe((responseData)=>{
-      // console.log(responseData.message)
-      // console.log(responseData.userDetails)
-      this.userDetails.fullName = responseData.userDetails.firstName + ' ' + responseData.userDetails.lastName;
-      this.userDetails.nameToPatch = responseData.userDetails.firstName
-      this.userDetails.phone = responseData.userDetails.phoneNumber;
-      this.userDetails.email = responseData.userDetails.email;
-      // this.userDetails.image = responseData.userDetails.image;
-      this.details.next(this.userDetails)
-    },error=>{
-      console.log("no transaction yet");
+      console.log(responseData.message)
+      this.recommendations.push(recommendation);
+      this.recommendationUpdate.next([...this.recommendations]);
+    })
 
+  }
+
+  getRecommendationByEmail(email : String) {
+    const temp : any = {
+      email: email,
+    }
+    this.http.post<{message: string, recommendations: any}>('http://localhost:3000/api/recommendation/getRecommendationByEmail', temp)
+    .pipe(map((postData)=>{
+      return postData.recommendations.map((message: any) => {
+        return {
+          messageFrom: message.messageFrom,
+          messageTo: message.messageTo,
+          content:  message.content,
+          senderName:  message.senderName
+        };
+      });
+    }))
+    .subscribe((transformedMessage)=>{
+      this.recommendations = transformedMessage;
+      this.recommendationUpdate.next([...this.recommendations]);
+      console.log(transformedMessage)
     })
   }
 }

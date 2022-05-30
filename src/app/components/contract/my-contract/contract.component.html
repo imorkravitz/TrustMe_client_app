@@ -1,13 +1,9 @@
 <mat-card class="backgroundImg">
-  <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign">
-    <!-- <mat-button-toggle-group name="side" ngModel #side="ngModel" required>
-      <mat-button-toggle value="Seller">Seller</mat-button-toggle>
-      <mat-button-toggle value="Buyer">Buyer</mat-button-toggle>
-    </mat-button-toggle-group> -->
-    <!-- <p>
-      <mat-error *ngIf="side.invalid"> First please enter your position</mat-error>
-    </p> -->
+  <!-- <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign"> -->
+    <form ngNoForm  class="formDesign" action="http://localhost:3000/escrow" method="post">
     <br>
+    <input type="hidden" name="token" value="{{token}}"/>
+
     <mat-form-field>
       <input matInput type="text" name="description" ngModel required minlength="3" placeholder="Description"
         #description="ngModel">
@@ -51,6 +47,6 @@
       <mat-datepicker #myDatePicker></mat-datepicker>
     </mat-form-field>
     <br>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="primary" mat-raised-button type="submit">Submit</button>
   </form>
 </mat-card>

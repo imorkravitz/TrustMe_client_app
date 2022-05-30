@@ -17,6 +17,8 @@ export class ProfileService {
   private status: boolean = false;
   private recommendations : Recommendation[] =[];
   private recommendationUpdate = new Subject<Recommendation[]>();
+  // private status: boolean = false;
+
 
 constructor(private http: HttpClient, private router: Router,
   private notificationService: NotifierService) {}
@@ -70,6 +72,23 @@ getNewContractById(){
   })
 }
 
+// getConfirmContract(){
+//   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/confirmContact')
+//   .pipe(map((contractData)=>{
+//     return contractData.contracts.map((contract: any) => {
+//       return{
+//         status: contract.status
+//       }
+//     });
+//   }))
+//   .subscribe((transformedContract)=>{
+//     console.log(transformedContract);
+
+//     this.NewContractUpdated = transformedContract;
+//     this.NewContractUpdated.next([...this.HistoryContract]);
+//   })
+// }
+
 getHistoryByUserId(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getHistoryByUserId')
   .pipe(map((contractData)=>{
@@ -107,8 +126,6 @@ getHistoryByUserId(){
 
     this.http.post<{message: String, userDetails : any}>('http://localhost:3000/api/users/getUserDetailsByUserId',temp)
     .subscribe((responseData)=>{
-      // console.log(responseData.message)
-      // console.log(responseData.userDetails)
       this.userDetails.fullName = responseData.userDetails.firstName + ' ' + responseData.userDetails.lastName;
       this.userDetails.nameToPatch = responseData.userDetails.firstName
       this.userDetails.phone = responseData.userDetails.phoneNumber;
@@ -116,7 +133,7 @@ getHistoryByUserId(){
       // this.userDetails.image = responseData.userDetails.image;
       this.details.next(this.userDetails)
     },error=>{
-      console.log("no transaction yet");
+      console.log("No transaction yet");
 
     })
   }

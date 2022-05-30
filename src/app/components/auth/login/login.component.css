@@ -52,6 +52,9 @@ mat-card{
 
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
 .btn-grad {
+padding: 5px 10px;
+font: 14px "Helvetica Neue";
+font-weight: bold;
 margin-left: auto;
 margin-right: auto;
 padding: 8px 45px;

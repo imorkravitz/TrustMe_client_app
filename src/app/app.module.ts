@@ -60,7 +60,8 @@ import { PartnerComponent } from './components/partner/partner.component';
 import { PartnerDealsComponent } from './components/partner/partner-deals/partner-deals.component';
 import { PartnerDetailsComponent } from './components/partner/partner-details/partner-details.component';
 import { PartnerRecomendationComponent } from './components/partner/partner-recomendation/partner-recomendation.component';
-import { PartnerTransactionHistoryComponent } from './components/partner/partner-transaction-history/partner-transaction-history.component'
+import { PartnerTransactionHistoryComponent } from './components/partner/partner-transaction-history/partner-transaction-history.component';
+import { CreateRecomendationComponent } from './components/partner/create-recomendation/create-recomendation.component'
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { PartnerTransactionHistoryComponent } from './components/partner/partner
     PartnerDealsComponent,
     PartnerDetailsComponent,
     PartnerRecomendationComponent,
-    PartnerTransactionHistoryComponent
+    PartnerTransactionHistoryComponent,
+    CreateRecomendationComponent
 
   ],
   imports: [

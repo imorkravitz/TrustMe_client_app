@@ -15,8 +15,8 @@ import { ActivatedRoute } from '@angular/router'
 export class PartnerDetailsComponent implements OnInit, OnDestroy{
 
 
-  constructor(public partnerService: PartnerService,
-    public authService: AuthService,
+  constructor(private partnerService: PartnerService,
+    private authService: AuthService,
     private _Activatedroute:ActivatedRoute) { }
 
   userId: any;

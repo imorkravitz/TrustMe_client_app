@@ -20,6 +20,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
 
   // is a place to put the code that we need to execute at very first as soon as the class is instantiated.
   ngOnInit(): void {
+    this.contractService.getContractCount();
     this.contractService.getContractById();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;

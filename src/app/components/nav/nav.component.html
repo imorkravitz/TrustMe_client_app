@@ -7,14 +7,8 @@
       <a mat-list-item routerLink="/homepage">Home</a>
       <a mat-list-item routerLink="/benefits">Why Trust Me</a>
       <a mat-list-item routerLink="/aboutus">About As</a>
-      <!-- <a mat-list-item routerLink="/profile">Profile</a> -->
-      <a mat-list-item href="/profile">
-
-        <span class="icon">
-          <!-- [matBadge]="notification()" -->
-          Profile
-        </span>
-      </a>
+      <a mat-list-item routerLink="/profile">Profile</a>
+      <!-- <a mat-list-item href="/profile">Profile</a> -->
       <a mat-list-item routerLink="/contract">New Transactions</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -57,6 +51,7 @@
         </li>
         <li *ngIf="userIsAuthenticated">
           <button mat-button routerLink="/profile" class="logoutcss ">My Profile</button>
+          <div class="circle">{{this.contractService.getContractCount()}}</div>
         </li>
       </ul>
     </mat-toolbar>

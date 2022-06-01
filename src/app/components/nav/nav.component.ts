@@ -6,7 +6,7 @@ import { AuthService } from '../auth/auth.service'
 import { Subscription } from 'rxjs'
 import { LoaderService } from '../loader/loader.service';
 import { Router } from '@angular/router';
-
+import { ContractService } from '../contract/contract.service'
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -28,11 +28,13 @@ export class NavComponent implements OnInit, OnDestroy{
   constructor(private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     public loaderService: LoaderService,
-    private router: Router) {
+    private router: Router,
+    public contractService: ContractService) {
     this.authListenerSubs = Subscription.EMPTY;
   }
 
   ngOnInit() {
+    this.contractService.getContractCount();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
     this.userIsAuthenticated = this.authService.getIsAuth();

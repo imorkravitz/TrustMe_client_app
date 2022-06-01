@@ -4,16 +4,36 @@
 
 .card{
     width: 80%;
-    /* margin-left: auto; */
+    height: auto;
     margin-right: auto;
     margin-top: 10px;
     margin-bottom: 5%;
 }
 
 .title{
-  /* margin-left: auto; */
   margin-top: 5%;
-  width: 90%;
+  width: 80%;
+}
+
+.mat-card-subtitle{
+  font-size: 10px !important;
+}
+
+.message{
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.star{
+  font-size: 0.90em;
+  margin:-30px;
+  position: relative;
+}
+
+.name{
+  position: relative;
+  margin-top: -20px;
+  font-size: 14px;
 }
 
 .note{

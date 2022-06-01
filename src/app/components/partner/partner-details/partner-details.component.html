@@ -11,15 +11,16 @@
       <input type="file" #filePicker (change)="onImagePicked($event)"> -->
       <!-- <mat-error *ngIf="form.get('image')?.invalid">error</mat-error> -->
     </div>
-    <mat-nav-list  *ngIf="this.user">
+    <mat-nav-list *ngIf="this.user">
+      <img src="../../../../assets/avatar.png" alt="Avatar" class="avatar">
       <p class="list">
-        <a>{{user.fullName}}</a>
+        Name: <a>{{user.fullName}}</a>
       </p>
       <p class="list">
-        <a>{{user.phone}}</a>
+        Phone: <a>{{user.phone}}</a>
       </p>
       <p class="list">
-        <a>{{user.email}}</a>
+        Email: <a>{{user.email}}</a>
       </p>
     </mat-nav-list>
   </div>
@@ -40,16 +41,17 @@
         </td>
         <!-- <mat-error *ngIf="form.get('image')?.invalid">error</mat-error> -->
       </tr>
-    </div >
-    <mat-nav-list class="mat-nav-list"  *ngIf="this.user">
+    </div>
+    <mat-nav-list class="mat-nav-list" *ngIf="this.user">
+      <img src="../../../../assets/avatar.png" alt="Avatar" class="avatar">
       <p class="list">
-        <a>{{user.fullName}}</a>
+        Name: <a>{{user.fullName}}</a>
       </p>
       <p class="list">
-        <a>{{user.phone}}</a>
+        Phone: <a>{{user.phone}}</a>
       </p>
       <p class="list">
-        <a>{{user.email}}</a>
+        Email: <a>{{user.email}}</a>
       </p>
     </mat-nav-list>
   </div>

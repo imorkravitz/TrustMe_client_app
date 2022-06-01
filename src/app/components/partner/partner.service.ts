@@ -66,10 +66,6 @@ getNewContractByEmail(partner: any){
   }))
   .subscribe((transformedContract)=>{
     this.NewContract = transformedContract;
-    console.log("New")
-    console.log(this.NewContract);
-    console.log("New")
-
     this.NewContractUpdated.next([...this.NewContract]);
   })
 }
@@ -99,9 +95,6 @@ getHistoryByEmail(partner: any){
   }))
   .subscribe((transformedContract)=>{
     this.HistoryContract = transformedContract;
-    console.log("History")
-    console.log(this.HistoryContract);
-    console.log("History")
     this.HistoryContractUpdated.next([...this.HistoryContract]);
   })
 }
@@ -136,7 +129,6 @@ getHistoryByEmail(partner: any){
       };
     this.http.post<{message: string}>('http://localhost:3000/api/recommendation/add', recommendation)
     .subscribe((responseData)=>{
-      console.log(responseData.message)
       this.recommendations.push(recommendation);
       this.recommendationUpdate.next([...this.recommendations]);
     })
@@ -161,7 +153,6 @@ getHistoryByEmail(partner: any){
     .subscribe((transformedMessage)=>{
       this.recommendations = transformedMessage;
       this.recommendationUpdate.next([...this.recommendations]);
-      console.log(transformedMessage)
     })
   }
 }

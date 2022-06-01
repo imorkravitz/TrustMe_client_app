@@ -39,10 +39,10 @@ h6{
 .title{
   background-color: var(--vender-cyan);
   font-size: 30px; font-weight: 400;
-   line-height: 55px;
-   margin: 40 0 24px;
-   text-align: center;
-   text-transform: uppercase;
+  line-height: 55px;
+  margin: 40 0 24px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}

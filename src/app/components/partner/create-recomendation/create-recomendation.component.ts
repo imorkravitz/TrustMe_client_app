@@ -47,7 +47,6 @@ export class CreateRecomendationComponent implements OnInit, OnDestroy{
     if (form.invalid) {
       return;
     }
-    console.log(form.value.message);
     this.partnerService.addRecommendation(this.user.email, this.partnerDetails.email, form.value.message, this.user.fullName);
   }
 

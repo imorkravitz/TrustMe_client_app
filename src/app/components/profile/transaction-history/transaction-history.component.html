@@ -1,5 +1,6 @@
 <h2 class="titleNewContract"> Transactions History </h2>
-<mat-form-field class="filter" appearance="standard">
+<form *ngIf="this.historyContracts.length > 0">
+<mat-form-field class="filter" appearance="standard" >
   <mat-label>
     <mat-icon>search</mat-icon>
   </mat-label>
@@ -45,3 +46,11 @@
   <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="contractPerPage" aria-label="Select page of users">
   </mat-paginator>
 </div>
+</form>
+<div *ngIf="this.historyContracts.length <= 0">
+  <ul class="btn-grad" mat-raised-button color="primary" mat-raised-button>
+    No Contract Finished Yet
+  </ul><br>
+</div>
+
+

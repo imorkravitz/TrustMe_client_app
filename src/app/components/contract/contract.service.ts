@@ -16,7 +16,7 @@ export class ContractService {
   private creator: any
   private buyerId: any;
   private status:String;
-
+  private counter:number = 0
 
 constructor(private http: HttpClient,
   private router: Router,
@@ -25,6 +25,10 @@ constructor(private http: HttpClient,
     this.buyerId = ""
     this.status="";
   }
+
+getContractCount() {
+  return this.counter;
+}
 
 getContactStatus() {
   return this.contracts;
@@ -149,6 +153,9 @@ getContractById(){
     console.log(transformedContract);
     this.contracts = transformedContract;
     this.contractUpdated.next([...this.contracts]);
+    this.counter = this.contracts.length;
+    console.log(this.counter);
+
   })
 }
 }

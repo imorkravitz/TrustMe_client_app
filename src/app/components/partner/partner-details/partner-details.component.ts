@@ -6,6 +6,7 @@ import { PartnerService } from '../partner.service';
 import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'
+import { AboutUsComponent } from '../../about-us/about-us.component';
 
 @Component({
   selector: 'app-partner-details',

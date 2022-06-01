@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { NewContract } from '../profile.model';
 import { ProfileService } from '../profile.service';
-
+import { ContractService } from '../../contract/contract.service'
 @Component({
   selector: 'app-new-deals',
   templateUrl: './new-deals.component.html',
@@ -12,10 +12,11 @@ import { ProfileService } from '../profile.service';
 export class NewDealsComponent implements OnInit, OnDestroy {
   newContract : NewContract[] = [];
   private constractsSub: Subscription | undefined;
-  userId: any;
+  userId: any
 
   constructor(public profileService: ProfileService,
-    public authService: AuthService) {
+    public authService: AuthService,
+    public contractService: ContractService) {
       this.userId = ""
     }
 
@@ -24,6 +25,7 @@ export class NewDealsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.contractService.getContractCount();
     this.profileService.getNewContractById();
     this.constractsSub = this.profileService.getNewContractUpdatedListener().subscribe(( contracts : NewContract[]): void =>{
       this.newContract = contracts;

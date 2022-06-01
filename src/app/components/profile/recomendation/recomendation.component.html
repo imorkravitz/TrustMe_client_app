@@ -1,16 +1,22 @@
-<h2 class="title">Recomendations</h2>
+<h2 class="title">Recommendation</h2>
 <mat-card class="card" *ngIf="this.recommendations.length >= 0">
-  <form *ngFor="let rec of this.recommendations">
-  <mat-card-header>
-  <div mat-card-avatar class="example-header-image"></div>
-  <mat-card-title>
-    <a>{{rec.senderName}}</a>
-  </mat-card-title>
-  <mat-card-subtitle>
-    <a>{{rec.content}}</a>
-  </mat-card-subtitle>
-  </mat-card-header>
-  <br>
+
+  <form *ngFor="let rec of recommendations">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <div>
+          <div>
+            <mat-icon color="primary" class="star">star</mat-icon>
+            <div class=name>
+              {{rec.senderName}}
+            </div>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <div class="message">{{rec.content}}</div>
+      </mat-card-subtitle>
+    </mat-card-header>
   </form>
 </mat-card>
-

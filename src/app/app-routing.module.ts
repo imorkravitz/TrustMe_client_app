@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: "newcontract", component: NewContractComponent, canActivate:[AuthGuard] },
   { path: "aboutus", component: AboutUsComponent },
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
-  { path: "recomendation", component: RecomendationComponent },
+  { path: "recommendation", component: RecomendationComponent },
   { path: "homepage", component: HomepageComponent },
   { path: "partner/:id", component: PartnerComponent, canActivate:[AuthGuard] }
 

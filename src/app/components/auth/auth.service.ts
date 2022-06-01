@@ -22,7 +22,8 @@ constructor(private http: HttpClient,
   private router: Router,
   private notificationService: NotifierService,
   ) {
-    this.userId = ""
+    this.userId = "";
+    this.email= "";
   }
 
 getEmail(){
@@ -85,7 +86,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
       email: email,
       password: password
     }
-    this.http.post<{accessToken: string, expiresIn: number, userId: String}>("http://localhost:3000/api/users/login", authLogin).
+    this.http.post<{accessToken: string, expiresIn: number, userId: String, email: String}>("http://localhost:3000/api/users/login", authLogin).
     subscribe(response =>{
       console.log(response);
       const accessToken = response.accessToken;
@@ -97,11 +98,12 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
           this.setAuthTimer(expiresInDuration)
           this.isAuthenticated = true;
           this.userId = response.userId;
+          this.email = response.email;
           this.authStatusListener.next(true);
           const now = new Date(); // from the current moment + durationTime of expiresInDuration = 60m
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
-          this.saveAuthData(accessToken, expirationDate, this.userId)
+          this.saveAuthData(accessToken, expirationDate, this.userId, this.email)
           this.router.navigate(['/homepage']);
       }
     }, err =>{
@@ -144,10 +146,11 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     }, duration * 1000); // == 15m
   }
   // save the token in localStorage
-  private saveAuthData(accessToken: string, expirationDate: Date, userId: string) {
+  private saveAuthData(accessToken: string, expirationDate: Date, userId: string, email:string) {
     localStorage.setItem("accessToken", accessToken); // store the value of the token
     localStorage.setItem("expiration", expirationDate.toISOString()); // with the expiration date
     localStorage.setItem("userId", userId)
+    localStorage.setItem("email", email)
   }
 
   // remove the token from localStorage
@@ -155,12 +158,14 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     localStorage.removeItem("accessToken");
     localStorage.removeItem("expiration");
     localStorage.removeItem("userId");
+    localStorage.removeItem("email")
   }
 
-  private getAuthData() {
+  public getAuthData() {
     const accessToken = localStorage.getItem("accessToken");
     const expirationDate = localStorage.getItem("expiration");
     const userId = localStorage.getItem("userId");
+    const email = localStorage.getItem("email");
     if (!accessToken || !expirationDate) {
       return;
     }

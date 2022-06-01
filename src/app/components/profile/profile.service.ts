@@ -17,8 +17,6 @@ export class ProfileService {
   private status: boolean = false;
   private recommendations : Recommendation[] =[];
   private recommendationUpdate = new Subject<Recommendation[]>();
-  // private status: boolean = false;
-
 
 constructor(private http: HttpClient, private router: Router,
   private notificationService: NotifierService) {}
@@ -38,7 +36,6 @@ getDetailsListener() {
 getRecommendationListener(){
   return this.recommendationUpdate.asObservable();
 }
-
 
 getNewContractById(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
@@ -64,30 +61,34 @@ getNewContractById(){
   }))
   .subscribe((transformedContract)=>{
     this.NewContract = transformedContract;
-    console.log("New")
-    console.log(this.NewContract);
-    console.log("New")
-
     this.NewContractUpdated.next([...this.NewContract]);
   })
 }
 
-// getConfirmContract(){
-//   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/confirmContact')
-//   .pipe(map((contractData)=>{
-//     return contractData.contracts.map((contract: any) => {
-//       return{
-//         status: contract.status
-//       }
-//     });
-//   }))
-//   .subscribe((transformedContract)=>{
-//     console.log(transformedContract);
 
-//     this.NewContractUpdated = transformedContract;
-//     this.NewContractUpdated.next([...this.HistoryContract]);
-//   })
-// }
+getReccomendations(){
+  this.http.get<{message: string, recommendations: any}>('http://localhost:3000/api/recommendation/getAllRecommandations')
+  .pipe(map((postData)=>{
+    if(postData === null)
+       return null;
+    return postData.recommendations.map((message: any) => {
+      return {
+        messageFrom: message.messageFrom,
+        messageTo: message.messageTo,
+        content:  message.content,
+        senderName:  message.senderName
+      };
+    });
+  }))
+  .subscribe((transformedMessage)=>{
+    this.recommendations = transformedMessage;
+      this.recommendationUpdate.next([...this.recommendations]);
+  })
+}
+
+
+
+
 
 getHistoryByUserId(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getHistoryByUserId')
@@ -111,9 +112,6 @@ getHistoryByUserId(){
   }))
   .subscribe((transformedContract)=>{
     this.HistoryContract = transformedContract;
-    console.log("History")
-    console.log(this.HistoryContract);
-    console.log("History")
     this.HistoryContractUpdated.next([...this.HistoryContract]);
   })
 }
@@ -142,9 +140,10 @@ getHistoryByUserId(){
     const temp : any = {
       email: email,
     }
-    this.http.post<{message: string, recommendations: any}>('http://localhost:3000/api/recommendation/getRecommendationByEmail', temp)
+    this.http.post<{recommendations: any}>('http://localhost:3000/api/recommendation/getRecommendationByEmail', temp)
     .pipe(map((postData)=>{
       return postData.recommendations.map((message: any) => {
+
         return {
           messageFrom: message.messageFrom,
           messageTo: message.messageTo,
@@ -156,7 +155,6 @@ getHistoryByUserId(){
     .subscribe((transformedMessage)=>{
       this.recommendations = transformedMessage;
       this.recommendationUpdate.next([...this.recommendations]);
-      console.log(transformedMessage)
     })
   }
 }

@@ -5,7 +5,8 @@ export interface Contract{
   depositBuyer : Number;
   walletAddressSeller: String;
   walletAddressBuyer: String;
-  email : any;
+  emailBuyer : any;
+  emailSeller : any;
   date : Date;
   creator: any;
   buyerId: any;

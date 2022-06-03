@@ -109,7 +109,8 @@ addContract(description: String,
       status: "Waiting",
       tradeAddress: undefined,
       buyerPay: false,
-      sellerPay: false
+      sellerPay: false,
+      escrowId: undefined,
     };
     console.log("begin post contract")
     this.http.post<{message: String, contractId : String, buyerId : any, userId : any, emailSeller : any}>('http://localhost:3000/api/contracts/add', contract)
@@ -148,7 +149,8 @@ getContractById(){
         status: contract.status,
         tradeAddress: contract.tradeAddress,
         buyerPay: contract.buyerPay,
-        sellerPay: contract.sellerPay
+        sellerPay: contract.sellerPay,
+        escrowId: contract.escrowId,
       };
     });
   }))

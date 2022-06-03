@@ -14,6 +14,7 @@ export interface Contract{
   tradeAddress: any | undefined;
   buyerPay: Boolean ;
   sellerPay: Boolean ;
+  escrowId : Number | undefined;
 }
 
 export interface findUser{

@@ -27,7 +27,6 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.contractService.getContractById();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
-      console.log(this.contracts);
     })
   }
 

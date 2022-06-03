@@ -14,7 +14,8 @@ export interface HistoryContract {
   description: String;
   depositSeller: Number;
   depositBuyer: Number;
-  email: String;
+  emailBuyer : String;
+  emailSeller : String;
   date: Date;
   buyerId: any;
   status: String;

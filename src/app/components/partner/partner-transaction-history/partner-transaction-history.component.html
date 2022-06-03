@@ -26,9 +26,10 @@
       <td mat-cell *matCellDef="let row"> {{row.date | date:'fullDate'}} </td>
     </ng-container>
 
+    <!-- add current email address -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Partner </th>
-      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.emailBuyer}} </td>
     </ng-container>
 
     <ng-container matColumnDef="status">

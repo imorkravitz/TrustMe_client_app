@@ -67,7 +67,6 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     this.http.
     post("http://localhost:3000/api/users/signup",authData).
     subscribe(response =>{
-      console.log(response);
     })
   }
 

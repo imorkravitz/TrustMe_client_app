@@ -70,7 +70,6 @@ findUserEmail(email: String){
   this.http.post<{email: String}>("http://localhost:3000/api/users/findUser", user).
   subscribe(
     response =>{
-      console.log(response);
       const userEmail = response.email;
       return userEmail
   },error=>{
@@ -155,7 +154,6 @@ addContract(description: String,
     .subscribe((responseData)=>{
       contract.id = responseData.contractId;
       contract.buyerId = responseData.buyerId;
-      console.log( responseData.buyerId)
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.contracts.push(contract);
       this.contractUpdated.next([...this.contracts]);
@@ -163,13 +161,11 @@ addContract(description: String,
     },error=>{
       this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
     })
-    console.log(contract);
 }
 
 getContractById(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
   .pipe(map((contractData)=>{
-    console.log(contractData);
 
     return contractData.contracts.map((contract: any) => {
       return {
@@ -190,8 +186,8 @@ getContractById(){
     });
   }))
   .subscribe((transformedContract)=>{
-    console.log(transformedContract);
     this.contracts = transformedContract;
+    console.log(this.contracts);
     this.contractUpdated.next([...this.contracts]);
     this.counter = this.contracts.length;
   })

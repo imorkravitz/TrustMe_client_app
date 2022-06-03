@@ -34,7 +34,6 @@ export class NewDealsComponent implements OnInit, OnDestroy {
     this.constractsSub = this.profileService.getNewContractUpdatedListener().subscribe(( contracts : NewContract[]): void =>{
       this.newContract = contracts;
       this.size = contracts.length;
-      console.log(contracts.length);
     })
     this.authService.getToken();
     this.userId = this.authService.getUserId();

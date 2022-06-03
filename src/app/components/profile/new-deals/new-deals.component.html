@@ -8,7 +8,7 @@
       <p *ngIf="this.user?.email != contract.emailSeller "><strong>Contract with: </strong> {{contract.emailSeller}}</p>
       <p *ngIf="this.user?.email != contract.emailBuyer "><strong>Contract with: </strong> {{contract.emailBuyer}}</p>
       <p><strong>Termination of transaction: </strong> {{contract.date | date:'fullDate'}}</p>
-      <p class="greenStatus"><strong>Status: </strong> {{contract.status}}</p>
+      <p class="greenStatus"><strong color="primary">Status: </strong> {{contract.status}}</p>
       <mat-action-row>
         go to transaction
       </mat-action-row>

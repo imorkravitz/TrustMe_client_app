@@ -1,4 +1,3 @@
-
 <h2 class="title">Recomendations</h2>
 <mat-card class="card" *ngIf="this.recommendations.length > 0">
   <form *ngFor="let rec of this.recommendations">
@@ -24,8 +23,8 @@
 </mat-card>
 <form class="note" *ngIf="this.recommendations.length <= 0">
   <div>
-    <ul class="btn-grad" mat-raised-button color="primary" mat-raised-button>
-      No Recomendations Yet
+    <ul><br>
+      No recommendations yet
     </ul><br>
   </div>
 </form>

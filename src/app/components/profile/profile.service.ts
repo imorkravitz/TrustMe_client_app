@@ -38,6 +38,7 @@ getRecommendationListener(){
 }
 
 getNewContractById(){
+  console.log("begin get new Contract")
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
   .pipe(map((contractData)=>{
 
@@ -52,7 +53,8 @@ getNewContractById(){
         depositBuyer: contract.depositBuyer,
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
-        email: contract.email,
+        emailBuyer: contract.emailBuyer,
+        emailSeller: contract.emailSeller,
         date: contract.date,
         buyerId: contract.buyerId,
         status: contract.status
@@ -62,6 +64,7 @@ getNewContractById(){
   .subscribe((transformedContract)=>{
     this.NewContract = transformedContract;
     this.NewContractUpdated.next([...this.NewContract]);
+    console.log("subscribe new Contract")
   })
 }
 
@@ -103,7 +106,8 @@ getHistoryByUserId(){
         depositBuyer: contract.depositBuyer,
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
-        email: contract.email,
+        emailBuyer: contract.emailBuyer,
+        emailSeller: contract.emailSeller,
         date: contract.date,
         buyerId: contract.buyerId,
         status: contract.status,

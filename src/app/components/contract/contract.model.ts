@@ -5,7 +5,8 @@ export interface Contract{
   depositBuyer : Number;
   walletAddressSeller: String;
   walletAddressBuyer: String;
-  email : any;
+  emailBuyer : any;
+  emailSeller : any;
   date : Date;
   creator: any;
   buyerId: any;
@@ -13,6 +14,7 @@ export interface Contract{
   tradeAddress: any | undefined;
   buyerPay: Boolean ;
   sellerPay: Boolean ;
+  escrowId : Number | undefined;
 }
 
 export interface findUser{

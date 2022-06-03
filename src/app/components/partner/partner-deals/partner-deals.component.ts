@@ -29,9 +29,11 @@ export class PartnerDealsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.emailOfPartner = this._Activatedroute.snapshot.paramMap.get("id");
+
     this.partnerService.getNewContractByEmail(this.emailOfPartner);
     this.constractsSub = this.partnerService.getNewContractUpdatedListener().subscribe(( contracts : NewContract[]): void =>{
       this.newContract = contracts;
+      console.log(this.newContract + "2222222")
     })
     this.authService.getToken();
     this.userId = this.authService.getUserId();

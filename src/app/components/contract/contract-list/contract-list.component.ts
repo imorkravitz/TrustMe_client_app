@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ProfileService } from "../../profile/profile.service"
 import { Contract } from '../contract.model';
 import { ContractService } from '../contract.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-contract-list',
@@ -14,9 +15,10 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   contractId : any;
   private constractsSub: Subscription | undefined;
   private status: Subscription | undefined;
-
+  email: any;
 
   constructor(public contractService: ContractService,
+    public authService: AuthService,
     public profileService: ProfileService,
     ) {
     }
@@ -28,6 +30,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
     })
+    this.email = this.authService.getEmail();
   }
 
   ngOnChanges() {

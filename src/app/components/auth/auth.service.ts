@@ -114,6 +114,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
     this.accessToken = null;
     this.isAuthenticated = false;
     this.userId = null;
+    this.email =null;
     this.removeTokenInSessionStorage();
     this.authStatusListener.next(false); // push this info to the other component
     clearTimeout(this.tokenTimer);
@@ -132,6 +133,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
       this.accessToken = authInformation.accessToken;
       this.isAuthenticated = true
       this.userId = authInformation.userId;
+      this.email = authInformation.email;
       this.setAuthTimer(expiresIn / 1000)
       this.authStatusListener.next(true)
     }
@@ -172,6 +174,7 @@ createUser(email: string, password: string, confirmPassword: string, firstName: 
       accessToken: accessToken,
       expirationDate: new Date(expirationDate),
       userId: userId,
+      email: email,
     }
   }
 

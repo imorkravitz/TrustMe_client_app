@@ -1,19 +1,19 @@
 <h2 class="titleNewContract"> New Contracts </h2>
-
 <form *ngIf=" this.newContract.length > 0">
-  <mat-accordion>
-    <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
-      <mat-expansion-panel-header>
-        <p><strong>Description: </strong> {{contract.description}}</p>
-      </mat-expansion-panel-header>
-      <p><strong>Contract with: </strong> {{contract.email}}</p>
-      <p><strong>Termination of transaction: </strong> {{contract.date | date:'fullDate'}}</p>
-      <p><strong>Status: </strong> {{contract.status}}</p>
-      <mat-action-row>
-        go to transaction
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
+<mat-accordion>
+  <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
+    <mat-expansion-panel-header>
+      <p><strong>Description: </strong> {{contract.description}}</p>
+    </mat-expansion-panel-header>
+    <p *ngIf="contract.emailSeller != this.emailOfPartner"><strong>Contract with: </strong> {{contract.emailSeller}}</p>
+    <p *ngIf="contract.emailBuyer != this.emailOfPartner"><strong>Contract with: </strong> {{contract.emailBuyer}}</p>
+    <p><strong>Termination of transaction: </strong> {{contract.date | date:'fullDate'}}</p>
+    <p><strong>Status: </strong> {{contract.status}}</p>
+    <mat-action-row>
+      go to transaction
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
 </form>
 <div class="newDeals" *ngIf=" this.newContract.length == 0">
   <ul>

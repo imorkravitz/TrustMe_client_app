@@ -1,4 +1,4 @@
-<h2 class="titleNewContract"> New deals </h2>
+<h2 class="titleNewContract"> New Contract </h2>
 <form *ngIf=" this.newContract.length > 0">
   <mat-accordion>
     <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
@@ -8,7 +8,7 @@
       <p *ngIf="this.user?.email != contract.emailSeller "><strong>Contract with: </strong> {{contract.emailSeller}}</p>
       <p *ngIf="this.user?.email != contract.emailBuyer "><strong>Contract with: </strong> {{contract.emailBuyer}}</p>
       <p><strong>Termination of transaction: </strong> {{contract.date | date:'fullDate'}}</p>
-      <p><strong>Status: </strong> {{contract.status}}</p>
+      <p class="greenStatus"><strong>Status: </strong> {{contract.status}}</p>
       <mat-action-row>
         go to transaction
       </mat-action-row>
@@ -17,7 +17,7 @@
 </form>
 
 <div class="newDeals" *ngIf=" this.newContract.length <= 0">
-  <ul class="btn-grad" mat-raised-button color="primary" mat-raised-button>
-    No Contract Created Yet
-  </ul><br>
+  <ul>
+    No contract has created yet
+  </ul>
 </div>

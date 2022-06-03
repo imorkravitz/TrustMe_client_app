@@ -70,7 +70,6 @@ findUserEmail(email: String){
   this.http.post<{email: String}>("http://localhost:3000/api/users/findUser", user).
   subscribe(
     response =>{
-      console.log(response);
       const userEmail = response.email;
       return userEmail
   },error=>{
@@ -173,7 +172,6 @@ addContract(description: String,
 getContractById(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getContracts')
   .pipe(map((contractData)=>{
-    console.log(contractData);
 
     return contractData.contracts.map((contract: any) => {
       return {
@@ -196,8 +194,8 @@ getContractById(){
     });
   }))
   .subscribe((transformedContract)=>{
-    console.log(transformedContract);
     this.contracts = transformedContract;
+    console.log(this.contracts);
     this.contractUpdated.next([...this.contracts]);
     this.counter = this.contracts.length;
   })

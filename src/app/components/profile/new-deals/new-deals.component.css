@@ -8,6 +8,16 @@
   margin-left: 0%;
 }
 
+.greenStatus{
+  color: #00cd60;
+  font-weight: bold;
+}
+
+strong{
+  color: #111;
+
+}
+
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
   .btn-grad {
     margin: 10px;

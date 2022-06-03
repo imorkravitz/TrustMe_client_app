@@ -1,61 +1,79 @@
 <h1 class="title">Your Contracts</h1>
+<button class="btn-grad" mat-raised-button color="primary" mat-raised-button type="submit" *ngIf="contracts.length > 0"
+  routerLink="/contract">
+  New Transction
+</button>
 <section class="mt-12" multi="true" *ngIf="contracts.length > 0">
   <div class="container">
     <div class="row gy-5">
       <div class="col-5" *ngFor="let contract of contracts">
         <div class="crad shadow-lg">
           <img class="card-img-top" />
-          <div class="card-body">
-            <p class="card-text"><strong>Description:</strong> {{contract.description}}</p>
-          </div>
           <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Description:</strong> {{contract.description}}
+            </li>
             <li class="list-group-item"><strong>Deposit Seller:</strong> {{contract.depositSeller}}
-              <mat-icon> attach_money</mat-icon>
+              <i style="font-size:10px">(wei)</i>
             </li>
             <li class="list-group-item"><strong>Deposit Buyer:</strong> {{contract.depositBuyer}}
-              <mat-icon> attach_money</mat-icon>
+              <i style="font-size:10px">(wei)</i>
             </li>
             <li class="list-group-item"><strong>Wallet Address Seller:</strong> {{contract.walletAddressSeller}}</li>
             <li class="list-group-item"><strong>Wallet Address Buyer:</strong> {{contract.walletAddressBuyer}}</li>
-            <li class="list-group-item" *ngIf="contract.emailSeller != this.email" ><strong>Contract with:</strong> {{contract.emailSeller}}</li>
-            <li class="list-group-item" *ngIf="contract.emailBuyer != this.email" ><strong>Contract with:</strong> {{contract.emailBuyer}}</li>
+            <li class="list-group-item"><strong>Contract with:</strong> {{contract.email}}</li>
             <li class="list-group-item"><strong>Termination of transaction:</strong> {{contract.date | date:'fullDate'}}
             <li class="list-group-item"><strong>Trade Address:</strong>
               <span *ngIf="contract.status != 'Waiting'">
                 {{contract.tradeAddress}}
               </span>
             </li>
-            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> NO</li>
+
+            <!-- *ngIf="loaderService.isLoading | async"  -->
+            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> NO
+              <button mat-raised-button color="primary" class="btn-primary-pay" (click)="buyerPayed(contract.id)"
+                type="submit">
+                <p>Confirm</p>
+              </button>
+            </li>
             <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong> YES</li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay :</strong> NO</li>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong> NO
+              <button mat-raised-button color="primary" class="btn-primary-pay" (click)="sellerPayed(contract.id)"
+                type="submit">
+                <p>Confirm</p>
+              </button>
+            </li>
             <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> YES</li>
+            <li>
+              <div class="card-body">
+                <a [routerLink]="['/partner', contract.email]" class="card-link-1">Partner profile</a>&nbsp;
+                <a class="card-link" *ngIf="contract.status == 'Waiting'">
+                  <strong>Status:</strong>
+                  <span class="orangeStatus">
+                    {{contract.status}}
+                  </span>
+                </a>
+                <a class="card-link">
+                  <strong *ngIf="contract.status == 'Created'"> &nbsp;
+                    Status:
+                  </strong>
+                  <span *ngIf="contract.status == 'Created'" class="greenStatus">
+                    {{contract.status}}
+                  </span>
+                </a>
+                <br><br>
+                <button mat-raised-button color="primary" class="btn-primary-confirm"
+                  (click)="confirmContract(contract.id)" type="submit">
+                  <p>Set Agreement</p>
+                </button>
+              </div>
+            </li>
           </ul>
-          <div class="card-body">
-            <a [routerLink]="['/partner', contract.emailBuyer]" class="card-link-1"  *ngIf="contract.emailBuyer != this.email" >Partner profile</a>&nbsp;
-            <a [routerLink]="['/partner', contract.emailSeller]" class="card-link-1"  *ngIf="contract.emailSeller != this.email" >Partner profile</a>&nbsp;
-            <a class="card-link" *ngIf="contract.status == 'Waiting'">
-              <strong>Status:</strong>
-              <span class="orangeStatus">
-                {{contract.status}}
-              </span>
-            </a>
-            <a class="card-link">
-              <strong *ngIf="contract.status == 'Created'"> &nbsp;
-                Status:
-              </strong>
-              <span *ngIf="contract.status == 'Created'" class="greenStatus">
-                {{contract.status}}
-              </span>
-            </a>
-            <button mat-raised-button color="primary" class="btn-primary" (click)="confirmContract(contract.id)"
-              type="submit">Confirm</button>
-          </div>
         </div>
       </div>
     </div>
-  </div><br>
-</section>
-<h5 *ngIf="contracts.length <= 0"> No contract created yet </h5><br>
+  </div>
+</section><br>
+<h5 *ngIf="contracts.length <= 0"> No contract created yet </h5>
 <h6 *ngIf="contracts.length <= 0"> For your first transaction click the button below </h6>
 
 <button class="btn-grad" mat-raised-button color="primary" mat-raised-button type="submit" *ngIf="contracts.length <= 0"

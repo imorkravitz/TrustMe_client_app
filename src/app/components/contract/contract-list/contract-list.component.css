@@ -19,6 +19,7 @@ a{
 }
 
 .list-group-item{
+  font-size: 10px;
   background-color: var(--vender-cyan);
   color: var(--vender-cyan);
 }

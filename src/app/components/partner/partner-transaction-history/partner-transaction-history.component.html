@@ -1,5 +1,6 @@
 <h2 class="titleNewContract"> Transactions History </h2>
 <form *ngIf="this.historyContracts.length > 0">
+
 <mat-form-field class="filter" appearance="standard">
   <mat-label>
     <mat-icon>search</mat-icon>
@@ -49,7 +50,7 @@
 </div>
 </form>
 <div *ngIf="this.historyContracts.length <= 0">
-  <ul class="btn-grad" mat-raised-button color="primary" mat-raised-button>
-    No Contract Finished Yet
+  <ul><br><br>
+    No contract has been finished yet..
   </ul><br>
 </div>

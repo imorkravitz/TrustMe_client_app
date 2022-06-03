@@ -1,4 +1,5 @@
 <h2 class="titleNewContract"> New Contracts </h2>
+
 <mat-accordion>
   <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
     <mat-expansion-panel-header>
@@ -12,3 +13,10 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+</form>
+
+<div class="newDeals" *ngIf=" this.newContract.length <= 0">
+  <ul class="btn-grad" mat-raised-button color="primary" mat-raised-button>
+    No Contract Created Yet
+  </ul><br>
+</div>

@@ -1,5 +1,4 @@
 <h1 class="title">Your Contracts</h1>
-
 <section class="mt-12" multi="true" *ngIf="contracts.length > 0">
   <div class="container">
     <div class="row gy-5">
@@ -18,7 +17,8 @@
             </li>
             <li class="list-group-item"><strong>Wallet Address Seller:</strong> {{contract.walletAddressSeller}}</li>
             <li class="list-group-item"><strong>Wallet Address Buyer:</strong> {{contract.walletAddressBuyer}}</li>
-            <li class="list-group-item"><strong>Contract with:</strong> {{contract.email}}</li>
+            <li class="list-group-item" *ngIf="contract.emailSeller != this.email" ><strong>Contract with:</strong> {{contract.emailSeller}}</li>
+            <li class="list-group-item" *ngIf="contract.emailBuyer != this.email" ><strong>Contract with:</strong> {{contract.emailBuyer}}</li>
             <li class="list-group-item"><strong>Termination of transaction:</strong> {{contract.date | date:'fullDate'}}
             <li class="list-group-item"><strong>Trade Address:</strong>
               <span *ngIf="contract.status != 'Waiting'">
@@ -31,7 +31,8 @@
             <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> YES</li>
           </ul>
           <div class="card-body">
-            <a [routerLink]="['/partner', contract.email]" class="card-link-1">Partner profile</a>&nbsp;
+            <a [routerLink]="['/partner', contract.emailBuyer]" class="card-link-1"  *ngIf="contract.emailBuyer != this.email" >Partner profile</a>&nbsp;
+            <a [routerLink]="['/partner', contract.emailSeller]" class="card-link-1"  *ngIf="contract.emailSeller != this.email" >Partner profile</a>&nbsp;
             <a class="card-link" *ngIf="contract.status == 'Waiting'">
               <strong>Status:</strong>
               <span class="orangeStatus">

@@ -25,15 +25,11 @@ export class RecomendationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.email = this.authService.getEmail();
-    this.authService.getToken();
+    console.log(this.email);
     this.profileService.getRecommendationByEmail(this.email);
-    this.authService.getToken();
-    this.authService.getAuthData();
-    this.authService.getAuthStatusListener();
     this.recomendationSub = this.profileService.getRecommendationListener().subscribe(( recommendations : Recommendation[]): void =>{
       this.recommendations = recommendations;
-      console.log(recommendations)
-
+      console.log(recommendations);
     })
   }
 

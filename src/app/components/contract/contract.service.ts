@@ -89,7 +89,7 @@ addContract(description: String,
   depositBuyer: Number,
   walletAddressSeller: String,
   walletAddressBuyer: String,
-  email: String,
+  emailBuyer: String,
   date: Date,
   creator: any,
   buyerId: any)
@@ -101,21 +101,24 @@ addContract(description: String,
       depositBuyer: depositBuyer,
       walletAddressSeller: walletAddressSeller,
       walletAddressBuyer: walletAddressBuyer,
-      email: email,
+      emailBuyer: emailBuyer,
+      emailSeller: undefined,
       date: date,
       creator: creator,
       buyerId: buyerId,
       status: "Waiting",
       tradeAddress: undefined,
       buyerPay: false,
-      sellerPay: false
+      sellerPay: false,
+      escrowId: undefined,
     };
-
-    this.http.post<{message: String, contractId : String, buyerId : any, userId : any}>('http://localhost:3000/api/contracts/add', contract)
+    console.log("begin post contract")
+    this.http.post<{message: String, contractId : String, buyerId : any, userId : any, emailSeller : any}>('http://localhost:3000/api/contracts/add', contract)
     .subscribe((responseData)=>{
       contract.id = responseData.contractId;
       contract.buyerId = responseData.buyerId;
-      console.log( responseData.buyerId)
+      contract.emailSeller = responseData.emailSeller;
+      console.log(responseData.buyerId)
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.contracts.push(contract);
       this.contractUpdated.next([...this.contracts]);
@@ -123,7 +126,7 @@ addContract(description: String,
     },error=>{
       this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
     })
-    console.log(contract);
+    // console.log(contract);
 }
 
 getContractById(){
@@ -139,13 +142,15 @@ getContractById(){
         depositBuyer: contract.depositBuyer,
         walletAddressSeller: contract.walletAddressSeller,
         walletAddressBuyer: contract.walletAddressBuyer,
-        email: contract.email,
+        emailBuyer: contract.emailBuyer,
+        emailSeller: contract.emailSeller,
         buyerId: contract.buyerID,
         date: contract.date,
         status: contract.status,
         tradeAddress: contract.tradeAddress,
         buyerPay: contract.buyerPay,
-        sellerPay: contract.sellerPay
+        sellerPay: contract.sellerPay,
+        escrowId: contract.escrowId,
       };
     });
   }))

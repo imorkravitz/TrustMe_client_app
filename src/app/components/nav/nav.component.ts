@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs'
 import { LoaderService } from '../loader/loader.service';
 import { Router } from '@angular/router';
 import { ContractService } from '../contract/contract.service'
+import { NewDealsComponent } from '../profile/new-deals/new-deals.component'
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -17,7 +19,7 @@ export class NavComponent implements OnInit, OnDestroy{
   isDarkTheme:boolean = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-
+  size:any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -25,16 +27,18 @@ export class NavComponent implements OnInit, OnDestroy{
       shareReplay()
     );
 
+
   constructor(private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     public loaderService: LoaderService,
     private router: Router,
-    public contractService: ContractService) {
+    public contractService: ContractService,
+    public newDealsComponent:NewDealsComponent) {
     this.authListenerSubs = Subscription.EMPTY;
   }
 
   ngOnInit() {
-    this.contractService.getContractCount();
+    // this.size = this.newDealsComponent.getSize()
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -59,7 +63,4 @@ export class NavComponent implements OnInit, OnDestroy{
     localStorage.setItem('theme', this.isDarkTheme ? "Dark" : "Light");
   }
 
-  notification(){
-    return 3;
-  }
 }

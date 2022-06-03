@@ -30,8 +30,6 @@ export class ContractComponent implements OnInit{
      if(form.invalid){
        return;
      }
-
-
     this.contractService.addContract(form.value.description,
     form.value.depositSeller, form.value.depositBuyer, form.value.walletAddressSeller,
     form.value.walletAddressBuyer ,form.value.email ,form.value.date,

@@ -25,9 +25,17 @@
                 {{contract.tradeAddress}}
               </span>
             </li>
-            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> NO</li>
+
+            <!-- *ngIf="loaderService.isLoading | async"  -->
+            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> NO
+              <button mat-raised-button color="primary" class="btn-primary-pay" (click)="buyerPayed(contract.id)"
+                type="submit">Confirm</button>
+            </li>
             <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong> YES</li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay :</strong> NO</li>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong> NO
+              <button mat-raised-button color="primary" class="btn-primary-pay" (click)="sellerPayed(contract.id)"
+                type="submit">Confirm</button>
+            </li>
             <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> YES</li>
           </ul>
           <div class="card-body">

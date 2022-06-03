@@ -75,8 +75,21 @@ h6{
   position: relative;
   text-align: center;
   font-size: 10px;
+  height:30px;
+  width: 8px;
+  display: inline-block;
 
 }
+
+.btn-primary-pay{
+  font-size: 10px;
+  /* width:2px !important; */
+  height:30px;
+  display: inline-block;
+  margin-left: 5px;
+  position:relative;
+}
+
 .container{
   font-size: 12px;
 }

@@ -7,6 +7,7 @@ import { LoaderService } from '../loader/loader.service';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterModule, Routes } from "@angular/router";
 import {Router} from '@angular/router'; // import router from angular router
+import { ContractService } from '../contract/contract.service'
 
 
 @Component({
@@ -29,12 +30,14 @@ export class HomepageComponent implements OnInit, OnDestroy {
   constructor(private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     public loaderService: LoaderService,
-    private router: Router) {
+    private router: Router,
+    public contractService: ContractService) {
     this.authListenerSubs = Subscription.EMPTY;
 
   }
 
   ngOnInit(): void {
+    this.contractService.getContractCount();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()

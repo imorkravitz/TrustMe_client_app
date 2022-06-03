@@ -17,6 +17,8 @@ export class ContractService {
   private buyerId: any;
   private status:String;
   private counter:number = 0
+  public buyerPay: Boolean = false;
+  public sellerPay: Boolean = false;
 
 constructor(private http: HttpClient,
   private router: Router,
@@ -25,6 +27,14 @@ constructor(private http: HttpClient,
     this.buyerId = ""
     this.status="";
   }
+
+getSellerPay(){
+  return this.sellerPay;
+}
+
+getBuyerPay(){
+  return this.buyerPay;
+}
 
 getContractCount() {
   return this.counter;
@@ -73,6 +83,36 @@ updateContract(id: any){
     id : id
   }
   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateContract", trade).
+  subscribe(
+    response =>{
+      console.log(response);
+      const tradeId = response.id;
+      return tradeId;
+  },error=>{
+    console.log("Error");
+  })
+}
+
+updateSellerPay(id: any){
+  const trade : findTrade = {
+    id : id
+  }
+  this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateSellerPay", trade).
+  subscribe(
+    response =>{
+      console.log(response);
+      const tradeId = response.id;
+      return tradeId;
+  },error=>{
+    console.log("Error");
+  })
+}
+
+updateBuyerPay(id: any){
+  const trade : findTrade = {
+    id : id
+  }
+  this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateBuyerPay", trade).
   subscribe(
     response =>{
       console.log(response);
@@ -154,8 +194,6 @@ getContractById(){
     this.contracts = transformedContract;
     this.contractUpdated.next([...this.contracts]);
     this.counter = this.contracts.length;
-    console.log(this.counter);
-
   })
 }
 }

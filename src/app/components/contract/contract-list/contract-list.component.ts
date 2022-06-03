@@ -15,8 +15,11 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   private constractsSub: Subscription | undefined;
   private status: Subscription | undefined;
 
+
   constructor(public contractService: ContractService,
-    public profileService: ProfileService) {}
+    public profileService: ProfileService,
+    ) {
+    }
 
   // is a place to put the code that we need to execute at very first as soon as the class is instantiated.
   ngOnInit(): void {
@@ -24,6 +27,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.contractService.getContractById();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
+      console.log(this.contracts);
     })
   }
 
@@ -31,7 +35,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
     })
-}
+  }
 
   correctDate(contract : Contract){
     const tempDate = contract.date.getFullYear();
@@ -52,4 +56,16 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   confirmContract(contractId: any){
   this.contractService.updateContract(contractId)
   }
+
+  buyerPayed(contractId: any){
+    this.contractService.updateBuyerPay(contractId);
+
+  }
+  sellerPayed(contractId: any){
+    this.contractService.updateSellerPay(contractId)
+  }
+
+//   refresh(): void {
+//     window.location.reload();
+// }
 }

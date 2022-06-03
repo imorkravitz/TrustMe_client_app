@@ -127,7 +127,8 @@ import { CreateRecomendationComponent } from './components/partner/create-recome
     MatBadgeModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   // a javascript object provided
   // identifier of the token - which angular wil look for both imported above,
   // we can have multi intecptor so value is trueimport { AbstractControl } from '@angular/forms/forms';

@@ -1,8 +1,11 @@
 <mat-card class="backgroundImg">
-  <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign">
+  <!-- <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign"> -->
+
     <!-- <form ngNoForm  class="formDesign" action="http://localhost:3000/escrow" method="post"> -->
+       <form ngNoForm  class="formDesign" action="http://localhost:3000/setAgreement" method="post">
+        <!-- <form ngNoForm  class="formDesign" action="http://localhost:3000/viewContract" method="post"> -->
     <br>
-    <input type="hidden" name="token" value="{{token}}" />
+    <input type="hidden" name="token" value="1 {{token}}" />
 
     <mat-form-field>
       <input matInput type="text" name="description" ngModel required minlength="3" placeholder="Description"

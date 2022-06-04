@@ -16,19 +16,32 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   private constractsSub: Subscription | undefined;
   private status: Subscription | undefined;
   email: any;
+  userId:any;
+  token: string | null | undefined;
+  flag: boolean = false;
 
   constructor(public contractService: ContractService,
     public authService: AuthService,
     public profileService: ProfileService,
-    ) {
-    }
+    ) {}
 
   // is a place to put the code that we need to execute at very first as soon as the class is instantiated.
   ngOnInit(): void {
     this.contractService.getContractCount();
     this.contractService.getContractById();
+    this.userId = this.authService.getUserId();
+    this.token = this.authService.getTokenFromSessionStorage();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
+      this.contracts.forEach(contract => {
+        if(contract.sellerPay && contract.buyerPay && contract.status == "Created"){
+          this.flag = true;
+          console.log(contract.description);
+          this.confirmContract(contract.escrowId,contract.sellerPay,contract.buyerPay, 'Active');
+        }
+      })
+      if(this.flag){this.ngOnInit();}
+      this.flag = false;
     })
     this.email = this.authService.getEmail();
   }
@@ -55,16 +68,13 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     // }
   }
 
-  confirmContract(contractId: any){
-  this.contractService.updateContract(contractId)
+  setAgreement(contractId: any, sellerAgreement: any, buyerAgreement: any){
+    this.contractService.setAgreement(contractId, sellerAgreement, buyerAgreement);
   }
 
-  buyerPayed(contractId: any){
-    this.contractService.updateBuyerPay(contractId);
-
-  }
-  sellerPayed(contractId: any){
-    this.contractService.updateSellerPay(contractId)
+  confirmContract(escrowId: any ,sellerPay:any ,buyerPay:any, status:any){
+  this.contractService.updateContract(escrowId ,sellerPay ,buyerPay, status)
+    console.log(status)
   }
 
 //   refresh(): void {

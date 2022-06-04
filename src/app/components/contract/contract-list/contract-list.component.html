@@ -29,20 +29,26 @@
             </li>
 
             <!-- *ngIf="loaderService.isLoading | async"  -->
-            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> NO
-              <button mat-raised-button color="primary" class="btn-primary-pay" (click)="buyerPayed(contract.id)"
-                type="submit">
+            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> No
+            </li>
+            <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong> Yes</li>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong> No
+            </li>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> Yes</li>
+            <li>
+            <li class="list-group-item"><strong>Buyer Agreement:</strong>
+              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId == userId)"
+                (click)="setAgreement(contract.id ,contract.sellerAgreement ,contract.buyerAgreement)" type="submit">
                 <p>Confirm</p>
               </button>
             </li>
-            <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong> YES</li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong> NO
-              <button mat-raised-button color="primary" class="btn-primary-pay" (click)="sellerPayed(contract.id)"
-                type="submit">
+            <li>
+            <li class="list-group-item"><strong>Seller Agreement:</strong>
+              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId != userId)"
+                (click)="setAgreement(contract.id ,contract.sellerAgreement ,contract.buyerAgreement)" type="submit">
                 <p>Confirm</p>
               </button>
             </li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> YES</li>
             <li>
               <div class="card-body">
                 <a [routerLink]="['/partner', contract.emailBuyer]" class="card-link-1">Partner profile</a>&nbsp;
@@ -51,20 +57,63 @@
                   <span class="orangeStatus">
                     {{contract.status}}
                   </span>
+                  <div *ngIf="contract.buyerId == userId">
+                    <p>Confirm the context of the contract</p>
+                    <button mat-raised-button color="primary" class="btn-primary-pay"
+                      (click)="confirmContract(contract.escrowId ,contract.sellerPay ,contract.buyerPay, 'Created')"
+                      type="submit">
+                      <p>Confirm</p>
+                    </button>
+                  </div>
+                  <div *ngIf="contract.buyerId != userId">
+                    <p> Waiting for your partner agreement..</p>
+                  </div>
+                </a>
+                <a class="card-link" *ngIf="contract.status == 'Active'">
+                  <strong>Status:</strong>
+                  <span class="greenStatus">
+                    {{contract.status}}
+                  </span>
                 </a>
                 <a class="card-link">
                   <strong *ngIf="contract.status == 'Created'"> &nbsp;
                     Status:
                   </strong>
-                  <span *ngIf="contract.status == 'Created'" class="greenStatus">
+                  <span *ngIf="contract.status == 'Created'" class="orangeStatus">
                     {{contract.status}}
                   </span>
                 </a>
-                <br><br>
-                <button mat-raised-button color="primary" class="btn-primary-confirm"
-                  (click)="confirmContract(contract.id)" type="submit">
-                  <p>Set Agreement</p>
-                </button>
+                <br>
+                <div *ngIf="contract.status == 'Created'">
+                  <form ngNoForm class="formDesign" action="http://localhost:3000/viewContract" method="post">
+                    <br>
+                    <input type="hidden" name="token" value={{contract.escrowId}} />
+                    <input type="hidden" name="token" value="1 {{token}}" />
+
+                    <p class="CheckText">The money should be sent to the address of the contract.
+                      Click the <strong>Update Payment</strong> button to check payment status</p>
+                    <button mat-raised-button color="primary" class="btn-primary-confirm"
+                      (click)="confirmContract(contract.escrowId ,contract.sellerPay  , contract.buyerPay, contract.status )"
+                      type="submit">
+                      <p>Update Payment</p>
+                    </button>
+                  </form>
+                </div>
+                <div *ngIf="contract.status == 'Active'">
+                  <form ngNoForm class="formDesign" action="http://localhost:3000/setAgreement" method="post">
+                    <br>
+                    <input type="hidden" name="token" value={{contract.escrowId}} />
+                    <input type="hidden" name="token" value="1 {{token}}" />
+                    <p class="CheckText">In order to terminate the contract requires the consent of both parties before
+                      <strong>end date!</strong>
+                    </p>
+                    <button mat-raised-button color="primary" class="btn-primary-confirm"
+                      (click)="confirmContract(contract.escrowId ,contract.sellerPay  , contract.buyerPay, contract.status )"
+                      type="submit">
+                      <p>Check Agreement</p>
+                    </button>
+                  </form>
+                </div>
               </div>
             </li>
           </ul>

@@ -14,7 +14,7 @@ import { AuthService } from '../../auth/auth.service';
 export class ContractComponent implements OnInit{
   minDate = new Date();
   contractId: string | null | undefined;
-  token: string | null="";
+  token: string | null | undefined;
 
   constructor(public contractService: ContractService,
     private notificationService: NotifierService,

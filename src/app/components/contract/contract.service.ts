@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Contract, findUser , ContractById, findTrade } from './contract.model';
+import { Contract, findUser , ContractById, findTrade, Agreement } from './contract.model';
 import { NotifierService } from '../notifier/notifier.service'
 
 @Injectable({providedIn: 'root'})
@@ -19,6 +19,8 @@ export class ContractService {
   private counter:number = 0
   public buyerPay: Boolean = false;
   public sellerPay: Boolean = false;
+  private buyerAgreement:Boolean = false;
+  private sellerAgreement:Boolean = false;
 
 constructor(private http: HttpClient,
   private router: Router,
@@ -77,50 +79,69 @@ findUserEmail(email: String){
   })
 }
 
-updateContract(id: any){
+updateContract(escrowId: any , sellerPay:any, buyerPay:any, status:any){
   const trade : findTrade = {
-    id : id
+    escrowId: escrowId,
+    buyerId: buyerPay,
+    sellerPay: sellerPay,
+    status: status
   }
+
   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateContract", trade).
   subscribe(
     response =>{
       console.log(response);
-      const tradeId = response.id;
-      return tradeId;
+      return response;
+  },error=>{
+    console.log("Error");
+  })
+}
+setAgreement(contractId: any ,sellerAgreement: any ,buyerAgreement: any){
+  const agreement : Agreement = {
+    contractId:contractId,
+    buyerAgreement:buyerAgreement,
+    sellerAgreement:sellerAgreement
+  }
+
+  this.http.post<{contractId: any}>("http://localhost:3000/api/contracts/setAgreement", agreement).
+  subscribe(
+    response =>{
+      console.log(response);
+      return response;
   },error=>{
     console.log("Error");
   })
 }
 
-updateSellerPay(id: any){
-  const trade : findTrade = {
-    id : id
-  }
-  this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateSellerPay", trade).
-  subscribe(
-    response =>{
-      console.log(response);
-      const tradeId = response.id;
-      return tradeId;
-  },error=>{
-    console.log("Error");
-  })
-}
+// updateSellerPay(id: any){
+//   const trade : findTrade = {
+//     id : id
+//   }
+//   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateSellerPay", trade).
+//   subscribe(
+//     response =>{
+//       console.log(response);
+//       const tradeId = response.id;
+//       return tradeId;
+//   },error=>{
+//     console.log("Error");
+//   })
+// }
 
-updateBuyerPay(id: any){
-  const trade : findTrade = {
-    id : id
-  }
-  this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateBuyerPay", trade).
-  subscribe(
-    response =>{
-      console.log(response);
-      const tradeId = response.id;
-      return tradeId;
-  },error=>{
-    console.log("Error");
-  })
-}
+// updateBuyerPay(id: any){
+//   const trade : findTrade = {
+//     id : id
+//   }
+//   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateBuyerPay", trade).
+//   subscribe(
+//     response =>{
+//       console.log(response);
+//       const tradeId = response.id;
+//       return tradeId;
+//   },error=>{
+//     console.log("Error");
+//   })
+// }
 
 
 addContract(description: String,
@@ -149,7 +170,9 @@ addContract(description: String,
       tradeAddress: undefined,
       buyerPay: false,
       sellerPay: false,
-      escrowId: undefined
+      escrowId:89,
+      buyerAgreement: false,
+      sellerAgreement: false,
     };
 
     this.http.post<{message: String, contractId : String, buyerId : any, userId : any, emailSeller : any}>('http://localhost:3000/api/contracts/add', contract)
@@ -157,7 +180,7 @@ addContract(description: String,
       contract.id = responseData.contractId;
       contract.buyerId = responseData.buyerId;
       contract.emailSeller = responseData.emailSeller;
-      console.log(responseData.buyerId)
+      // console.log(responseData.buyerId)
       this.notificationService.showNotification('Contract sent successfully', 'OK', 'success');
       this.contracts.push(contract);
       this.contractUpdated.next([...this.contracts]);
@@ -166,7 +189,6 @@ addContract(description: String,
       this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
     })
     console.log(contract);
-    console.log("add contract in service");
 }
 
 getContractById(){
@@ -190,6 +212,8 @@ getContractById(){
         buyerPay: contract.buyerPay,
         sellerPay: contract.sellerPay,
         escrowId: contract.escrowId,
+        buyerAgreement: contract.buyerAgreement,
+        sellerAgreement: contract.sellerAgreement
       };
     });
   }))

@@ -19,8 +19,8 @@ export class ContractService {
   private counter:number = 0
   public buyerPay: Boolean = false;
   public sellerPay: Boolean = false;
-  private buyerAgreement:Boolean = false;
-  private sellerAgreement:Boolean = false;
+  public buyerAgreement:Boolean = false;
+  public sellerAgreement:Boolean = false;
 
 constructor(private http: HttpClient,
   private router: Router,
@@ -96,9 +96,9 @@ updateContract(escrowId: any , sellerPay:any, buyerPay:any, status:any){
     console.log("Error");
   })
 }
-setAgreement(contractId: any ,sellerAgreement: any ,buyerAgreement: any){
+setAgreement(contractId: any ,sellerAgreement: Boolean ,buyerAgreement: Boolean){
   const agreement : Agreement = {
-    contractId:contractId,
+    id: contractId,
     buyerAgreement:buyerAgreement,
     sellerAgreement:sellerAgreement
   }

@@ -15,8 +15,8 @@ export interface Contract{
   buyerPay: Boolean ;
   sellerPay: Boolean ;
   escrowId : Number | undefined;
-  buyerAgreement: boolean | undefined;
-  sellerAgreement: boolean | undefined;
+  buyerAgreement: Boolean;
+  sellerAgreement: Boolean;
 }
 
 export interface findUser{
@@ -35,7 +35,7 @@ export interface ContractById{
 }
 
 export interface Agreement{
-  contractId:any
-  buyerAgreement:any,
-  sellerAgreement:any
+  id :any
+  buyerAgreement:Boolean,
+  sellerAgreement:Boolean
 }

@@ -37,17 +37,19 @@
             <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> Yes</li>
             <li>
             <li class="list-group-item"><strong>Buyer Agreement:</strong>
-              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId == userId)"
-                (click)="setAgreement(contract.id ,contract.sellerAgreement ,contract.buyerAgreement)" type="submit">
+              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId == userId && !contract.buyerAgreement)"
+                (click)="setAgreement(contract.id ,contract.sellerAgreement ,true)" type="submit">
                 <p>Confirm</p>
               </button>
+              <span class = "greenStatus" *ngIf ="contract.buyerAgreement" style="margin: 5px;"><mat-icon>done</mat-icon></span>
             </li>
             <li>
             <li class="list-group-item"><strong>Seller Agreement:</strong>
-              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId != userId)"
-                (click)="setAgreement(contract.id ,contract.sellerAgreement ,contract.buyerAgreement)" type="submit">
+              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId != userId && !contract.sellerAgreement)"
+                (click)="setAgreement(contract.id ,true ,contract.buyerAgreement)" type="submit">
                 <p>Confirm</p>
               </button>
+              <span class = "greenStatus" *ngIf ="contract.sellerAgreement" style="margin: 5px;"><mat-icon>done</mat-icon></span>
             </li>
             <li>
               <div class="card-body">
@@ -99,8 +101,8 @@
                     </button>
                   </form>
                 </div>
-                <div *ngIf="contract.status == 'Active'">
-                  <form ngNoForm class="formDesign" action="http://localhost:3000/setAgreement" method="post">
+                <div *ngIf="contract.status == 'Active' && (contract.buyerAgreement && contract.sellerAgreement)">
+                  <form ngNoForm class="formDesign" action="http://localhost:3000/viewContract" method="post">
                     <br>
                     <input type="hidden" name="escrowId" value={{contract.escrowId}} />
                     <input type="hidden" name="token" value="1 {{token}}" />
@@ -113,6 +115,16 @@
                       <p>Check Agreement</p>
                     </button>
                   </form>
+                </div>
+                <p *ngIf= "!contract.buyerAgreement" style="color: red">Waiting for buyer agreement</p>
+                <p *ngIf= "!contract.sellerAgreement" style="color: red">Waiting for seller agreement</p>
+                <div *ngIf="contract.status == 'Closed'">
+                  <strong> &nbsp;
+                    Status:
+                  </strong>
+                  <span style ="color: green">
+                    {{contract.status}}
+                  </span>
                 </div>
               </div>
             </li>

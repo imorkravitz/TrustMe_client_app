@@ -87,7 +87,7 @@
                 <div *ngIf="contract.status == 'Created'">
                   <form ngNoForm class="formDesign" action="http://localhost:3000/viewContract" method="post">
                     <br>
-                    <input type="hidden" name="token" value={{contract.escrowId}} />
+                    <input type="hidden" name="escrowId" value={{contract.escrowId}} />
                     <input type="hidden" name="token" value="1 {{token}}" />
 
                     <p class="CheckText">The money should be sent to the address of the contract.
@@ -102,7 +102,7 @@
                 <div *ngIf="contract.status == 'Active'">
                   <form ngNoForm class="formDesign" action="http://localhost:3000/setAgreement" method="post">
                     <br>
-                    <input type="hidden" name="token" value={{contract.escrowId}} />
+                    <input type="hidden" name="escrowId" value={{contract.escrowId}} />
                     <input type="hidden" name="token" value="1 {{token}}" />
                     <p class="CheckText">In order to terminate the contract requires the consent of both parties before
                       <strong>end date!</strong>

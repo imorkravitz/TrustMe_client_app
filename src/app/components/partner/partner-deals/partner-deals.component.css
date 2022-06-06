@@ -8,6 +8,24 @@
   margin-left: 0%;
 }
 
+.greenStatus{
+  display: inline;
+  color: #00cd60;
+  font-weight: bold;
+}
+
+.orangeStatus{
+  display: inline;
+  color: #eb9b32;
+  font-weight: bold;
+}
+
+.close{
+  display: inline;
+  color:#00cd60;
+  font-weight: bold;
+}
+
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
   .btn-grad {
     margin: 10px;

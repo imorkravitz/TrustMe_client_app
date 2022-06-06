@@ -40,7 +40,6 @@ import { MatSortModule } from '@angular/material/sort';
 
 import { InterceptorService } from './components/loader/interceptor.service';
 import { NavComponent } from './components/nav/nav.component';
-import { DialogComponent } from './components/dialog/dialog.component'
 import { HomeComponent } from './components/home/home.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
 import { AppComponent } from './app.component';
@@ -61,8 +60,8 @@ import { PartnerDealsComponent } from './components/partner/partner-deals/partne
 import { PartnerDetailsComponent } from './components/partner/partner-details/partner-details.component';
 import { PartnerRecomendationComponent } from './components/partner/partner-recomendation/partner-recomendation.component';
 import { PartnerTransactionHistoryComponent } from './components/partner/partner-transaction-history/partner-transaction-history.component';
-import { CreateRecomendationComponent } from './components/partner/create-recomendation/create-recomendation.component'
-
+import { CreateRecomendationComponent } from './components/partner/create-recomendation/create-recomendation.component';
+import { DialogElementsExample, DialogElementsExampleDialog } from './components/dialog/dialog.component'
 
 @NgModule({
   declarations: [
@@ -75,7 +74,6 @@ import { CreateRecomendationComponent } from './components/partner/create-recome
     HomeComponent,
     ContractComponent,
     ContractListComponent,
-    DialogComponent,
     NotifierComponent,
     NewContractComponent,
     FooterComponent,
@@ -91,8 +89,9 @@ import { CreateRecomendationComponent } from './components/partner/create-recome
     PartnerDetailsComponent,
     PartnerRecomendationComponent,
     PartnerTransactionHistoryComponent,
-    CreateRecomendationComponent
-
+    CreateRecomendationComponent,
+    DialogElementsExample,
+    DialogElementsExampleDialog
   ],
   imports: [
     BrowserModule,

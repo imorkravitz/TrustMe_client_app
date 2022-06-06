@@ -7,7 +7,7 @@ import { HistoryContract } from '../profile.model';
 import { ProfileService } from '../profile.service';
 import { AuthService } from '../../auth/auth.service'
 import { findContracts } from '../../profile/profile.model'
-
+import { ContractService } from '../../contract/contract.service'
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -29,11 +29,13 @@ export class TransactionHistoryComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(public profileService: ProfileService,
-    public authService: AuthService ) {
+    public authService: AuthService,
+    private contractService:ContractService ) {
       this.userId = ""
     }
   ngOnInit(): void {
     this.profileService.getHistoryByUserId();
+    this.contractService.getContractById();
     this.liveDataOfContract();
     this.authService.getToken();
     this.userId = this.authService.getUserId();

@@ -78,8 +78,4 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     console.log(status)
     this.ngOnInit();
   }
-
-//   refresh(): void {
-//     window.location.reload();
-// }
 }

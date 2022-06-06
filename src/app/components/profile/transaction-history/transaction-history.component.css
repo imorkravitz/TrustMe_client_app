@@ -7,6 +7,28 @@ td, th {
   width: 25%;
 }
 
+.edit {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  -webkit-hyphens: auto;
+   -moz-hyphens: auto;
+        hyphens: auto;
+}
+
+.greenStatus{
+  color: #00cd60;
+  font-weight: bold;
+}
+.orangeStatus{
+  color: #eb9b32;
+  font-weight: bold;
+}
+
+.editSpace{
+  margin-left:-15px;
+  padding-right: 10px;
+}
+
 mat-paginator {
   margin-top: 1rem
 }

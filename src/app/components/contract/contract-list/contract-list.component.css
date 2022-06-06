@@ -122,11 +122,30 @@ ul{
 
 .CheckText{
   font-size:10px;
-  color:#cd0000
+  color:red
 }
 
 .container{
-  font-size: 12px;
+  font-size: 10px;
+}
+
+.icon{
+  margin: 7px;
+  padding: 7px;
+  transform: scale(1.4);
+  color:#00cd60;
+}
+
+.close{
+  color:#00cd60;
+  font-weight: bold;
+}
+
+.icon1{
+  margin: 7px;
+  padding: 7px;
+  transform: scale(1.4);
+  color:red;
 }
 
 .greenStatus{
@@ -138,6 +157,9 @@ ul{
   font-weight: bold;
 }
 
+.sizeAddresses{
+  word-break: break-all;
+}
 
 .card-link-1{
   text-decoration: underline;

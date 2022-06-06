@@ -30,6 +30,9 @@ constructor(private http: HttpClient,
     this.status="";
   }
 
+getStatus(){
+  return this.status;
+}
 getSellerPay(){
   return this.sellerPay;
 }
@@ -86,7 +89,6 @@ updateContract(escrowId: any , sellerPay:any, buyerPay:any, status:any){
     sellerPay: sellerPay,
     status: status
   }
-
   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateContract", trade).
   subscribe(
     response =>{
@@ -96,6 +98,7 @@ updateContract(escrowId: any , sellerPay:any, buyerPay:any, status:any){
     console.log("Error");
   })
 }
+
 setAgreement(contractId: any ,sellerAgreement: Boolean ,buyerAgreement: Boolean){
   const agreement : Agreement = {
     id: contractId,
@@ -112,37 +115,6 @@ setAgreement(contractId: any ,sellerAgreement: Boolean ,buyerAgreement: Boolean)
     console.log("Error");
   })
 }
-
-// updateSellerPay(id: any){
-//   const trade : findTrade = {
-//     id : id
-//   }
-//   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateSellerPay", trade).
-//   subscribe(
-//     response =>{
-//       console.log(response);
-//       const tradeId = response.id;
-//       return tradeId;
-//   },error=>{
-//     console.log("Error");
-//   })
-// }
-
-// updateBuyerPay(id: any){
-//   const trade : findTrade = {
-//     id : id
-//   }
-//   this.http.post<{id: any}>("http://localhost:3000/api/contracts/updateBuyerPay", trade).
-//   subscribe(
-//     response =>{
-//       console.log(response);
-//       const tradeId = response.id;
-//       return tradeId;
-//   },error=>{
-//     console.log("Error");
-//   })
-// }
-
 
 addContract(description: String,
   depositSeller: Number,

@@ -8,7 +8,23 @@
       <p *ngIf="this.user?.email != contract.emailSeller "><strong>Contract with: </strong> {{contract.emailSeller}}</p>
       <p *ngIf="this.user?.email != contract.emailBuyer "><strong>Contract with: </strong> {{contract.emailBuyer}}</p>
       <p><strong>Termination of transaction: </strong> {{contract.date | date:'fullDate'}}</p>
-      <p class="greenStatus"><strong color="primary">Status: </strong> {{contract.status}}</p>
+      <p><strong color="primary">Status:
+          <div *ngIf="contract.status == 'Waiting'">
+            <div class="orangeStatus">{{contract.status}}</div>
+          </div>
+          <div *ngIf="contract.status == 'Created'">
+            <div class="orangeStatus">{{contract.status}}</div>
+          </div>
+          <div *ngIf="contract.status == 'Active'">
+            <div class="close">{{contract.status}}</div>
+          </div>
+          <div *ngIf="contract.status == 'Closed'">
+            <div class="close">
+              <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
+              {{contract.status}}
+            </div>
+          </div>
+        </strong></p>
       <mat-action-row>
         go to transaction
       </mat-action-row>

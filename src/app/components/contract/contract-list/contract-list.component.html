@@ -10,46 +10,65 @@
         <div class="crad shadow-lg">
           <img class="card-img-top" />
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Description:</strong> {{contract.description}}
+            <li class="list-group-item"><strong>Description:</strong>
+              <div class="sizeAddresses">{{contract.description}}</div>
             </li>
-            <li class="list-group-item"><strong>Deposit Seller:</strong> {{contract.depositSeller}}
+            <li class="list-group-item"><strong>Deposit Seller:</strong>
+              <div class="sizeAddresses">{{contract.depositSeller}}</div>
               <i style="font-size:10px">(wei)</i>
             </li>
-            <li class="list-group-item"><strong>Deposit Buyer:</strong> {{contract.depositBuyer}}
+            <li class="list-group-item"><strong>Deposit Buyer:</strong>
+              <div class="sizeAddresses">{{contract.depositBuyer}}</div>
               <i style="font-size:10px">(wei)</i>
             </li>
-            <li class="list-group-item"><strong>Wallet Address Seller:</strong> {{contract.walletAddressSeller}}</li>
-            <li class="list-group-item"><strong>Wallet Address Buyer:</strong> {{contract.walletAddressBuyer}}</li>
+            <li class="list-group-item"><strong>Wallet Address Seller:</strong>
+              <div class="sizeAddresses">{{contract.walletAddressSeller}}</div>
+            </li>
+            <li class="list-group-item"><strong>Wallet Address Buyer:</strong>
+              <div class="sizeAddresses">{{contract.walletAddressBuyer}}</div>
+            </li>
             <li class="list-group-item"><strong>Contract with:</strong> {{contract.emailBuyer}}</li>
             <li class="list-group-item"><strong>Termination of transaction:</strong> {{contract.date | date:'fullDate'}}
             <li class="list-group-item"><strong>Trade Address:</strong>
               <span *ngIf="contract.status != 'Waiting'">
-                {{contract.tradeAddress}}
+                <div class="sizeAddresses">{{contract.tradeAddress}}</div>
               </span>
             </li>
 
             <!-- *ngIf="loaderService.isLoading | async"  -->
-            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong> No
+            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong>
+              <mat-icon class="icon1">clear</mat-icon>
             </li>
-            <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong> Yes</li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong> No
+            <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong>
+              <mat-icon class="icon">done</mat-icon>
             </li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong> Yes</li>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong>
+              <mat-icon class="icon1">clear</mat-icon>
+            </li>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong>
+              <mat-icon class="icon">done</mat-icon>
+            </li>
             <li>
             <li class="list-group-item"><strong>Buyer Agreement:</strong>
-              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId == userId && !contract.buyerAgreement)"
+              <button mat-raised-button color="primary" class="btn-primary-pay"
+                *ngIf="(contract.buyerId == userId && !contract.buyerAgreement)"
                 (click)="setAgreement(contract.id ,contract.sellerAgreement ,true)" type="submit">
                 <p>Confirm</p>
               </button>
-              <span class = "greenStatus" *ngIf ="contract.buyerAgreement" style="margin: 5px;"><mat-icon>done</mat-icon></span>
+              <span *ngIf="contract.buyerAgreement">
+                <mat-icon class="icon">done</mat-icon>
+              </span>
             </li>
             <li>
             <li class="list-group-item"><strong>Seller Agreement:</strong>
-              <button mat-raised-button color="primary" class="btn-primary-pay" *ngIf="(contract.buyerId != userId && !contract.sellerAgreement)"
+              <button mat-raised-button color="primary" class="btn-primary-pay"
+                *ngIf="(contract.buyerId != userId && !contract.sellerAgreement)"
                 (click)="setAgreement(contract.id ,true ,contract.buyerAgreement)" type="submit">
                 <p>Confirm</p>
               </button>
-              <span class = "greenStatus" *ngIf ="contract.sellerAgreement" style="margin: 5px;"><mat-icon>done</mat-icon></span>
+              <span *ngIf="contract.sellerAgreement">
+                <mat-icon class="icon">done</mat-icon>
+              </span>
             </li>
             <li>
               <div class="card-body">
@@ -98,7 +117,7 @@
                       (click)="confirmContract(contract.escrowId ,contract.sellerPay  , contract.buyerPay, contract.status )"
                       type="submit">
                       <p>Update Payment</p>
-                    </button>
+                    </button><br>
                   </form>
                 </div>
                 <div *ngIf="contract.status == 'Active' && (contract.buyerAgreement && contract.sellerAgreement)">
@@ -116,14 +135,16 @@
                     </button>
                   </form>
                 </div>
-                <p *ngIf= "!contract.buyerAgreement" style="color: red">Waiting for buyer agreement</p>
-                <p *ngIf= "!contract.sellerAgreement" style="color: red">Waiting for seller agreement</p>
+                <p *ngIf="!contract.buyerAgreement" style="color: red">Waiting for buyer agreement</p>
+                <p *ngIf="!contract.sellerAgreement" style="color: red">Waiting for seller agreement</p>
                 <div *ngIf="contract.status == 'Closed'">
                   <strong> &nbsp;
                     Status:
                   </strong>
-                  <span style ="color: green">
+                  <span class="close">
                     {{contract.status}}
+                    <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
+
                   </span>
                 </div>
               </div>

@@ -29,7 +29,28 @@ a{
 .message{
   font-size: 12px;
   font-weight: normal;
-  margin-top: -50px;
+  margin-top: -30px;
+  margin-left: -50px;
+}
+
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+
+.fixCard{
+  -ms-word-break: break-all;
+     word-break: break-all;
+
+     /* Non standard for WebKit */
+     word-break: break-word;
+
+-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+        hyphens: auto;
+
 }
 
 .btn-primary{
@@ -39,14 +60,10 @@ a{
   display: inline-block;
   font: 11px "Helvetica Neue";
   font-weight: bold;
-  margin-left: 120%;
+  margin-left: 100%;
+  margin-top: 15px;
 }
 
-.btn-position{
-  margin-left:80%;
-  display: inline-block;
-
-}
 
 @media only screen and (max-width: 820px) {
   /* For mobile phones: */

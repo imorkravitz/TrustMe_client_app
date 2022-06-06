@@ -13,6 +13,18 @@
   font-weight: bold;
 }
 
+.orangeStatus{
+  color: #eb9b32;
+  font-weight: bold;
+}
+
+.close{
+  color:#00cd60;
+  font-weight: bold;
+}
+
+
+
 
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
   .btn-grad {

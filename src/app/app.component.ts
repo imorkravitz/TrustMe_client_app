@@ -3,7 +3,7 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { AuthService } from './components/auth/auth.service'
 import { Router } from '@angular/router';
-
+import { ContractService } from './components/contract/contract.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,7 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   deviveXs:boolean = false;
   constructor(public mediaObserver:MediaObserver,
     private authService:AuthService,
-    private router: Router ){
+    private router: Router,
+    private contractService:ContractService ){
 
     this.mediaSub = Subscription.EMPTY;
   }
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias);
       this.deviveXs = result.mqAlias === 'xs' ? true : false;
+      this.contractService.getContractById();
     })
 
     this.authService.autoAuthUser();

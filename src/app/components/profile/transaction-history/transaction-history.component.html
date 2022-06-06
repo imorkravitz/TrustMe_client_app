@@ -12,28 +12,61 @@
     <table mat-table [dataSource]="dataSource" matSort>
 
       <ng-container matColumnDef="depositSeller">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Deposit Seller </th>
-        <td mat-cell *matCellDef="let row"> {{row.depositSeller | currency}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Deposit Seller
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="edit">{{row.depositSeller | currency}} </div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="depositBuyer">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Deposit Buyer</th>
-        <td mat-cell *matCellDef="let row"> {{row.depositBuyer | currency}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Deposit Buyer
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="edit">{{row.depositBuyer | currency}}</div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-        <td mat-cell *matCellDef="let row"> {{row.date | date:'fullDate'}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Date
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="edit">{{row.date | date:'fullDate'}}</div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Partner </th>
-        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Partner
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="editSpace">{{row.emailBuyer}}</div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Status
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div *ngIf="row.status == 'Waiting'">
+            <div class="orangeStatus">{{row.status}}</div>
+          </div>
+          <div *ngIf="row.status == 'Created'">
+            <div class="orangeStatus">{{row.status}}</div>
+          </div>
+          <div *ngIf="row.status == 'Active'">
+            <div class="greenStatus">{{row.status}}</div>
+          </div>
+          <div *ngIf="row.status == 'Closed'">
+            <div class="greenStatus">{{row.status}}
+              <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
+            </div>
+          </div>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

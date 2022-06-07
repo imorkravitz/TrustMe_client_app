@@ -37,6 +37,7 @@ export class NewDealsComponent implements OnInit, OnDestroy {
       this.newContract = contracts;
       this.size = contracts.length;
     })
+    this.profileService.getHistoryByUserId();
     this.authService.getToken();
     this.userId = this.authService.getUserId();
     this.profileService.getUserDetailsByUserId(this.userId);

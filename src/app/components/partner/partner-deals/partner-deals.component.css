@@ -20,6 +20,10 @@
   font-weight: bold;
 }
 
+.colorChange{
+  background-color: var(--vender-cyan);
+}
+
 .close{
   display: inline;
   color:#00cd60;
@@ -65,4 +69,6 @@
 
 p{
   font-size: 14px;
+  background-color: var(--vender-cyan);
+
 }

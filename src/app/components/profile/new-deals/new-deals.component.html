@@ -3,31 +3,48 @@
   <mat-accordion>
     <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
       <mat-expansion-panel-header>
-        <p><strong>Description: </strong> {{contract.description}}</p>
+        <p><strong>Description: </strong> {{contract.description}}</p> &nbsp;&nbsp;
+        <p><strong color="primary">Status:
+            <span *ngIf="contract.status == 'Waiting'">
+              <span class="orangeStatus">{{contract.status}}</span>
+            </span>
+            <span *ngIf="contract.status == 'Created'">
+              <span class="orangeStatus">{{contract.status}}</span>
+            </span>
+            <span *ngIf="contract.status == 'Active'">
+              <span class="close">{{contract.status}}</span>
+            </span>
+            <span *ngIf="contract.status == 'Closed'">
+              <span class="close">
+                <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
+                {{contract.status}}
+              </span>
+            </span>
+          </strong></p>
       </mat-expansion-panel-header>
       <p *ngIf="this.user?.email != contract.emailSeller "><strong>Contract with: </strong> {{contract.emailSeller}}</p>
       <p *ngIf="this.user?.email != contract.emailBuyer "><strong>Contract with: </strong> {{contract.emailBuyer}}</p>
       <p><strong>Termination of transaction: </strong> {{contract.date | date:'fullDate'}}</p>
-      <p><strong color="primary">Status:
-          <div *ngIf="contract.status == 'Waiting'">
-            <div class="orangeStatus">{{contract.status}}</div>
-          </div>
-          <div *ngIf="contract.status == 'Created'">
-            <div class="orangeStatus">{{contract.status}}</div>
-          </div>
-          <div *ngIf="contract.status == 'Active'">
-            <div class="close">{{contract.status}}</div>
-          </div>
-          <div *ngIf="contract.status == 'Closed'">
-            <div class="close">
+      <!-- <p><strong color="primary">Status:
+          <span *ngIf="contract.status == 'Waiting'">
+            <span class="orangeStatus">{{contract.status}}</span>
+          </span>
+          <span *ngIf="contract.status == 'Created'">
+            <span class="orangeStatus">{{contract.status}}</span>
+          </span>
+          <span *ngIf="contract.status == 'Active'">
+            <span class="close">{{contract.status}}</span>
+          </span>
+          <span *ngIf="contract.status == 'Closed'">
+            <span class="close">
               <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
               {{contract.status}}
-            </div>
-          </div>
-        </strong></p>
-      <mat-action-row>
+            </span>
+          </span>
+        </strong></p> -->
+      <!-- <mat-action-row>
         go to transaction
-      </mat-action-row>
+      </mat-action-row> -->
     </mat-expansion-panel>
   </mat-accordion>
 </form>

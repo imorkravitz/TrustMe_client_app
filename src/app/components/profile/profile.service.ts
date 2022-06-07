@@ -64,7 +64,6 @@ getNewContractById(){
   .subscribe((transformedContract)=>{
     this.NewContract = transformedContract;
     this.NewContractUpdated.next([...this.NewContract]);
-    console.log("subscribe new Contract")
   })
 }
 
@@ -88,10 +87,6 @@ getReccomendations(){
       this.recommendationUpdate.next([...this.recommendations]);
   })
 }
-
-
-
-
 
 getHistoryByUserId(){
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getHistoryByUserId')

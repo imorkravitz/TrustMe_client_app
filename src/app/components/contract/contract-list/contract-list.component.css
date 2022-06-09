@@ -7,6 +7,15 @@ h1 {
   /* text-transform: uppercase;  */
 }
 
+.shadow-lg{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #00CDAC;
+  padding: 10px;
+  border-radius: 50px 20px;
+}
+
 .mat-icon{
   font-size:16px;
   background-color: var(--vender-cyan);
@@ -171,4 +180,9 @@ ul{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.framesize{
+  height: 200px;
+  width: 50%;
 }

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(public mediaObserver:MediaObserver,
     private authService:AuthService,
     private router: Router,
-    // private contractService:ContractService 
+    // private contractService:ContractService
     ){
 
     this.mediaSub = Subscription.EMPTY;

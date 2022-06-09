@@ -8,7 +8,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { RouterModule, Routes } from "@angular/router";
 import {Router} from '@angular/router'; // import router from angular router
 import { ContractService } from '../contract/contract.service'
-
+import { ProfileService } from '../profile/profile.service'
 
 @Component({
   selector: 'app-homepage',
@@ -31,7 +31,8 @@ export class HomepageComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     public loaderService: LoaderService,
     private router: Router,
-    public contractService: ContractService) {
+    public contractService: ContractService,
+    public profileService: ProfileService) {
     this.authListenerSubs = Subscription.EMPTY;
 
   }
@@ -39,6 +40,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.contractService.getContractCount();
     this.contractService.getContractById();
+    this.profileService.getContractCountProfile()
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()

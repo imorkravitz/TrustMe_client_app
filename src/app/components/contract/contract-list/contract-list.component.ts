@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-contract-list',
   templateUrl: './contract-list.component.html',
-  styleUrls: ['contract-list.component.css'],
+  styleUrls: ['contract-list.component.css', 'contract_list.component.scss'],
 })
 export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   contracts : Contract[] = [];

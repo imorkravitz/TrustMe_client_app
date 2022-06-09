@@ -14,43 +14,43 @@
             <li class="list-group-item"><strong>Description:</strong>
               <div class="sizeAddresses">{{contract.description}}</div>
             </li>
-            <li class="list-group-item"><strong>Deposit Seller:</strong>
+            <li class="list-group-item"><strong>Seller deposit:</strong>
               <div class="sizeAddresses">{{contract.depositSeller}}</div>
               <i style="font-size:10px">(wei)</i>
             </li>
-            <li class="list-group-item"><strong>Deposit Buyer:</strong>
+            <li class="list-group-item"><strong>Buyer deposit:</strong>
               <div class="sizeAddresses">{{contract.depositBuyer}}</div>
               <i style="font-size:10px">(wei)</i>
             </li>
-            <li class="list-group-item"><strong>Wallet Address Seller:</strong>
+            <li class="list-group-item"><strong>Seller wallet address:</strong>
               <div class="sizeAddresses">{{contract.walletAddressSeller}}</div>
             </li>
-            <li class="list-group-item"><strong>Wallet Address Buyer:</strong>
+            <li class="list-group-item"><strong>Buyer wallet address:</strong>
               <div class="sizeAddresses">{{contract.walletAddressBuyer}}</div>
             </li>
             <li class="list-group-item"><strong>Contract with:</strong> {{contract.emailBuyer}}</li>
             <li class="list-group-item"><strong>Termination of transaction:</strong> {{contract.date | date:'fullDate'}}
-            <li class="list-group-item"><strong>Trade Address:</strong>
+            <li class="list-group-item"><strong>Trade address ID:</strong>
               <span *ngIf="contract.status != 'Waiting'">
                 <div class="sizeAddresses">{{contract.tradeAddress}}</div>
               </span>
             </li>
 
             <!-- *ngIf="loaderService.isLoading | async"  -->
-            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer Pay:</strong>
+            <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer payment status:</strong>
               <mat-icon class="icon1">clear</mat-icon>
             </li>
-            <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer Pay:</strong>
+            <li class="list-group-item" *ngIf="(contract.buyerPay == true)"><strong>Buyer payment status:</strong>
               <mat-icon class="icon">done</mat-icon>
             </li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller Pay:</strong>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == false)"><strong>Seller payment status:</strong>
               <mat-icon class="icon1">clear</mat-icon>
             </li>
-            <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller Pay:</strong>
+            <li class="list-group-item" *ngIf="(contract.sellerPay == true)"><strong>Seller payment status:</strong>
               <mat-icon class="icon">done</mat-icon>
             </li>
             <li>
-            <li class="list-group-item"><strong>Buyer Agreement:</strong>
+            <li class="list-group-item"><strong>Buyer contract agreement:</strong>
               <button mat-raised-button color="primary" class="btn-primary-pay"
                 *ngIf="(contract.buyerId == userId && !contract.buyerAgreement)"
                 (click)="setAgreement(contract.id ,contract.sellerAgreement ,true)" type="submit">
@@ -61,7 +61,7 @@
               </span>
             </li>
             <li>
-            <li class="list-group-item"><strong>Seller Agreement:</strong>
+            <li class="list-group-item"><strong>Seller contract agreement:</strong>
               <button mat-raised-button color="primary" class="btn-primary-pay"
                 *ngIf="(contract.buyerId != userId && !contract.sellerAgreement)"
                 (click)="setAgreement(contract.id ,true ,contract.buyerAgreement)" type="submit">
@@ -145,7 +145,12 @@
                   <span class="close">
                     {{contract.status}}
                     <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
-
+                    <div class="dummy-positioning d-flex">
+                      <div class="success-icon">
+                        <div class="success-icon__tip"></div>
+                        <div class="success-icon__long"></div>
+                      </div>
+                    </div>
                   </span>
                 </div>
               </div>

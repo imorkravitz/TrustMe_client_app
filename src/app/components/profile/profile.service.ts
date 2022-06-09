@@ -15,6 +15,8 @@ export class ProfileService {
   private details = new Subject<UserDetails>();
   private userDetails : UserDetails = {fullName: "", nameToPatch: '',phone: undefined, email: '',image: undefined};
   private status: boolean = false;
+  private counter:number = 0
+
   private recommendations : Recommendation[] =[];
   private recommendationUpdate = new Subject<Recommendation[]>();
 
@@ -33,12 +35,15 @@ getDetailsListener() {
   return this.details.asObservable();
 }
 
+getContractCountProfile() {
+  return this.counter;
+}
+
 getRecommendationListener(){
   return this.recommendationUpdate.asObservable();
 }
 
 getNewContractById(){
-  console.log("begin get new Contract")
   this.http.get<{message: string, contracts: any}>('http://localhost:3000/api/contracts/getNewContractByUserId')
   .pipe(map((contractData)=>{
 
@@ -64,6 +69,8 @@ getNewContractById(){
   .subscribe((transformedContract)=>{
     this.NewContract = transformedContract;
     this.NewContractUpdated.next([...this.NewContract]);
+    this.counter = this.NewContract.length;
+
   })
 }
 

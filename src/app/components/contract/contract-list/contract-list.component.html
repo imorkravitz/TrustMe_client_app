@@ -13,29 +13,38 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Description:</strong>
               <div class="sizeAddresses">{{contract.description}}</div>
-            </li>
-            <li class="list-group-item"><strong>Seller deposit:</strong>
-              <div class="sizeAddresses">{{contract.depositSeller}}</div>
-              <i style="font-size:10px">(wei)</i>
-            </li>
-            <li class="list-group-item"><strong>Buyer deposit:</strong>
-              <div class="sizeAddresses">{{contract.depositBuyer}}</div>
-              <i style="font-size:10px">(wei)</i>
-            </li>
-            <li class="list-group-item"><strong>Seller wallet address:</strong>
-              <div class="sizeAddresses">{{contract.walletAddressSeller}}</div>
-            </li>
-            <li class="list-group-item"><strong>Buyer wallet address:</strong>
-              <div class="sizeAddresses">{{contract.walletAddressBuyer}}</div>
-            </li>
-            <li class="list-group-item"><strong>Contract with:</strong> {{contract.emailBuyer}}</li>
-            <li class="list-group-item"><strong>Termination of transaction:</strong> {{contract.date | date:'fullDate'}}
-            <li class="list-group-item"><strong>Trade address ID:</strong>
-              <span *ngIf="contract.status != 'Waiting'">
-                <div class="sizeAddresses">{{contract.tradeAddress}}</div>
+              <span>
+                <mat-slide-toggle></mat-slide-toggle>
               </span>
             </li>
-
+            <div>
+              <li class="list-group-item"><strong>Seller deposit:</strong>
+                <div class="sizeAddresses">{{contract.depositSeller}}</div>
+                <i style="font-size:10px">(wei)</i>
+              </li>
+              <li class="list-group-item"><strong>Buyer deposit:</strong>
+                <div class="sizeAddresses">{{contract.depositBuyer}}</div>
+                <i style="font-size:10px">(wei)</i>
+              </li>
+              <!-- <li class="list-group-item">
+              <dialog-contract-list></dialog-contract-list>
+            </li> -->
+              <li class="list-group-item"><strong>Seller wallet address:</strong>
+                <div class="sizeAddresses">{{contract.walletAddressSeller}}</div>
+              </li>
+              <li class="list-group-item"><strong>Buyer wallet address:</strong>
+                <div class="sizeAddresses">{{contract.walletAddressBuyer}}</div>
+              </li>
+              <li class="list-group-item"><strong>Contract with:</strong> {{contract.emailBuyer}}</li>
+              <li class="list-group-item"><strong>Termination of transaction:</strong>
+                {{contract.date | date:'fullDate'}}
+              <li class="list-group-item"><strong>Trade address ID:</strong>
+                <span *ngIf="contract.status != 'Waiting'">
+                  <div class="sizeAddresses">{{contract.tradeAddress}}</div>
+                </span>
+              </li>
+            </div>
+            <!-- dasdasdas -->
             <!-- *ngIf="loaderService.isLoading | async"  -->
             <li class="list-group-item" *ngIf="(contract.buyerPay == false)"><strong>Buyer payment status:</strong>
               <mat-icon class="icon1">clear</mat-icon>

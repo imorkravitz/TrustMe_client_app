@@ -62,7 +62,7 @@ import { PartnerRecomendationComponent } from './components/partner/partner-reco
 import { PartnerTransactionHistoryComponent } from './components/partner/partner-transaction-history/partner-transaction-history.component';
 import { CreateRecomendationComponent } from './components/partner/create-recomendation/create-recomendation.component';
 import { DialogElementsExample, DialogElementsExampleDialog } from './components/dialog/dialog.component'
-
+import { SlideToggleOverview } from './components/contract/contract-list/contract-list.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +91,8 @@ import { DialogElementsExample, DialogElementsExampleDialog } from './components
     PartnerTransactionHistoryComponent,
     CreateRecomendationComponent,
     DialogElementsExample,
-    DialogElementsExampleDialog
+    DialogElementsExampleDialog,
+    SlideToggleOverview,
   ],
   imports: [
     BrowserModule,

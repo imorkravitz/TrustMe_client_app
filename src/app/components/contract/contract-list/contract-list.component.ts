@@ -4,6 +4,7 @@ import { ProfileService } from "../../profile/profile.service"
 import { Contract } from '../contract.model';
 import { ContractService } from '../contract.service';
 import { AuthService } from '../../auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contract-list',
@@ -78,4 +79,12 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     console.log(status)
     this.ngOnInit();
   }
+}
+
+@Component({
+  selector: 'slide-toggle-overview',
+  templateUrl: 'slide-toggle-overview.html',
+})
+export class SlideToggleOverview {
+
 }

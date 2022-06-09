@@ -16,7 +16,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(public mediaObserver:MediaObserver,
     private authService:AuthService,
     private router: Router,
-    private contractService:ContractService ){
+    // private contractService:ContractService 
+    ){
 
     this.mediaSub = Subscription.EMPTY;
   }
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias);
       this.deviveXs = result.mqAlias === 'xs' ? true : false;
-      this.contractService.getContractById();
+      // this.contractService.getContractById();
     })
 
     this.authService.autoAuthUser();

@@ -3,8 +3,8 @@
   <mat-accordion>
     <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
       <mat-expansion-panel-header>
-        <p><strong>Description: </strong> {{contract.description}}</p> &nbsp;&nbsp;
-        <p><strong color="primary">Status:
+        <span><strong>Description: </strong> {{contract.description}}</span> &nbsp;&nbsp;
+        <span><strong color="primary">Status:
             <span *ngIf="contract.status == 'Waiting'">
               <span class="orangeStatus">{{contract.status}}</span>
             </span>
@@ -12,15 +12,21 @@
               <span class="orangeStatus">{{contract.status}}</span>
             </span>
             <span *ngIf="contract.status == 'Active'">
-              <span class="close">{{contract.status}}</span>
+              <span class="close">{{contract.status}} <span class="colorAgreemnt ">
+                  Waiting for check agreement..
+                </span>
+              </span>
             </span>
             <span *ngIf="contract.status == 'Closed'">
               <span class="close">
                 <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
                 {{contract.status}}
               </span>
-            </span>
-          </strong></p>
+            </span>&nbsp;
+          </strong>
+        </span>
+        <mat-icon class="icon colorAgreemnt" *ngIf="contract.status == 'Active'">schedule</mat-icon>
+
       </mat-expansion-panel-header>
       <p *ngIf="this.user?.email != contract.emailSeller "><strong>Contract with: </strong> {{contract.emailSeller}}</p>
       <p *ngIf="this.user?.email != contract.emailBuyer "><strong>Contract with: </strong> {{contract.emailBuyer}}</p>

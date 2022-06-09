@@ -8,6 +8,18 @@
   margin-left: 0%;
 }
 
+.colorAgreemnt{
+  color: red;
+  font-weight: bold;
+  font-size: 8px;
+}
+
+
+.icon{
+  transform: scale(1.8);
+  margin-top:14px;
+  margin-left: 10px;
+}
 .greenStatus{
   color: #00cd60;
   font-weight: bold;

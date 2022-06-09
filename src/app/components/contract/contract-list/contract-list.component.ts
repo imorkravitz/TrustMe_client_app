@@ -20,7 +20,8 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   userId:any;
   token: string | null | undefined;
   flag: boolean = false;
-
+  showMe: boolean[] = [];
+  
   constructor(public contractService: ContractService,
     public authService: AuthService,
     public profileService: ProfileService,
@@ -34,7 +35,9 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.token = this.authService.getTokenFromSessionStorage();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
-      this.contracts.forEach(contract => {
+     
+      this.contracts.forEach((contract, index) => {
+        this.showMe[index] = false;
         if(contract.sellerPay && contract.buyerPay && contract.status == "Created"){
           this.flag = true;
           console.log(contract.description);
@@ -79,6 +82,11 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     console.log(status)
     this.ngOnInit();
   }
+
+  toggle(index: any) {
+  this.showMe[index] = !this.showMe[index]
+  }
+
 }
 
 @Component({
@@ -86,5 +94,6 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   templateUrl: 'slide-toggle-overview.html',
 })
 export class SlideToggleOverview {
+
 
 }

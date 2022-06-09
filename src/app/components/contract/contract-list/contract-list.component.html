@@ -7,17 +7,20 @@
 <section class="mt-12" multi="true" *ngIf="contracts.length > 0">
   <div class="container">
     <div class="row gy-5">
-      <div class="col-5" *ngFor="let contract of contracts">
+      <div class="col-5" *ngFor="let contract of contracts.slice().reverse() let i= index in contract">
         <div class="crad shadow-lg">
           <img class="card-img-top" />
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Description:</strong>
               <div class="sizeAddresses">{{contract.description}}</div>
-              <span>
-                <mat-slide-toggle></mat-slide-toggle>
-              </span>
+
+             <button class="btn-grad" mat-raised-button color="primary" 
+              (click)="toggle(i)">show ditails
+            </button>
+
             </li>
-            <div>
+
+            <div *ngIf="showMe[i]">
               <li class="list-group-item"><strong>Seller deposit:</strong>
                 <div class="sizeAddresses">{{contract.depositSeller}}</div>
                 <i style="font-size:10px">(wei)</i>

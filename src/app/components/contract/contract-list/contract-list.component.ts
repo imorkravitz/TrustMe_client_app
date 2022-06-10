@@ -3,9 +3,8 @@ import { Subscription } from 'rxjs';
 import { ProfileService } from "../../profile/profile.service"
 import { Contract } from '../contract.model';
 import { ContractService } from '../contract.service';
-import { AuthService } from '../../auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-
+import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-contract-list',
   templateUrl: './contract-list.component.html',
@@ -21,7 +20,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   token: string | null | undefined;
   flag: boolean = false;
   showMe: boolean[] = [];
-  
+
   constructor(public contractService: ContractService,
     public authService: AuthService,
     public profileService: ProfileService,
@@ -35,7 +34,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.token = this.authService.getTokenFromSessionStorage();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
-     
+
       this.contracts.forEach((contract, index) => {
         this.showMe[index] = false;
         if(contract.sellerPay && contract.buyerPay && contract.status == "Created"){

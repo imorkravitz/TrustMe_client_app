@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { AppService } from '../../app.service'
 import { Observable } from 'rxjs';
 import { NotifierService } from '../notifier/notifier.service';
+import { NavComponent } from '../nav/nav.component';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,
     public appService: AppService,
-    private notificationService: NotifierService) {}
+    private notificationService: NotifierService,
+    ) {}
 
   ngOnInit() {
     this.isHandsetObserver.subscribe(currentObserverValue => {
@@ -47,6 +49,7 @@ export class HomeComponent implements OnInit {
       // alert('There was an error in reciving data from server.')
       this.notificationService.showNotification('There was an error in reciving data from server!', 'OK', 'error');
     })
+  
   }
 
 

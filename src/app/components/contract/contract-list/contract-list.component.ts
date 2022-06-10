@@ -35,7 +35,6 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
     this.token = this.authService.getTokenFromSessionStorage();
     this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
       this.contracts = contracts;
-     
       this.contracts.forEach((contract, index) => {
         this.showMe[index] = false;
         if(contract.sellerPay && contract.buyerPay && contract.status == "Created"){

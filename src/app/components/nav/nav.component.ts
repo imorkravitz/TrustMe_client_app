@@ -8,6 +8,7 @@ import { LoaderService } from '../loader/loader.service';
 import { Router } from '@angular/router';
 import { ContractService } from '../contract/contract.service'
 import { NewDealsComponent } from '../profile/new-deals/new-deals.component'
+import { Contract } from '../contract/contract.model';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +21,10 @@ export class NavComponent implements OnInit, OnDestroy{
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   size:any;
+  contracts : Contract[] = [];
+  contractId : any;
+  private constractsSub: Subscription | undefined;
+  count: number = 0;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -38,7 +43,6 @@ export class NavComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
-    // this.size = this.newDealsComponent.getSize()
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.isDarkTheme = localStorage.getItem('theme') === "Dark" ? true : false;
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -48,6 +52,15 @@ export class NavComponent implements OnInit, OnDestroy{
        // this.userIsAuthenticated = true;
         this.userIsAuthenticated = isAuthenticated;
       });
+      this.constractsSub = this.contractService.getContractUpdatedListener().subscribe(( contracts : Contract[]): void =>{
+        this.contracts = contracts;
+        this.count = 0;
+        this.contracts.forEach((contract) => {  
+          if(contract.status != "Closed"){
+            this.count++;
+          }
+        })
+      })
   }
 
   onLogout() {

@@ -48,6 +48,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = true;
         this.userIsAuthenticated = isAuthenticated;
       });
+      
   }
 
   ngOnDestroy() {

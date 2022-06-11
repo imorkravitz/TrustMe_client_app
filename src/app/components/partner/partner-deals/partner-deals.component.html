@@ -1,4 +1,7 @@
-<h2 class="titleNewContract"> New Contracts </h2>
+<h2 class="titleNewContract">
+  <mat-icon color="primary">https</mat-icon>
+  New Contracts
+</h2>
 <form *ngIf=" this.newContract.length > 0">
   <mat-accordion>
     <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">

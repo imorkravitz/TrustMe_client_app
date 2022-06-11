@@ -1,32 +1,40 @@
-<h2 class="titleNewContract"> New Contract </h2>
+<h2 class="titleNewContract">
+  <mat-icon color="primary">https</mat-icon>
+  New Contract
+</h2>
 <form *ngIf=" this.newContract.length > 0">
-  <mat-accordion>
+  <mat-accordion class="example-headers-align">
     <mat-expansion-panel class="newDeals" *ngFor="let contract of newContract">
       <mat-expansion-panel-header>
-        <span><strong>Description: </strong> {{contract.description}}</span> &nbsp;&nbsp;
-        <span><strong color="primary">Status:
-            <span *ngIf="contract.status == 'Waiting'">
-              <span class="orangeStatus">{{contract.status}}</span>
-            </span>
-            <span *ngIf="contract.status == 'Created'">
-              <span class="orangeStatus">{{contract.status}}</span>
-            </span>
-            <span *ngIf="contract.status == 'Active'">
-              <span class="close">{{contract.status}} <span class="colorAgreemnt">
-                  Waiting for check agreement..
+        <mat-panel-title>
+          <span class="pos2"><strong>Description: </strong> {{contract.description}}</span>
+        </mat-panel-title>
+        <mat-panel-description>
+
+          <span class="pos">
+            <strong color="primary">Status:
+              <span *ngIf="contract.status == 'Waiting'">
+                <span class="orangeStatus">{{contract.status}}</span>
+              </span>
+              <span *ngIf="contract.status == 'Created'">
+                <span class="orangeStatus">{{contract.status}}</span>
+              </span>
+              <span *ngIf="contract.status == 'Active'">
+                <span class="close">{{contract.status}} <span class="colorAgreemnt">
+                    Waiting for check agreement..
+                  </span>
                 </span>
               </span>
-            </span>
-            <span *ngIf="contract.status == 'Closed'">
-              <span class="close">
-                <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
-                {{contract.status}}
-              </span>
-            </span>&nbsp;
-          </strong>
-        </span>
-        <mat-icon class="icon colorAgreemnt" *ngIf="contract.status == 'Active'">schedule</mat-icon>
-
+              <span *ngIf="contract.status == 'Closed'">
+                <span class="close">
+                  <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
+                  {{contract.status}}
+                </span>
+              </span>&nbsp;
+            </strong>
+          </span>
+          <mat-icon class="icon colorAgreemnt" *ngIf="contract.status == 'Active'">schedule</mat-icon>
+        </mat-panel-description>
       </mat-expansion-panel-header>
       <p *ngIf="this.user?.email != contract.emailSeller "><strong>Contract with: </strong> {{contract.emailSeller}}</p>
       <p *ngIf="this.user?.email != contract.emailBuyer "><strong>Contract with: </strong> {{contract.emailBuyer}}</p>

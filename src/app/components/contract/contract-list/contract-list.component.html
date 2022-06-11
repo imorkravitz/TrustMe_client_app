@@ -1,4 +1,4 @@
-<h1 class="title">Your Contracts</h1>
+<h1 class="title display-4 font-weight-bold mb-4">Your Contract's</h1>
 <dialog-first class="center"></dialog-first>
 <button class="btn-grad" mat-raised-button color="primary" mat-raised-button type="submit" *ngIf="contracts.length > 0"
   routerLink="/contract">
@@ -14,12 +14,9 @@
             <li class="list-group-item"><strong>Description:</strong>
               <div class="sizeAddresses">{{contract.description}}</div>
 
-             <button class="btn-grad" mat-raised-button color="primary" 
-              (click)="toggle(i)">show ditails
-            </button>
-
+              <button class="btn-grad " mat-raised-button color="primary" (click)="toggle(i)">Show Details
+              </button>
             </li>
-
             <div *ngIf="showMe[i]">
               <li class="list-group-item "><strong>Seller deposit:</strong>
                 <br>
@@ -28,7 +25,7 @@
               </li>
               <li class="list-group-item "><strong>Buyer deposit:</strong>
                 <br>
-                <span class="sizeAddresses greenStatus" >{{contract.depositBuyer}} </span>
+                <span class="sizeAddresses greenStatus">{{contract.depositBuyer}} </span>
                 <i style="font-size:10px"> (ether)</i>
               </li>
               <!-- <li class="list-group-item">

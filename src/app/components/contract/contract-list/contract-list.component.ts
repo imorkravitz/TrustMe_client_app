@@ -21,7 +21,7 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
   token: string | null | undefined;
   flag: boolean = false;
   showMe: boolean[] = [];
-  
+
   constructor(public contractService: ContractService,
     public authService: AuthService,
     public profileService: ProfileService,

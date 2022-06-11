@@ -1,59 +1,56 @@
 <mat-card class="backgroundImg">
   <!-- <form (submit)="onAddContract(contractForm)" #contractForm="ngForm" class="formDesign"> -->
-
   <form ngNoForm class="formDesign" action="http://localhost:3000/escrow" method="post">
     <!-- <form ngNoForm  class="formDesign" action="http://localhost:3000/setAgreement" method="post"> -->
     <!-- <form ngNoForm  class="formDesign" action="http://localhost:3000/viewContract" method="post"> -->
     <br>
-    <input type="hidden" name="token" value="1 {{token}}" />
-
-    <dialog-first class="center"></dialog-first>
-
-    <mat-form-field>
-      <input matInput type="text" name="description" ngModel required minlength="3" placeholder="Description"
-        #description="ngModel">
-      <mat-error *ngIf="description.invalid">please enter a description</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput type="number" name="depositSeller" min="0" ngModel required
-        placeholder="Seller Price (Wei) currency" #depositSeller="ngModel">
-      <mat-error *ngIf="depositSeller.invalid">please enter a current price (Wei)</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput type="number" name="depositBuyer" min="0" ngModel required
-        placeholder="Buyer Price (Wei) currency" #depositBuyer="ngModel">
-      <mat-error *ngIf="depositBuyer.invalid">please enter a current price (Wei)</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput type="text" name="walletAddressSeller" ngModel walletAddressSeller required
-        placeholder="Seller wallet address" #walletAddressSeller="ngModel">
-      <mat-error *ngIf="walletAddressSeller.invalid">Put your wallet digital address</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput type="text" name="walletAddressBuyer" ngModel walletAddressBuyer required
-        placeholder="Buyer wallet address" #walletAddressBuyer="ngModel">
-      <mat-error *ngIf="walletAddressBuyer.invalid">Put buyer wallet digital address</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput type="email" name="email" ngModel email required placeholder="Send a contract to"
-        #email="ngModel">
-      <mat-error *ngIf="email.invalid">please enter buyer account email address</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Termination of transaction</mat-label>
-      <input matInput [matDatepicker]="myDatePicker" [min]="minDate" name="date" ngModel #date="ngModel" required>
-      <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
-      <mat-datepicker #myDatePicker></mat-datepicker>
-      <mat-error *ngIf="email.invalid">Choose valid date</mat-error>
-
-    </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary" mat-raised-button type="submit">Submit</button>
+    <div>
+      <input type="hidden" name="token" value="1 {{token}}" />
+      <dialog-first class="center"></dialog-first>
+      <mat-form-field>
+        <textarea matInput type="text" name="description" ngModel required minlength="3" placeholder="Description"
+          #description="ngModel" rows="3" maxlength="150"></textarea>
+        <mat-error *ngIf="description.invalid">please enter a description</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="float" name="depositSeller" min="0" ngModel required
+          placeholder="Seller Price (ether) currency" #depositSeller="ngModel">
+        <mat-error *ngIf="depositSeller.invalid">please enter a current price (ether)</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="float" name="depositBuyer" min="0" ngModel required
+          placeholder="Buyer Price (ether) currency" #depositBuyer="ngModel">
+        <mat-error *ngIf="depositBuyer.invalid">please enter a current price (ether)</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="text" name="walletAddressSeller" ngModel walletAddressSeller required
+          placeholder="Seller wallet address" #walletAddressSeller="ngModel">
+        <mat-error *ngIf="walletAddressSeller.invalid">Put your wallet digital address</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="text" name="walletAddressBuyer" ngModel walletAddressBuyer required
+          placeholder="Buyer wallet address" #walletAddressBuyer="ngModel">
+        <mat-error *ngIf="walletAddressBuyer.invalid">Put buyer wallet digital address</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="email" name="email" ngModel email required placeholder="Send a contract to"
+          #email="ngModel">
+        <mat-error *ngIf="email.invalid">please enter buyer account email address</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Termination of transaction</mat-label>
+        <input matInput [matDatepicker]="myDatePicker" [min]="minDate" name="date" ngModel #date="ngModel" required>
+        <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker></mat-datepicker>
+        <mat-error *ngIf="email.invalid">Choose valid date</mat-error>
+      </mat-form-field>
+      <button color="primary" class="btn-grad" mat-raised-button type="submit">Submit</button>
+    </div>
   </form>
 </mat-card>

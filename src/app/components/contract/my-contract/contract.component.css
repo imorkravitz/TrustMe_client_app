@@ -12,7 +12,7 @@
 }
 
 .mat-card{
-  height: 100vh;
+  height: 120vh;
   width: 100%;
 }
 
@@ -21,6 +21,34 @@
   /* margin-right: auto; */
 }
 
+.btn{
+  margin-left: 50px;
+  margin-bottom: 20px;
+  display:absolute;
+
+}
+
+.btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
+  .btn-grad {
+    padding: 3px 7px;
+    font: 12px "Helvetica Neue";
+    font-weight: bold;
+
+    padding: 10px 35px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+   }
+
+   .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
 
 
 button{

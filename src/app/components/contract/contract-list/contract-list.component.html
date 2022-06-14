@@ -93,7 +93,7 @@
                   </span>
                   <div *ngIf="contract.buyerId == userId">
                     <p>Confirm the context of the contract</p>
-                    <button mat-raised-button color="warn" class="btn-primary-pay"
+                    <button mat-raised-button color="primary" class="btn-primary-pay"
                       (click)="confirmContract(contract.escrowId ,contract.sellerPay ,contract.buyerPay, 'Created')"
                       type="submit">
                       <p>Confirm</p>

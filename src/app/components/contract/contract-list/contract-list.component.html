@@ -84,7 +84,8 @@
             </li>
             <li>
               <div class="card-body">
-                <a [routerLink]="['/partner', contract.emailBuyer]" class="card-link-1">Partner profile</a>&nbsp;
+                <a [routerLink]="['/partner', contract.emailBuyer]" class="card-link-1" color="primary">Partner
+                  profile</a>&nbsp;
                 <a class="card-link" *ngIf="contract.status == 'Waiting'">
                   <strong>Status:</strong>
                   <span class="orangeStatus">

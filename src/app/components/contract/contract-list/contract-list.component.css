@@ -56,6 +56,14 @@ h6{
   /* text-transform: uppercase; */
 }
 
+.card-link-1{
+  color: #2257f7;
+  background-color: var(--vender-blueGrey);
+  font-weight: bold;
+  font-size:12px;
+
+}
+
 .btn-grad {background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%)}
   .btn-grad {
     padding: 5px 10px;

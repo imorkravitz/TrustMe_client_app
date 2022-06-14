@@ -160,7 +160,7 @@ addContract(description: String,
     },error=>{
       this.notificationService.showNotification('This user does not exist. Try again', 'OK', 'error');
     })
-    console.log(contract);
+    // console.log(contract);
 }
 
 getContractById(){
@@ -191,7 +191,7 @@ getContractById(){
   }))
   .subscribe((transformedContract)=>{
     this.contracts = transformedContract;
-    console.log(this.contracts);
+    // console.log(this.contracts);
     this.contractUpdated.next([...this.contracts]);
     this.counter = this.contracts.length;
   })

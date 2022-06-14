@@ -47,10 +47,10 @@ $vender-blueGrey: (
 200: #b0bec5,
 300: #90a4ae,
 400: #78909c,
-500: #006064,
+500: #aeb3fc,
 600: #546e7a,
 700: #455a64,
-800: #37474f,
+800: #374f4d,
 900: #002884,
 A100: #cfd8dc,
 A200: #b0bec5,
@@ -111,7 +111,7 @@ contrast: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $market-primary: mat-palette($vender-cyan);
-$market-accent: mat-palette($vender-cyan);
+$market-accent: mat-palette($mat-indigo);
 $market-warn: mat-palette($mat-red);
 
 $market-theme: mat-light-theme($market-primary, $market-accent, $market-warn);

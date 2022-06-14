@@ -95,7 +95,7 @@ h6{
   position: relative;
   text-align: center;
   font-size: 10px;
-  height:30px;
+  height:35px;
   width: 8px;
   display: inline-block;
   border-radius: 25px;
@@ -107,15 +107,17 @@ h6{
 .btn-primary-confirm{
   text-align: center;
   font-size: 10px;
-  height:30px;
+  height:35px;
   width: auto;
   border-radius: 25px;
-  border: 0.1px solid;
-  color: var(--vender-cyan);
+  border: 0px solid;
+  color: white;
   margin-left: auto;
   margin-right: auto;
   display:block;
-  margin: 0 auto
+  margin: 0 auto;
+  font-weight:800;
+
 }
 
 .btn-primary-pay{
@@ -126,8 +128,9 @@ h6{
   position:relative;
   padding: 2px;
   border-radius: 25px;
-  border: 0.1px solid;
-
+  border: 0px solid;
+  font-weight:800;
+  color: white;
 }
 
 p{
@@ -178,6 +181,13 @@ ul{
 
 .sizeAddresses{
   word-break: break-all;
+}
+
+.desSize{
+  font-size: 18px;
+  font-weight:600;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content:center;
 }
 
 .center{

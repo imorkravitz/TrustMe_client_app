@@ -12,7 +12,7 @@
           <img class="card-img-top" />
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Description:</strong>
-              <div class="sizeAddresses">{{contract.description}}</div>
+              <div class="sizeAddresses desSize">{{contract.description}}</div>
 
               <button class="btn-grad " mat-raised-button color="primary" (click)="toggle(i)">Show Details
               </button>
@@ -93,7 +93,7 @@
                   </span>
                   <div *ngIf="contract.buyerId == userId">
                     <p>Confirm the context of the contract</p>
-                    <button mat-raised-button color="primary" class="btn-primary-pay"
+                    <button mat-raised-button color="warn" class="btn-primary-pay"
                       (click)="confirmContract(contract.escrowId ,contract.sellerPay ,contract.buyerPay, 'Created')"
                       type="submit">
                       <p>Confirm</p>

@@ -73,12 +73,17 @@ export class ContractListComponent implements OnInit, OnDestroy, OnChanges {
 
   setAgreement(contractId: any, sellerAgreement: Boolean, buyerAgreement: Boolean){
     this.contractService.setAgreement(contractId, sellerAgreement, buyerAgreement);
-    this.ngOnInit();
+    setTimeout(() => {
+      this.ngOnInit();
+    },700)
   }
 
   confirmContract(escrowId: any ,sellerPay:any ,buyerPay:any, status:any){
   this.contractService.updateContract(escrowId ,sellerPay ,buyerPay, status)
     console.log(status)
+    setTimeout(() => {
+      this.ngOnInit();
+    },700)
     this.ngOnInit();
   }
 

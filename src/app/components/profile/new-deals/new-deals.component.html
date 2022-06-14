@@ -20,15 +20,18 @@
                 <span class="orangeStatus">{{contract.status}}</span>
               </span>
               <span *ngIf="contract.status == 'Active'">
-                <span class="close">{{contract.status}} <span class="colorAgreemnt">
+                <span class="close">{{contract.status}}
+                  <span class="colorAgreemnt">
                     Waiting for check agreement..
                   </span>
                 </span>
               </span>
               <span *ngIf="contract.status == 'Closed'">
                 <span class="close">
-                  <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
-                  {{contract.status}}
+                  <div class="pos">
+                    <i class="fa fa-handshake fa-xl" aria-hidden="true"></i>
+                    {{contract.status}}
+                  </div>
                 </span>
               </span>&nbsp;
             </strong>
